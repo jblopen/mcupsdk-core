@@ -92,3 +92,8 @@ examples/pru_io/empty/firmware/am263x-cc/icssm-pru0_fw/ti-pru-cgt/*.xml
 examples/pru_io/empty/firmware/am263x-cc/icssm-pru0_fw/ti-pru-cgt/*.h
 !*boardcfg_*.bin
 !tools/flasher/prebuilt/am*.out
+source/eclipse_threadx/threadx/threadx_src
+source/eclipse_threadx/filex/filex_src
+source/eclipse_threadx/levelx/levelx_src
+source/eclipse_threadx/netx/netx_src
+
