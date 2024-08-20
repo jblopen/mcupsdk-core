@@ -10,6 +10,12 @@ PROFILE?=release
 # GP, HS
 DEVICE_TYPE?=GP
 
+ifeq ($(DEVICE),$(filter $(DEVICE), am261x))
+    SYSCFG_DEVICE = AM261x_ZCZ
+    # default syscfg CPU to use,
+    # options on am261x are r5fss0-0, r5fss0-1
+    SYSCFG_CPU = r5fss0-0
+  endif
 ifeq ($(DEVICE),$(filter $(DEVICE), am263px))
     SYSCFG_DEVICE = AM263Px
     # default syscfg CPU to use,
@@ -51,6 +57,12 @@ ifeq ($(DEVICE),$(filter $(DEVICE), am62x))
   # default syscfg CPU to use,
   # options on am62x are m4fss0-0
   SYSCFG_CPU = m4fss0-0
+endif
+ifeq ($(DEVICE),$(filter $(DEVICE), am65x))
+  SYSCFG_DEVICE = AM65xx_SR2.0_beta
+  # default syscfg CPU to use,
+  # options on am65x are r5fss0-0, r5fss0-1
+  SYSCFG_CPU = r5fss0-0
 endif
 all:
 	$(MAKE) -C . -f makefile.$(DEVICE) all PROFILE=$(PROFILE)

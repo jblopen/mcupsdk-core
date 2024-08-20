@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2021-2023 Texas Instruments Incorporated
+ *  Copyright (C) 2021-2024 Texas Instruments Incorporated
  *
  *  Redistribution and use in source and binary forms, with or without
  *  modification, are permitted provided that the following conditions
@@ -60,14 +60,21 @@ typedef struct UART_UdmaChConfig_s
     /**< Size of TR PD memory */
     void            *txRingMem;
     /**< UDMA TX Ring memory pointers */
+    void            *cqTxRingMem;
+    /**< UDMA TX completion queue ring memory pointer */
     void            *rxRingMem;
     /**< UDMA RX Ring memory pointers */
+    void            *cqRxRingMem;
+    /**< UDMA RX completion queue ring memory pointer */
     uint32_t        ringMemSize;
     /**< Size of Ring Memory */
     uint32_t        ringElemCnt;
     /**< Ring Element Count */
     uint32_t        isOpen;
     /**< Flag to indicate whether the DMA instance is opened already */
+    uint32_t        isCqRingMem;
+    /**< UDMA completion queue ring memory is enabled or disabled */
+    /**< This is only used for AM65x */
 }UART_UdmaChConfig;
 
 #ifdef __cplusplus

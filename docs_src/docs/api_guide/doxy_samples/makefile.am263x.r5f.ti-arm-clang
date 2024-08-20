@@ -19,6 +19,7 @@ FILES_common := \
     AddrTranslateP_sample.c \
     Bootloader_sample_v2.c \
     CacheP_sample.c \
+    Canfd_sample.c \
     CpuIdP_sample.c \
     ClockP_sample.c \
     Cmpss_sample.c \
@@ -61,6 +62,7 @@ FILES_PATH_common = \
 INCLUDES_common := \
     -I${CG_TOOL_ROOT}/include/c \
     -I${MCU_PLUS_SDK_PATH}/source \
+    -I${MCU_PLUS_SDK_PATH}/source/security \
 
 DEFINES_common := \
     -DSOC_AM263X \

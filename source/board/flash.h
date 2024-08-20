@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2021 Texas Instruments Incorporated
+ *  Copyright (C) 2021-2024 Texas Instruments Incorporated
  *
  *  Redistribution and use in source and binary forms, with or without
  *  modification, are permitted provided that the following conditions
@@ -39,11 +39,24 @@ extern "C"
 #endif
 
 #include <stdint.h>
+#include <stddef.h>
 #include <kernel/dpl/SystemP.h>
 #include <drivers/hw_include/soc_config.h>
 #include <board/flash/flash_config.h>
 
 #define FLASH_INVALID_VALUE (0xFFFFFFFFU)
+
+#define CONFIG_FLASH_TYPE_SERIAL            ((uint32_t)0x1)
+#define CONFIG_FLASH_TYPE_PARALLEL          ((uint32_t)0x2)
+
+/**
+ * \brief Flash type supported
+ */
+#define CONFIG_FLASH_TYPE_SERIAL_NOR               (0x00U)
+#define CONFIG_FLASH_TYPE_SERIAL_NAND              (0x01U)
+#define CONFIG_FLASH_TYPE_PARALLEL_NOR             (0x02U)
+#define CONFIG_FLASH_TYPE_PARALLEL_NAND            (0x03U)
+#define CONFIG_FLASH_TYPE_INVALID                  (0xFFU)
 
 /**
  *  \defgroup BOARD_FLASH_MODULE APIs for FLASH
@@ -241,6 +254,30 @@ typedef int32_t (*Flash_EraseSectorFxn)(Flash_Config *config, uint32_t sectorNum
 typedef int32_t (*Flash_ResetFxn)(Flash_Config *config);
 
 /**
+ * \brief Driver implementation to enable DAC mode in Flash
+ *
+ * Typically this callback is hidden from the end application and is implemented
+ * when a new type of flash device needs to be implemented.
+ *
+ * \param config [in] Flash configuration for the specific flash device
+ *
+ * \return SystemP_SUCCESS on success, else failure
+ */
+typedef int32_t (*Flash_EnableDacModeFxn)(Flash_Config *config);
+
+/**
+ * \brief Driver implementation to enable DAC mode in Flash
+ *
+ * Typically this callback is hidden from the end application and is implemented
+ * when a new type of flash device needs to be implemented.
+ *
+ * \param config [in] Flash configuration for the specific flash device
+ *
+ * \return SystemP_SUCCESS on success, else failure
+ */
+typedef int32_t (*Flash_DisableDacModeFxn)(Flash_Config *config);
+
+/**
  * \brief User implementation of a custom function to handle vendor specific quirks
  *
  * Typically this callback is hidden from the end application and is implemented
@@ -286,6 +323,8 @@ typedef struct Flash_Fxns_s
     Flash_EraseFxn eraseFxn; /**< Flash driver implementation specific callback */
     Flash_EraseSectorFxn eraseSectorFxn; /**< Flash driver implementation specific callback */
     Flash_ResetFxn resetFxn; /**< Flash driver implementation specific callback */
+    Flash_EnableDacModeFxn enableDacModeFxn; /**< Flash driver implementation specific callback */
+    Flash_DisableDacModeFxn disableDacModeFxn; /**< Flash driver implementation specific callback */
 
 } Flash_Fxns;
 
@@ -307,7 +346,7 @@ typedef struct Flash_Attrs_s {
     uint32_t sectorCount;    /**< Number of sectors in the flash, if flash supports sectors */
     uint32_t sectorSize;     /**< Size of each flash sector, in bytes */
     uint32_t spareAreaSize;  /**< Size of spare area in flash*/
-
+    uint32_t phyTuningOffset;/**< Flash offset at which phy tuning vector will be written*/
 } Flash_Attrs;
 
 /**
@@ -320,7 +359,7 @@ typedef struct Flash_Config_s
     Flash_DevConfig            *devConfig;  /**< Flash device specific config, like command ID for read, erase, etc */
     void                       *object;      /**< Flash driver object, used to maintain driver implementation state */
     uint32_t                   skipHwInit;  /**< Option to skip the HW initialization of the flash */
-
+    uint32_t                   rwOffset;    /**< Global read write offset*/
 } Flash_Config;
 
 /* Flash specific includes */
@@ -495,6 +534,24 @@ int32_t Flash_eraseSector(Flash_Handle handle, uint32_t sectorNum);
  * \return SystemP_SUCCESS on success, else failure
  */
 int32_t Flash_reset(Flash_Handle handle);
+
+/**
+ * \brief Enables DAC mode in flash
+ *
+ * \param handle [in] Flash driver handle from \ref Flash_open
+ *
+ * \return SystemP_SUCCESS on success, else failure
+ */
+int32_t Flash_enableDacMode(Flash_Handle handle);
+
+/**
+ * \brief Disable DAC mode in flash
+ *
+ * \param handle [in] Flash driver handle from \ref Flash_open
+ *
+ * \return SystemP_SUCCESS on success, else failure
+ */
+int32_t Flash_disableDacMode(Flash_Handle handle);
 
 /**
  * \brief Return flash offset to write PHY tuning data

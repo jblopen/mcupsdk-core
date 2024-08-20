@@ -15,6 +15,7 @@ const bootloader1     = bootloader.addInstance();
 const hsmclient       = scripting.addModule("/drivers/hsmclient/hsmclient", {}, false);
 const hsmclient1      = hsmclient.addInstance();
 const debug_log       = scripting.addModule("/kernel/dpl/debug_log");
+const dpl_cfg         = scripting.addModule("/kernel/dpl/dpl_cfg");
 const mpu_armv7       = scripting.addModule("/kernel/dpl/mpu_armv7", {}, false);
 const mpu_armv71      = mpu_armv7.addInstance();
 const mpu_armv72      = mpu_armv7.addInstance();
@@ -48,6 +49,7 @@ flash1.peripheralDriver.$name              = "CONFIG_QSPI0";
 flash1.peripheralDriver.dmaEnable          = true;
 flash1.peripheralDriver.QSPI.QSPI_D2.pu_pd = "pu";
 flash1.peripheralDriver.QSPI.QSPI_D3.pu_pd = "pu";
+flash1.peripheralDriver.child.$name        = "drivers_qspi_v0_qspi_v0_template0";
 
 const edma                         = scripting.addModule("/drivers/edma/edma", {}, false);
 const edma1                        = edma.addInstance({}, false);
@@ -65,6 +67,7 @@ debug_log.uartLog.$name            = "CONFIG_UART0";
 debug_log.uartLog.intrEnable       = "DISABLE";
 debug_log.uartLog.UART.RXD.$assign = "UART0_RXD";
 debug_log.uartLog.UART.TXD.$assign = "UART0_TXD";
+debug_log.uartLog.child.$name      = "drivers_uart_v2_uart_v2_template0";
 
 mpu_armv71.$name             = "CONFIG_MPU_REGION0";
 mpu_armv71.size              = 31;
@@ -224,7 +227,7 @@ section7.type                        = "NOLOAD";
 section7.group                       = false;
 section7.$name                       = "SIPC R5F Queue Memory";
 section7.output_section.create(1);
-section7.output_section[0].$name     = ".bss.sipc_r5f_queue_mem";
+section7.output_section[0].$name     = ".bss.sipc_secure_host_queue_mem";
 section7.output_section[0].alignment = 0;
 
 /**

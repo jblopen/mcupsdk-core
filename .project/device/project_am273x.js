@@ -3,6 +3,7 @@ const common = require("../common.js");
 const component_file_list = [
     "source/board/.project/project.js",
     "source/drivers/.project/project.js",
+    "source/middleware/.project/project.js",
     "source/kernel/freertos/.project/project.js",
     "source/kernel/nortos/.project/project.js",
     "source/mathlib/.project/project.js",
@@ -22,7 +23,6 @@ const component_file_list = [
     "source/networking/tsn/.project/project_tsn_combase.js",
     "source/networking/tsn/.project/project_tsn_gptp.js",
     "source/networking/tsn/.project/project_tsn_uniconf.js",
-    "source/networking/tsn/.project/project_tsn_lldp.js",
  ];
 
 const device_defines = {
@@ -73,6 +73,9 @@ const example_file_list = [
     "examples/drivers/mcan/mcan_external_loopback_interrupt/.project/project.js",
     "examples/drivers/mcan/mcan_loopback_interrupt/.project/project.js",
     "examples/drivers/mcan/mcan_loopback_polling/.project/project.js",
+    "examples/drivers/mcan/canfd_loopback_polling/.project/project.js",
+    "examples/drivers/mcan/canfd_loopback_interrupt/.project/project.js",
+    "examples/drivers/mcan/canfd_loopback_dma/.project/project.js",
     "examples/drivers/mcasp/mcasp_loopback/.project/project.js",
     "examples/drivers/mcasp/mcasp_playback/.project/project.js",
     "examples/drivers/mibspi/mibspi_loopback/.project/project.js",
@@ -101,7 +104,8 @@ const example_file_list = [
     "examples/kernel/freertos/interrupt_profiling/.project/project.js",
     "examples/kernel/freertos/task_switch/.project/project.js",
     "examples/mathlib/benchmark/.project/project.js",
-    "examples/networking/enet_loopback/enet_cpsw_loopback/.project/project.js",
+    "examples/networking/enet_loopback/enet_cpsw_loopback/loopback_mac_end/.project/project.js",
+    "examples/networking/enet_loopback/enet_cpsw_loopback/loopback_phy_end/.project/project.js",
     "examples/networking/tsn/gptp_cpsw_app/.project/project.js",
     "examples/networking/tsn/lldp_cpsw_app/.project/project.js",
      "examples/networking/lwip/cpsw_lwip_https/.project/project.js",

@@ -38,7 +38,7 @@
 #include "ti_board_open_close.h"
 #include <drivers/bootloader.h>
 #include <drivers/bootloader/bootloader_xmodem.h>
-#include <drivers/bootloader/bootloader_uniflash.h>
+#include <drivers/bootloader/bootloader_uniflash/bootloader_uniflash.h>
 
 #define FLASH_WRITE_SECTOR
 
@@ -107,7 +107,7 @@ int main(void)
     }
     /* clear buffer to reset stale data if any */
     memset(gFileBuf, 0, BOOTLOADER_UNIFLASH_MAX_FILE_SIZE);
-
+    OSPI_enableDacMode(gOspiHandle[CONFIG_OSPI0]);
     Drivers_close();
     System_deinit();
 

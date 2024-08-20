@@ -5,6 +5,7 @@ let device = "am263x";
 const files = {
     common: [
         "main.c",
+        "board.c",
     ],
 };
 
@@ -24,6 +25,8 @@ const libdirs_nortos = {
         "${MCU_PLUS_SDK_PATH}/source/drivers/lib",
         "${MCU_PLUS_SDK_PATH}/source/board/lib",
         "${MCU_PLUS_SDK_PATH}/source/sdl/lib",
+        "${MCU_PLUS_SDK_PATH}/source/security/lib",
+        "${MCU_PLUS_SDK_PATH}/source/middleware/lib",
     ],
 };
 
@@ -33,6 +36,8 @@ const libs_nortos_r5f = {
         "drivers.am263x.r5f.ti-arm-clang.${ConfigName}.lib",
         "board.am263x.r5f.ti-arm-clang.${ConfigName}.lib",
         "sdl.am263x.r5f.ti-arm-clang.${ConfigName}.lib",
+        "security.am263x.r5f.ti-arm-clang.${ConfigName}.lib",
+        "middleware.am263x.r5f.ti-arm-clang.${ConfigName}.lib",
     ],
 };
 
@@ -48,6 +53,51 @@ const r5f0_macro = {
     ],
 
 };
+
+const includes = {
+    common: [
+        "${MCU_PLUS_SDK_PATH}/source/security",
+    ],
+};
+
+const template_options_cc = {
+    bootformat: "RPRC",
+    board: "am263x-cc"
+}
+
+const template_options_lp = {
+    bootformat: "RPRC",
+    board: "am263x-lp"
+}
+
+const templates_cc =
+[
+    {
+        input: ".project/templates/am263x/sbl/sbl_can_uniflash/main.c.xdt",
+        output: "../main.c",
+        options: template_options_cc
+    },
+    {
+        input: ".project/templates/am263x/sbl/sbl_can_uniflash/am263x-cc/board.c.xdt",
+        output: "../board.c",
+        options: template_options_cc
+    }
+];
+
+
+const templates_lp =
+[
+    {
+        input: ".project/templates/am263x/sbl/sbl_can_uniflash/main.c.xdt",
+        output: "../main.c",
+        options: template_options_lp
+    },
+    {
+        input: ".project/templates/am263x/sbl/sbl_can_uniflash/am263x-lp/board.c.xdt",
+        output: "../board.c",
+        options: template_options_cc
+    }
+];
 
 const syscfgfile = "../example.syscfg";
 
@@ -79,12 +129,21 @@ function getComponentBuildProperty(buildOption) {
     build_property.libdirs = libdirs_nortos;
     build_property.lnkfiles = lnkfiles;
     build_property.syscfgfile = syscfgfile;
+    if(buildOption.board === "am263x-cc")
+    {
+        build_property.templates = templates_cc;
+    }
+    else if(buildOption.board === "am263x-lp")
+    {
+        build_property.templates = templates_lp;
+    }
     build_property.readmeDoxygenPageTag = readmeDoxygenPageTag;
 
     if(buildOption.cpu.match(/r5f*/)) {
         build_property.libs = libs_nortos_r5f;
         build_property.defines = r5f0_macro;
     }
+    build_property.includes = includes;
 
     return build_property;
 }

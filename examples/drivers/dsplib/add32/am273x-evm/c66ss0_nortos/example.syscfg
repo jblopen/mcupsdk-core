@@ -12,6 +12,7 @@ const edma            = scripting.addModule("/drivers/edma/edma", {}, false);
 const edma1           = edma.addInstance();
 const cache_c6x       = scripting.addModule("/kernel/dpl/cache_c6x");
 const debug_log       = scripting.addModule("/kernel/dpl/debug_log");
+const dpl_cfg = scripting.addModule("/kernel/dpl/dpl_cfg");
 const default_linker  = scripting.addModule("/memory_configurator/default_linker", {}, false);
 const default_linker1 = default_linker.addInstance();
 const general         = scripting.addModule("/memory_configurator/general", {}, false);
@@ -188,7 +189,7 @@ section11.group                       = false;
 section11.load_memory                 = "MAILBOX_R5F";
 section11.output_section.create(1);
 section11.output_section[0].alignment = 0;
-section11.output_section[0].$name     = ".bss.sipc_r5f_queue_mem";
+section11.output_section[0].$name     = ".bss.sipc_secure_host_queue_mem";
 
 /**
  * Pinmux solution for unlocked pins/peripherals. This ensures that minor changes to the automatic solver in a future

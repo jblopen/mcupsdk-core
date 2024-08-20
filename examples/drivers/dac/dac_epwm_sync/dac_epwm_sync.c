@@ -84,12 +84,13 @@ uint32_t gEpwmBaseAddr = CONFIG_EPWM0_BASE_ADDR;
 uint32_t gDacBaseAddr = CONFIG_DAC0_BASE_ADDR;
 
 void App_epwmIsr(void* args);
+
 void dac_epwm_sync_main(void *args)
 {
     /* Open drivers to open the UART driver for console */
     Drivers_open();
     Board_driversOpen();
-
+    
     DebugP_log("EPWM synced DAC Test Started ...\r\n");
 
     /* initiating the gDacShadowValues array */

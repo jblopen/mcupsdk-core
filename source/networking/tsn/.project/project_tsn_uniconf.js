@@ -27,15 +27,18 @@ const files = {
         "ieee802-dot1q-bridge.c",
         "ieee802-dot1q-bridge_runconf.c",
         "ieee802-dot1q-bridge_nconf.c",
+        "ieee802-dot1q-bridge_access.c",
         "ieee802-dot1q-tsn-config-uni.c",
         "ieee802-dot1q-tsn-config-uni_runconf.c",
         "ieee802-dot1q-tsn-config-uni_nconf.c",
+        "ieee802-dot1q-tsn-config-uni_access.c",
         "ieee802-dot1ab-lldp.c",
         "ieee802-dot1ab-lldp_runconf.c",
         "ieee802-dot1ab-lldp_nconf.c",
         "excelfore-tsn-remote.c",
         "excelfore-tsn-remote_runconf.c",
         "excelfore-netconf-server_nconf.c",
+        "excelfore-tsn-remote_access.c",
         "excelfore-tsn-remote_nconf.c",
         "ieee802-dot1ab-lldp_access.c",
         "ietf-interfaces_access.c",
@@ -50,6 +53,11 @@ const files = {
         "uc_notice_tilld.c",
         "excelfore-netconf-server_nconf.c",
         "ieee1588-ptp-tt_nconf.c",
+        "excelfore-config-uni_nconf.c",
+        "excelfore-config-uni.c",
+        "excelfore-config-uni_runconf.c",
+        "yang_config_coresinit.c",
+        "yang_config_cuncinit.c"
     ],
 };
 
@@ -58,14 +66,16 @@ const filedirs = {
         "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/tsn_uniconf",
         "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/tsn_uniconf/hal",
         "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/tsn_uniconf/yangs",
-        "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/tsn_uniconf/yangs/generated",
+        "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/tsn_uniconf/yangs/cores",
+        "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/tsn_uniconf/yangs/cores/generated",
+        "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/tsn_uniconf/yangs/cunc",
+        "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/tsn_uniconf/yangs/cunc/generated",
         "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/tsn_uniconf/tilld",
     ],
 };
 
 const includes = {
     common: [
-        "${MCU_PLUS_SDK_PATH}/source/networking/enet/soc/k3/am64x_am243x",
         "${MCU_PLUS_SDK_PATH}/source",
         "${MCU_PLUS_SDK_PATH}/source/kernel/freertos/portable/TI_ARM_CLANG/ARM_CR5F",
         "${MCU_PLUS_SDK_PATH}/source/kernel/freertos/config/$(MCU_PLUS_SDK_MCU)/r5f",
@@ -78,9 +88,10 @@ const includes = {
         "${MCU_PLUS_SDK_PATH}/source/networking/enet/core/include/mod",
         "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack",
         "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/tsn_uniconf",
-        "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/tsn_uniconf/rtos",
-        "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/tsn_uniconf/rtos/am243x",
+        "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/tsn_uniconf/hal",
         "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/tsn_uniconf/yangs",
+        "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/tsn_uniconf/yangs/cores/generated",
+        "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/tsn_uniconf/yangs/cunc/generated",
         "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/tsn_combase/tilld/sitara",
     ],
 };
@@ -108,6 +119,9 @@ const deviceSpecificIncludes = {
     ],
     am263px : [
         "${MCU_PLUS_SDK_PATH}/source/kernel/freertos/config/am263px/r5f",
+    ],
+    am261x : [
+        "${MCU_PLUS_SDK_PATH}/source/kernel/freertos/config/am261x/r5f",
     ],
     am273x : [
         "${MCU_PLUS_SDK_PATH}/source/kernel/freertos/config/am273x/r5f",
@@ -147,6 +161,8 @@ const deviceSpecific_cflags = {
     ],
     am263px : [
     ],
+    am261x : [
+    ],
     am273x : [
         "-fno-strict-aliasing",
     ],
@@ -158,6 +174,7 @@ const deviceSpecific_cflags = {
 const buildOptionCombos = [
     { device: "am263x", cpu: "r5f", cgt: "ti-arm-clang"},
     { device: "am263px", cpu: "r5f", cgt: "ti-arm-clang"},
+    { device: "am261x", cpu: "r5f", cgt: "ti-arm-clang"},
     { device: "am243x", cpu: "r5f", cgt: "ti-arm-clang"},
     { device: "am273x", cpu: "r5f", cgt: "ti-arm-clang"},
     { device: "am64x",  cpu: "r5f", cgt: "ti-arm-clang"},

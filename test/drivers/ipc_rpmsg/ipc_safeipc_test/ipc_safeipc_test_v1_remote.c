@@ -32,7 +32,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <inttypes.h>
-#include <drivers/hsmclient.h>
+#include <security/security_common/drivers/hsmclient/hsmclient.h>
 #include <kernel/dpl/ClockP.h>
 #include <kernel/dpl/DebugP.h>
 #include <drivers/ipc_notify.h>
@@ -69,7 +69,7 @@ uint32_t gRemoteCoreId[] = {
 };
 #endif
 
-#if defined (SOC_AM263X) || defined (SOC_AM263PX)
+#if defined (SOC_AM263X) || defined (SOC_AM263PX) || defined (SOC_AM261X)
 /* main core that starts the message exchange */
 uint32_t gMainCoreId = CSL_CORE_ID_R5FSS0_0;
 /* remote cores that echo messages from main core, make sure to NOT list main core in this list */
@@ -124,7 +124,7 @@ uint32_t gDataAbortReceived = 0;
 RPMessage_Object gAckReplyMsgObject;
 
 /* Strong declaration of user defined data abort exception */
-extern void HwiP_data_abort_handler_c(void);
+extern void HwiP_user_data_abort_handler_c(DFSR dfsr,ADFSR adfsr,volatile uint32_t dfar,volatile uint32_t address,volatile uint32_t spsr);
 
 /* RPMessage_Object MUST be global or static */
 static RPMessage_Object gRecvMsgObject;
@@ -217,7 +217,7 @@ void ipc_safeipc_test_main(void *args)
 }
 
 /* Strong definition of user defined data abort exception. This function will be called incase of any data abort */
-void HwiP_data_abort_handler_c(void)
+void HwiP_user_data_abort_handler_c(DFSR dfsr,ADFSR adfsr,volatile uint32_t dfar,volatile uint32_t address,volatile uint32_t spsr)
 {
     gDataAbortReceived = 1;
 }

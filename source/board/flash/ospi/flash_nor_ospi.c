@@ -42,6 +42,8 @@ static int32_t Flash_norOspiWrite(Flash_Config *config, uint32_t offset, uint8_t
 static int32_t Flash_norOspiOpen(Flash_Config *config, Flash_Params *params);
 static void Flash_norOspiClose(Flash_Config *config);
 static int32_t Flash_norOspiReset(Flash_Config *config);
+static int32_t Flash_norOspiDacModeEnable(Flash_Config *config);
+static int32_t Flash_norOspiDacModeDisable(Flash_Config *config);
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -71,6 +73,8 @@ Flash_Fxns gFlashNorOspiFxns = {
     .eraseFxn = Flash_norOspiErase,
     .eraseSectorFxn = Flash_norOspiEraseSector,
     .resetFxn = Flash_norOspiReset,
+    .enableDacModeFxn = Flash_norOspiDacModeEnable,
+    .disableDacModeFxn = Flash_norOspiDacModeDisable,
 };
 
 static int32_t Flash_norOspiCmdWrite(Flash_Config *config, uint8_t cmd, uint32_t cmdAddr,
@@ -134,6 +138,10 @@ static int32_t Flash_norOspiWaitReady(Flash_Config *config, uint32_t timeOut)
         cmdAddr = devCfg->xspiWipReg;
         numAddrBytes = obj->numAddrBytes;
         bitMask = devCfg->xspiWipBit;
+        numBytesToRead = 2; /* Can't read odd bytes in Octal DDR mode */
+        dummyBits = devCfg->protocolCfg.dummyClksCmd;
+    }else if(obj->currentProtocol == FLASH_CFG_PROTO_8D_8D_8D)
+    {
         numBytesToRead = 2; /* Can't read odd bytes in Octal DDR mode */
         dummyBits = devCfg->protocolCfg.dummyClksCmd;
     }
@@ -679,7 +687,7 @@ static int32_t Flash_set888mode(Flash_Config *config, uint8_t seq)
         if(SystemP_SUCCESS == status)
         {
             /* Octal DDR is special. Check if it is already enabled */
-            if((((reg >> octCfg->shift) & 0x01) == 1) && (((reg >> dCfg->shift) & 0x01) == 1))
+            if((((reg & octCfg->mask) >> octCfg->shift) == octCfg->cfgRegBitP) && (((reg & dCfg->mask) >> dCfg->shift) == dCfg->cfgRegBitP))
             {
                 /* Already 8D */
             }
@@ -851,7 +859,9 @@ static int32_t Flash_norOspiReadId(Flash_Config *config)
     if(obj->currentProtocol == FLASH_CFG_PROTO_8D_8D_8D)
     {
         dummyBits = idCfg->dummy8;
-        cmdAddr = 0U;
+        if(idCfg->dummy8 != 8){
+            cmdAddr = 0U;
+        }
         idNumBytes = 4; /* Can't read odd bytes in octal DDR */
     }
     else
@@ -1295,6 +1305,14 @@ static void Flash_norOspiClose(Flash_Config *config)
 {
     Flash_NorOspiObject *obj = (Flash_NorOspiObject *)(config->object);
 
+    /* Disable the PHY */
+    OSPI_disablePhy(obj->ospiHandle);
+
+    /* Reset the flash such that other modules can initialise the
+     *  Flash config registers again.
+     */
+    (void)Flash_norOspiReset(config);
+
     obj->ospiHandle = NULL;
 
     /* OSPI Driver will be closed outside flash */
@@ -1333,3 +1351,28 @@ int32_t Flash_quirkSpansionUNHYSADisable(Flash_Config *config)
     return status;
 }
 
+static int32_t Flash_norOspiDacModeEnable(Flash_Config *config)
+{
+    int32_t status = SystemP_SUCCESS;
+    Flash_NorOspiObject *obj = (Flash_NorOspiObject *)(config->object);
+
+    if(obj && obj->ospiHandle)
+    {
+        status = OSPI_enableDacMode(obj->ospiHandle);
+    }
+
+    return status;
+}
+
+static int32_t Flash_norOspiDacModeDisable(Flash_Config *config)
+{
+    int32_t status = SystemP_SUCCESS;
+    Flash_NorOspiObject *obj = (Flash_NorOspiObject *)(config->object);
+
+    if(obj && obj->ospiHandle)
+    {
+        status = OSPI_disableDacMode(obj->ospiHandle);
+    }    
+
+    return status;
+}

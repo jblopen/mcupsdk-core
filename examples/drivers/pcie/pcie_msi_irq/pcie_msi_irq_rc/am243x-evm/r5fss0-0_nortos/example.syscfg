@@ -11,6 +11,7 @@
 const pcie            = scripting.addModule("/drivers/pcie/pcie", {}, false);
 const pcie1           = pcie.addInstance();
 const debug_log       = scripting.addModule("/kernel/dpl/debug_log");
+const dpl_cfg = scripting.addModule("/kernel/dpl/dpl_cfg");
 const mpu_armv7       = scripting.addModule("/kernel/dpl/mpu_armv7", {}, false);
 const mpu_armv71      = mpu_armv7.addInstance();
 const mpu_armv72      = mpu_armv7.addInstance();
@@ -48,15 +49,17 @@ pcie1.ibAtu[0].$name       = "IB_ATU_CFG0";
 pcie1.ibAtu[0].lowerBase   = "0x90000000";
 pcie1.ibAtu[0].lowerTarget = "(uint32_t)dst_buf";
 pcie1.ibAtu[0].externs     = "extern uint32_t dst_buf[];";
+pcie1.ibAtu[0].windowSize  = 0xfff;
 pcie1.ibAtu[1].$name       = "IB_ATU_CFG1";
 pcie1.ibAtu[1].regIndex    = 1;
 pcie1.ibAtu[1].lowerBase   = "0x2000000";
-pcie1.ibAtu[1].lowerTarget = "0x4E0143FCU";
-pcie1.ibAtu[1].windowSize  = 0xFF;
+pcie1.ibAtu[1].lowerTarget = "0x4E014300U";
+pcie1.ibAtu[1].windowSize  = 0xff;
 pcie1.obAtu.create(1);
 pcie1.obAtu[0].$name       = "OB_ATU_CFG0";
 pcie1.obAtu[0].lowerBase   = "0x68000000UL + 0x01000000U";
 pcie1.obAtu[0].lowerTarget = "0x70000000";
+pcie1.obAtu[0].windowSize  = 0xfff;
 
 debug_log.enableUartLog        = true;
 debug_log.uartLog.$name        = "CONFIG_UART_CONSOLE";

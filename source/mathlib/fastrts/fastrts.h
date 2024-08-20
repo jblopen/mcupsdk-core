@@ -42,11 +42,16 @@
 #ifndef FASTRTS_H
 #define FASTRTS_H
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
 /* ========================================================================== */
 /*                                 Macros                                     */
 /* ========================================================================== */
 
-#define RTS_TEXT_SECTION   __attribute__((section(".trigText"))) __attribute__((always_inline))
+#define RTS_TEXT_SECTION   __attribute__((section(".trigText"))) __attribute__((always_inline)) inline
 #define RTS_DATA_SECTION   __attribute__((aligned(8), section(".trigData")))
 
 /* ========================================================================== */
@@ -132,6 +137,10 @@ RTS_TEXT_SECTION static float FastRTS_sqrtf(const float x)
     return r;
 }
 
-#endif /* FASTRTS_H */
-
 /** @} */
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* FASTRTS_H */

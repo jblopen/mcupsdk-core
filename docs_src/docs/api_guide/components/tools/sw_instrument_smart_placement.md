@@ -23,15 +23,11 @@ Make sure that ti-arm-clang compiler version is more than 3.1.0 STS.
 
 It needs to made sure that all the source code are built using `-fprofile-instr-generate -fcoverage-mapping` flags. Therefore, it is required to recompile entire SDK with these flags. To do this, please execute the following command on SDK top level.
 
-\code
-gmake -j libs-scrub
-\endcode
+> gmake -j libs-scrub DEVICE=@VAR_SOC_NAME_LOWER
 
 This will remove all compiled libraries. This will make sure to have a clean start. Then,
 
-\code
-gmake -j libs DEVICE=am263px INSTRUMENTATION_MODE=yes
-\endcode
+> gmake -j libs DEVICE=@VAR_SOC_NAME_LOWER INSTRUMENTATION_MODE=yes
 
 The above command will compile all the SDK libraries in `instrumentation mode` and in `release` profile. If it required to build libraries in `debug` mode then `PROFILE=debug` can be added at the end of the command.
 
@@ -40,7 +36,7 @@ Also, in Linux, `gmake` is to be replaced by `make`. The above commands assumes 
 ### 2. Recompilation of Application
 
 Application is also required to be compiled with those flags.
-\cond SOC_AM263PX
+\cond SOC_AM263PX || SOC_AM261X
 \note
 The binary that is generated is an instrumented binary and its size is going to be more than the size of original application size. Therefore, it might be the case that linker.cmd file needs to be changed or if memory configurator is used then memory size needs to be changed.
 

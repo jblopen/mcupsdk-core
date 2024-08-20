@@ -1,0 +1,579 @@
+#
+# Auto generated makefile
+#
+
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL =
+# Various Example Projectspec Build Targets
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += sbl_null_am65x-idk_r5fss0-0_nortos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += sbl_ospi_am65x-idk_r5fss0-0_nortos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += sbl_ospi_linux_am65x-idk_r5fss0-0_nortos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += sbl_sd_am65x-idk_r5fss0-0_nortos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += sbl_pcie_am65x-idk_r5fss0-0_nortos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += sbl_pcie_host_am65x-idk_r5fss0-0_nortos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += sbl_uart_am65x-idk_r5fss0-0_nortos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += sbl_uart_uniflash_am65x-idk_r5fss0-0_nortos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += gpio_input_interrupt_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += gpio_led_blink_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += i2c_led_blink_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += i2c_read_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += i2c_temperature_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += mmcsd_file_io_am65x-idk_r5fss0-0_nortos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += mmcsd_raw_io_am65x-idk_r5fss0-0_nortos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += ospi_flash_diag_am65x-idk_r5fss0-0_nortos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += ospi_flash_dma_am65x-idk_r5fss0-0_nortos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += ospi_flash_io_am65x-idk_r5fss0-0_nortos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += pcie_buf_transfer_ep_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += pcie_buf_transfer_rc_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += sciclient_get_version_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += sciclient_get_version_am65x-idk_r5fss0-1_freertos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += sciclient_set_boardcfg_am65x-idk_r5fss0-0_nortos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += uart_echo_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += uart_echo_callback_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += uart_echo_dma_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += uart_echo_low_latency_interrupt_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += uart_echo_low_latency_polling_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += udma_chaining_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += udma_memcpy_interrupt_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += udma_memcpy_polling_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += udma_sw_trigger_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += hello_world_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += hello_world_cpp_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += dpl_demo_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += posix_demo_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += task_switch_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build
+# Various System Example Projectspec Build Targets
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += ipc_rpmsg_echo_linux_am65x-idk_system_freertos_build
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL += empty_am65x-idk_system_freertos_build
+
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_PRIVATE_ALL =
+# Various Private Example Projectspec Build Targets
+# Various Private System Example Projectspec Build Targets
+
+all: $(BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_ALL)
+
+all-private: $(BUILD_COMBO_EXAMPLE_PROJECTSPEC_BUILD_PRIVATE_ALL)
+
+ sbl_null_am65x-idk_r5fss0-0_nortos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/boot/sbl_null/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec all
+
+ sbl_ospi_am65x-idk_r5fss0-0_nortos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/boot/sbl_ospi/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec all
+
+ sbl_ospi_linux_am65x-idk_r5fss0-0_nortos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/boot/sbl_ospi_linux/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec all
+
+ sbl_sd_am65x-idk_r5fss0-0_nortos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/boot/sbl_sd/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec all
+
+ sbl_pcie_am65x-idk_r5fss0-0_nortos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/boot/sbl_pcie/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec all
+
+ sbl_pcie_host_am65x-idk_r5fss0-0_nortos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/boot/sbl_pcie_host/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec all
+
+ sbl_uart_am65x-idk_r5fss0-0_nortos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/boot/sbl_uart/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec all
+
+ sbl_uart_uniflash_am65x-idk_r5fss0-0_nortos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/boot/sbl_uart_uniflash/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec all
+
+ gpio_input_interrupt_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/gpio/gpio_input_interrupt/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec all
+
+ gpio_led_blink_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/gpio/gpio_led_blink/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec all
+
+ i2c_led_blink_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/i2c/i2c_led_blink/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec all
+
+ i2c_read_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/i2c/i2c_read/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec all
+
+ i2c_temperature_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/i2c/i2c_temperature/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec all
+
+ mmcsd_file_io_am65x-idk_r5fss0-0_nortos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/mmcsd/mmcsd_file_io/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec all
+
+ mmcsd_raw_io_am65x-idk_r5fss0-0_nortos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/mmcsd/mmcsd_raw_io/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec all
+
+ ospi_flash_diag_am65x-idk_r5fss0-0_nortos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/ospi/ospi_flash_diag/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec all
+
+ ospi_flash_dma_am65x-idk_r5fss0-0_nortos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/ospi/ospi_flash_dma/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec all
+
+ ospi_flash_io_am65x-idk_r5fss0-0_nortos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/ospi/ospi_flash_io/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec all
+
+ pcie_buf_transfer_ep_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/pcie/pcie_buf_transfer/pcie_buf_transfer_ep/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec all
+
+ pcie_buf_transfer_rc_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/pcie/pcie_buf_transfer/pcie_buf_transfer_rc/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec all
+
+ sciclient_get_version_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/sciclient/sciclient_get_version/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec all
+
+ sciclient_get_version_am65x-idk_r5fss0-1_freertos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/sciclient/sciclient_get_version/am65x-idk/r5fss0-1_freertos/ti-arm-clang -f makefile_projectspec all
+
+ sciclient_set_boardcfg_am65x-idk_r5fss0-0_nortos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/sciclient/sciclient_set_boardcfg/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec all
+
+ uart_echo_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/uart/uart_echo/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec all
+
+ uart_echo_callback_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/uart/uart_echo_callback/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec all
+
+ uart_echo_dma_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/uart/uart_echo_dma/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec all
+
+ uart_echo_low_latency_interrupt_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/uart/uart_echo_low_latency_interrupt/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec all
+
+ uart_echo_low_latency_polling_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/uart/uart_echo_low_latency_polling/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec all
+
+ udma_chaining_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/udma/udma_chaining/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec all
+
+ udma_memcpy_interrupt_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/udma/udma_memcpy_interrupt/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec all
+
+ udma_memcpy_polling_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/udma/udma_memcpy_polling/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec all
+
+ udma_sw_trigger_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build:
+	$(MAKE) -C examples/drivers/udma/udma_sw_trigger/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec all
+
+ hello_world_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build:
+	$(MAKE) -C examples/hello_world/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec all
+
+ hello_world_cpp_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build:
+	$(MAKE) -C examples/hello_world_cpp/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec all
+
+ dpl_demo_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build:
+	$(MAKE) -C examples/kernel/dpl/dpl_demo/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec all
+
+ posix_demo_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build:
+	$(MAKE) -C examples/kernel/freertos/posix_demo/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec all
+
+ task_switch_am65x-idk_r5fss0-0_freertos_ti-arm-clang_build:
+	$(MAKE) -C examples/kernel/freertos/task_switch/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec all
+
+ ipc_rpmsg_echo_linux_am65x-idk_system_freertos_build:
+	$(MAKE) -C examples/drivers/ipc/ipc_rpmsg_echo_linux/am65x-idk/system_freertos -f makefile_projectspec all
+
+ empty_am65x-idk_system_freertos_build:
+	$(MAKE) -C examples/empty/am65x-idk/system_freertos -f makefile_projectspec all
+
+
+
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL =
+# Various Example Projectspec Clean Targets
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += sbl_null_am65x-idk_r5fss0-0_nortos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += sbl_ospi_am65x-idk_r5fss0-0_nortos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += sbl_ospi_linux_am65x-idk_r5fss0-0_nortos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += sbl_sd_am65x-idk_r5fss0-0_nortos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += sbl_pcie_am65x-idk_r5fss0-0_nortos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += sbl_pcie_host_am65x-idk_r5fss0-0_nortos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += sbl_uart_am65x-idk_r5fss0-0_nortos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += sbl_uart_uniflash_am65x-idk_r5fss0-0_nortos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += gpio_input_interrupt_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += gpio_led_blink_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += i2c_led_blink_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += i2c_read_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += i2c_temperature_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += mmcsd_file_io_am65x-idk_r5fss0-0_nortos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += mmcsd_raw_io_am65x-idk_r5fss0-0_nortos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += ospi_flash_diag_am65x-idk_r5fss0-0_nortos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += ospi_flash_dma_am65x-idk_r5fss0-0_nortos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += ospi_flash_io_am65x-idk_r5fss0-0_nortos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += pcie_buf_transfer_ep_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += pcie_buf_transfer_rc_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += sciclient_get_version_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += sciclient_get_version_am65x-idk_r5fss0-1_freertos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += sciclient_set_boardcfg_am65x-idk_r5fss0-0_nortos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += uart_echo_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += uart_echo_callback_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += uart_echo_dma_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += uart_echo_low_latency_interrupt_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += uart_echo_low_latency_polling_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += udma_chaining_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += udma_memcpy_interrupt_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += udma_memcpy_polling_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += udma_sw_trigger_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += hello_world_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += hello_world_cpp_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += dpl_demo_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += posix_demo_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += task_switch_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean
+# Various System Example Projectspec Clean Targets
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += ipc_rpmsg_echo_linux_am65x-idk_system_freertos_clean
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL += empty_am65x-idk_system_freertos_clean
+
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_PRIVATE_ALL =
+# Various Private Example Projectspec Clean Targets
+# Various Private System Example Projectspec Clean Targets
+
+clean: $(BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_ALL)
+
+clean-private: $(BUILD_COMBO_EXAMPLE_PROJECTSPEC_CLEAN_PRIVATE_ALL)
+
+ sbl_null_am65x-idk_r5fss0-0_nortos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/boot/sbl_null/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec clean
+
+ sbl_ospi_am65x-idk_r5fss0-0_nortos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/boot/sbl_ospi/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec clean
+
+ sbl_ospi_linux_am65x-idk_r5fss0-0_nortos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/boot/sbl_ospi_linux/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec clean
+
+ sbl_sd_am65x-idk_r5fss0-0_nortos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/boot/sbl_sd/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec clean
+
+ sbl_pcie_am65x-idk_r5fss0-0_nortos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/boot/sbl_pcie/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec clean
+
+ sbl_pcie_host_am65x-idk_r5fss0-0_nortos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/boot/sbl_pcie_host/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec clean
+
+ sbl_uart_am65x-idk_r5fss0-0_nortos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/boot/sbl_uart/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec clean
+
+ sbl_uart_uniflash_am65x-idk_r5fss0-0_nortos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/boot/sbl_uart_uniflash/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec clean
+
+ gpio_input_interrupt_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/gpio/gpio_input_interrupt/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec clean
+
+ gpio_led_blink_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/gpio/gpio_led_blink/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec clean
+
+ i2c_led_blink_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/i2c/i2c_led_blink/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec clean
+
+ i2c_read_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/i2c/i2c_read/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec clean
+
+ i2c_temperature_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/i2c/i2c_temperature/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec clean
+
+ mmcsd_file_io_am65x-idk_r5fss0-0_nortos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/mmcsd/mmcsd_file_io/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec clean
+
+ mmcsd_raw_io_am65x-idk_r5fss0-0_nortos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/mmcsd/mmcsd_raw_io/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec clean
+
+ ospi_flash_diag_am65x-idk_r5fss0-0_nortos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/ospi/ospi_flash_diag/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec clean
+
+ ospi_flash_dma_am65x-idk_r5fss0-0_nortos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/ospi/ospi_flash_dma/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec clean
+
+ ospi_flash_io_am65x-idk_r5fss0-0_nortos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/ospi/ospi_flash_io/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec clean
+
+ pcie_buf_transfer_ep_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/pcie/pcie_buf_transfer/pcie_buf_transfer_ep/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec clean
+
+ pcie_buf_transfer_rc_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/pcie/pcie_buf_transfer/pcie_buf_transfer_rc/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec clean
+
+ sciclient_get_version_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/sciclient/sciclient_get_version/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec clean
+
+ sciclient_get_version_am65x-idk_r5fss0-1_freertos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/sciclient/sciclient_get_version/am65x-idk/r5fss0-1_freertos/ti-arm-clang -f makefile_projectspec clean
+
+ sciclient_set_boardcfg_am65x-idk_r5fss0-0_nortos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/sciclient/sciclient_set_boardcfg/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec clean
+
+ uart_echo_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/uart/uart_echo/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec clean
+
+ uart_echo_callback_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/uart/uart_echo_callback/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec clean
+
+ uart_echo_dma_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/uart/uart_echo_dma/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec clean
+
+ uart_echo_low_latency_interrupt_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/uart/uart_echo_low_latency_interrupt/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec clean
+
+ uart_echo_low_latency_polling_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/uart/uart_echo_low_latency_polling/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec clean
+
+ udma_chaining_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/udma/udma_chaining/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec clean
+
+ udma_memcpy_interrupt_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/udma/udma_memcpy_interrupt/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec clean
+
+ udma_memcpy_polling_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/udma/udma_memcpy_polling/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec clean
+
+ udma_sw_trigger_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/udma/udma_sw_trigger/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec clean
+
+ hello_world_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean:
+	$(MAKE) -C examples/hello_world/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec clean
+
+ hello_world_cpp_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean:
+	$(MAKE) -C examples/hello_world_cpp/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec clean
+
+ dpl_demo_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean:
+	$(MAKE) -C examples/kernel/dpl/dpl_demo/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec clean
+
+ posix_demo_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean:
+	$(MAKE) -C examples/kernel/freertos/posix_demo/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec clean
+
+ task_switch_am65x-idk_r5fss0-0_freertos_ti-arm-clang_clean:
+	$(MAKE) -C examples/kernel/freertos/task_switch/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec clean
+
+ ipc_rpmsg_echo_linux_am65x-idk_system_freertos_clean:
+	$(MAKE) -C examples/drivers/ipc/ipc_rpmsg_echo_linux/am65x-idk/system_freertos -f makefile_projectspec clean
+
+ empty_am65x-idk_system_freertos_clean:
+	$(MAKE) -C examples/empty/am65x-idk/system_freertos -f makefile_projectspec clean
+
+
+
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL =
+# Various Example Projectspec Export Targets
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += sbl_null_am65x-idk_r5fss0-0_nortos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += sbl_ospi_am65x-idk_r5fss0-0_nortos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += sbl_ospi_linux_am65x-idk_r5fss0-0_nortos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += sbl_sd_am65x-idk_r5fss0-0_nortos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += sbl_pcie_am65x-idk_r5fss0-0_nortos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += sbl_pcie_host_am65x-idk_r5fss0-0_nortos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += sbl_uart_am65x-idk_r5fss0-0_nortos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += sbl_uart_uniflash_am65x-idk_r5fss0-0_nortos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += gpio_input_interrupt_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += gpio_led_blink_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += i2c_led_blink_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += i2c_read_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += i2c_temperature_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += mmcsd_file_io_am65x-idk_r5fss0-0_nortos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += mmcsd_raw_io_am65x-idk_r5fss0-0_nortos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += ospi_flash_diag_am65x-idk_r5fss0-0_nortos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += ospi_flash_dma_am65x-idk_r5fss0-0_nortos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += ospi_flash_io_am65x-idk_r5fss0-0_nortos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += pcie_buf_transfer_ep_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += pcie_buf_transfer_rc_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += sciclient_get_version_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += sciclient_get_version_am65x-idk_r5fss0-1_freertos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += sciclient_set_boardcfg_am65x-idk_r5fss0-0_nortos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += uart_echo_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += uart_echo_callback_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += uart_echo_dma_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += uart_echo_low_latency_interrupt_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += uart_echo_low_latency_polling_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += udma_chaining_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += udma_memcpy_interrupt_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += udma_memcpy_polling_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += udma_sw_trigger_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += hello_world_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += hello_world_cpp_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += dpl_demo_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += posix_demo_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += task_switch_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export
+# Various System Example Projectspec Export Targets
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += ipc_rpmsg_echo_linux_am65x-idk_system_freertos_export
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL += empty_am65x-idk_system_freertos_export
+
+BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_PRIVATE_ALL =
+# Various Private Example Projectspec Export Targets
+# Various Private System Example Projectspec Export Targets
+
+export: $(BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_ALL)
+
+export-private: $(BUILD_COMBO_EXAMPLE_PROJECTSPEC_EXPORT_PRIVATE_ALL)
+
+ sbl_null_am65x-idk_r5fss0-0_nortos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/boot/sbl_null/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec export
+
+ sbl_ospi_am65x-idk_r5fss0-0_nortos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/boot/sbl_ospi/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec export
+
+ sbl_ospi_linux_am65x-idk_r5fss0-0_nortos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/boot/sbl_ospi_linux/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec export
+
+ sbl_sd_am65x-idk_r5fss0-0_nortos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/boot/sbl_sd/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec export
+
+ sbl_pcie_am65x-idk_r5fss0-0_nortos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/boot/sbl_pcie/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec export
+
+ sbl_pcie_host_am65x-idk_r5fss0-0_nortos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/boot/sbl_pcie_host/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec export
+
+ sbl_uart_am65x-idk_r5fss0-0_nortos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/boot/sbl_uart/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec export
+
+ sbl_uart_uniflash_am65x-idk_r5fss0-0_nortos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/boot/sbl_uart_uniflash/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec export
+
+ gpio_input_interrupt_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/gpio/gpio_input_interrupt/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec export
+
+ gpio_led_blink_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/gpio/gpio_led_blink/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec export
+
+ i2c_led_blink_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/i2c/i2c_led_blink/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec export
+
+ i2c_read_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/i2c/i2c_read/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec export
+
+ i2c_temperature_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/i2c/i2c_temperature/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec export
+
+ mmcsd_file_io_am65x-idk_r5fss0-0_nortos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/mmcsd/mmcsd_file_io/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec export
+
+ mmcsd_raw_io_am65x-idk_r5fss0-0_nortos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/mmcsd/mmcsd_raw_io/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec export
+
+ ospi_flash_diag_am65x-idk_r5fss0-0_nortos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/ospi/ospi_flash_diag/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec export
+
+ ospi_flash_dma_am65x-idk_r5fss0-0_nortos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/ospi/ospi_flash_dma/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec export
+
+ ospi_flash_io_am65x-idk_r5fss0-0_nortos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/ospi/ospi_flash_io/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec export
+
+ pcie_buf_transfer_ep_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/pcie/pcie_buf_transfer/pcie_buf_transfer_ep/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec export
+
+ pcie_buf_transfer_rc_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/pcie/pcie_buf_transfer/pcie_buf_transfer_rc/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec export
+
+ sciclient_get_version_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/sciclient/sciclient_get_version/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec export
+
+ sciclient_get_version_am65x-idk_r5fss0-1_freertos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/sciclient/sciclient_get_version/am65x-idk/r5fss0-1_freertos/ti-arm-clang -f makefile_projectspec export
+
+ sciclient_set_boardcfg_am65x-idk_r5fss0-0_nortos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/sciclient/sciclient_set_boardcfg/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec export
+
+ uart_echo_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/uart/uart_echo/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec export
+
+ uart_echo_callback_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/uart/uart_echo_callback/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec export
+
+ uart_echo_dma_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/uart/uart_echo_dma/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec export
+
+ uart_echo_low_latency_interrupt_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/uart/uart_echo_low_latency_interrupt/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec export
+
+ uart_echo_low_latency_polling_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/uart/uart_echo_low_latency_polling/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec export
+
+ udma_chaining_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/udma/udma_chaining/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec export
+
+ udma_memcpy_interrupt_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/udma/udma_memcpy_interrupt/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec export
+
+ udma_memcpy_polling_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/udma/udma_memcpy_polling/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec export
+
+ udma_sw_trigger_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export:
+	$(MAKE) -C examples/drivers/udma/udma_sw_trigger/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec export
+
+ hello_world_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export:
+	$(MAKE) -C examples/hello_world/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec export
+
+ hello_world_cpp_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export:
+	$(MAKE) -C examples/hello_world_cpp/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec export
+
+ dpl_demo_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export:
+	$(MAKE) -C examples/kernel/dpl/dpl_demo/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec export
+
+ posix_demo_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export:
+	$(MAKE) -C examples/kernel/freertos/posix_demo/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec export
+
+ task_switch_am65x-idk_r5fss0-0_freertos_ti-arm-clang_export:
+	$(MAKE) -C examples/kernel/freertos/task_switch/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec export
+
+ ipc_rpmsg_echo_linux_am65x-idk_system_freertos_export:
+	$(MAKE) -C examples/drivers/ipc/ipc_rpmsg_echo_linux/am65x-idk/system_freertos -f makefile_projectspec export
+
+ empty_am65x-idk_system_freertos_export:
+	$(MAKE) -C examples/empty/am65x-idk/system_freertos -f makefile_projectspec export
+
+
+
+help:
+	@echo  Notes,
+	@echo  - Use -j to invoke parallel builds
+	@echo  - Use PROFILE=Debug or PROFILE=Release [default] to build in Debug or Release profile
+	@echo  .
+	@echo  Overall build targets,
+	@echo  ======================
+	@echo  $(MAKE) -s -f makefile_projectspec.am65x help
+	@echo  .
+	@echo  $(MAKE) -s -f makefile_projectspec.am65x [export all clean]
+	@echo  .
+	@echo  export = export projectspec to CCS project in the folder ./ccs_projects/,
+	@echo           export MUST be called once before 'all' or 'clean'
+	@echo  all    = build the previously exported projectspecs
+	@echo  clean  = clean the previously exported projectspecs
+	@echo  .
+	@echo  Example ProjectSpec build targets,
+	@echo  ==================================
+	@echo  $(MAKE) -s -C examples/drivers/boot/sbl_null/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/boot/sbl_ospi/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/boot/sbl_ospi_linux/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/boot/sbl_sd/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/boot/sbl_pcie/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/boot/sbl_pcie_host/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/boot/sbl_uart/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/boot/sbl_uart_uniflash/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/gpio/gpio_input_interrupt/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/gpio/gpio_led_blink/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/i2c/i2c_led_blink/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/i2c/i2c_read/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/i2c/i2c_temperature/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/mmcsd/mmcsd_file_io/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/mmcsd/mmcsd_raw_io/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/ospi/ospi_flash_diag/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/ospi/ospi_flash_dma/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/ospi/ospi_flash_io/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/pcie/pcie_buf_transfer/pcie_buf_transfer_ep/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/pcie/pcie_buf_transfer/pcie_buf_transfer_rc/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/sciclient/sciclient_get_version/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/sciclient/sciclient_get_version/am65x-idk/r5fss0-1_freertos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/sciclient/sciclient_set_boardcfg/am65x-idk/r5fss0-0_nortos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/uart/uart_echo/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/uart/uart_echo_callback/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/uart/uart_echo_dma/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/uart/uart_echo_low_latency_interrupt/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/uart/uart_echo_low_latency_polling/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/udma/udma_chaining/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/udma/udma_memcpy_interrupt/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/udma/udma_memcpy_polling/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/drivers/udma/udma_sw_trigger/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/hello_world/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/hello_world_cpp/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/kernel/dpl/dpl_demo/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/kernel/freertos/posix_demo/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/kernel/freertos/task_switch/am65x-idk/r5fss0-0_freertos/ti-arm-clang -f makefile_projectspec [export all clean]
+	@echo  .
+	@echo  System Example ProjectSpec build targets,
+	@echo  =========================================
+	@echo  $(MAKE) -s -C examples/drivers/ipc/ipc_rpmsg_echo_linux/am65x-idk/system_freertos -f makefile_projectspec [export all clean]
+	@echo  $(MAKE) -s -C examples/empty/am65x-idk/system_freertos -f makefile_projectspec [export all clean]
+	@echo  .
+
+.PHONY: all all-private
+.PHONY: clean clean-private
+.PHONY: help

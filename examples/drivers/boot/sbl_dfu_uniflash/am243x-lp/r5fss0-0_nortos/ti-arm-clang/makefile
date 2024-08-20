@@ -103,12 +103,14 @@ LIBS_PATH_common = \
 	-Wl,-i${MCU_PLUS_SDK_PATH}/source/board/lib \
 	-Wl,-i${MCU_PLUS_SDK_PATH}/source/usb/cdn/lib \
 	-Wl,-i${MCU_PLUS_SDK_PATH}/source/usb/tinyusb/lib \
+	-Wl,-i${MCU_PLUS_SDK_PATH}/source/middleware/lib \
 	-Wl,-i${CG_TOOL_ROOT}/lib \
 
 LIBS_common = \
 	-lnortos.am243x.r5f.ti-arm-clang.${ConfigName}.lib \
 	-ldrivers.am243x.r5f.ti-arm-clang.${ConfigName}.lib \
 	-lboard.am243x.r5f.ti-arm-clang.${ConfigName}.lib \
+	-lmiddleware.am243x.r5f.ti-arm-clang.${ConfigName}.lib \
 	-lusbd_cdn_nortos.am243x.r5f.ti-arm-clang.${ConfigName}.lib \
 	-lusbd_tusb_dfu_nortos.am243x.r5f.ti-arm-clang.${ConfigName}.lib \
 	-llibc.a \
@@ -124,6 +126,7 @@ LIBS_NAME = \
 	nortos.am243x.r5f.ti-arm-clang.${ConfigName}.lib \
 	drivers.am243x.r5f.ti-arm-clang.${ConfigName}.lib \
 	board.am243x.r5f.ti-arm-clang.${ConfigName}.lib \
+	middleware.am243x.r5f.ti-arm-clang.${ConfigName}.lib \
 	usbd_cdn_nortos.am243x.r5f.ti-arm-clang.${ConfigName}.lib \
 	usbd_tusb_dfu_nortos.am243x.r5f.ti-arm-clang.${ConfigName}.lib \
 	libc.a \
@@ -135,6 +138,7 @@ LIBS_PATH_NAME = \
 	${MCU_PLUS_SDK_PATH}/source/board/lib \
 	${MCU_PLUS_SDK_PATH}/source/usb/cdn/lib \
 	${MCU_PLUS_SDK_PATH}/source/usb/tinyusb/lib \
+	${MCU_PLUS_SDK_PATH}/source/middleware/lib \
 	${CG_TOOL_ROOT}/lib \
 
 FILES := $(FILES_common) $(FILES_$(PROFILE))
@@ -250,9 +254,9 @@ ifeq ($(OS),Windows_NT)
 EXE_EXT=.exe
 endif
 ifeq ($(OS),Windows_NT)
-  BOOTIMAGE_CERT_GEN_CMD=powershell -executionpolicy unrestricted -command $(MCU_PLUS_SDK_PATH)/tools/boot/signing/x509CertificateGen.ps1
+  BOOTIMAGE_CERT_GEN_CMD=powershell -executionpolicy unrestricted -command $(MCU_PLUS_SDK_PATH)/source/security/security_common/tools/boot/signing/x509CertificateGen.ps1
 else
-  BOOTIMAGE_CERT_GEN_CMD=$(MCU_PLUS_SDK_PATH)/tools/boot/signing/x509CertificateGen.sh
+  BOOTIMAGE_CERT_GEN_CMD=$(MCU_PLUS_SDK_PATH)/source/security/security_common/tools/boot/signing/x509CertificateGen.sh
 endif
 BOOTIMAGE_TEMP_OUT_FILE=temp_stdout_$(PROFILE).txt
 
@@ -263,7 +267,7 @@ BOOTIMAGE_CERT_KEY=$(APP_SIGNING_KEY)
 else
 BOOTIMAGE_CERT_KEY=$(ROM_DEGENERATE_KEY)
 endif
-BOOTIMAGE_CERT_GEN_CMD=$(PYTHON) $(MCU_PLUS_SDK_PATH)/tools/boot/signing/rom_image_gen.py
+BOOTIMAGE_CERT_GEN_CMD=$(PYTHON) $(MCU_PLUS_SDK_PATH)/source/security/security_common/tools/boot/signing/rom_image_gen.py
 SYSFW_PATH=$(MCU_PLUS_SDK_PATH)/source/drivers/sciclient/soc/am64x_am243x
 SYSFW_LOAD_ADDR=0x44000
 BOARDCFG_LOAD_ADDR=0x7B000
@@ -295,6 +299,9 @@ endif
 	@echo  Boot image: am243x:r5fss0-0:nortos:ti-arm-clang $(BOOTIMAGE_PATH)/$@ Done !!!
 
 	@echo  .
+
+
+
 
 .PHONY: coverage
 coverage:

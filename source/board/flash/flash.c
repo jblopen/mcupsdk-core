@@ -98,6 +98,7 @@ int32_t Flash_read(Flash_Handle handle, uint32_t offset, uint8_t *buf, uint32_t 
 
     if(config && config->fxns && config->fxns->readFxn)
     {
+        offset += config->rwOffset;
         status = config->fxns->readFxn(config, offset, buf, len);
     }
     return status;
@@ -110,6 +111,7 @@ int32_t Flash_write(Flash_Handle handle, uint32_t offset, uint8_t *buf, uint32_t
 
     if(config && config->fxns && config->fxns->writeFxn)
     {
+        offset += config->rwOffset;
         status = config->fxns->writeFxn(config, offset, buf, len);
     }
     return status;
@@ -192,6 +194,8 @@ int32_t Flash_offsetToBlkPage(Flash_Handle handle, uint32_t  offset, uint32_t *b
 
         status = SystemP_SUCCESS;
 
+        offset += config->rwOffset;
+
         *block 	  = offset / blockSize;
         leftover  = offset % blockSize;
         *page 	  = leftover / pageSize;
@@ -250,6 +254,8 @@ int32_t Flash_offsetToSectorPage(Flash_Handle handle, uint32_t  offset, uint32_t
 
         status = SystemP_SUCCESS;
 
+        offset += config->rwOffset;
+
         *sector   = offset / sectorSize;
         leftover  = offset % sectorSize;
         *page 	  = leftover / pageSize;
@@ -274,9 +280,32 @@ uint32_t Flash_getPhyTuningOffset(Flash_Handle handle)
 
     if(config)
     {
-        offset = config->attrs->flashSize / 2;
+        offset = config->attrs->phyTuningOffset;
     }
 
     return offset;
 }
 
+int32_t Flash_enableDacMode(Flash_Handle handle)
+{
+    Flash_Config *config = (Flash_Config*)handle;
+    int32_t status = SystemP_FAILURE;
+
+    if(config && config->fxns && config->fxns->enableDacModeFxn)
+    {
+        status = config->fxns->enableDacModeFxn(config);
+    }
+    return status;
+}
+
+int32_t Flash_disableDacMode(Flash_Handle handle)
+{
+    Flash_Config *config = (Flash_Config*)handle;
+    int32_t status = SystemP_FAILURE;
+
+    if(config && config->fxns && config->fxns->disableDacModeFxn)
+    {
+        status = config->fxns->disableDacModeFxn(config);
+    }
+    return status;
+}

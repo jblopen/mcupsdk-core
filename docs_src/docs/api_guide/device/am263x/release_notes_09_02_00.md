@@ -10,13 +10,14 @@
 
 ## New in this Release
 
-Feature                                                                                         | Module
-------------------------------------------------------------------------------------------------|-----------------------------------
-Updated empty example to support PRU1 core                                                      | PRU-IO
-Added ICSS-EMAC driver support                                                                  | ICSS-EMAC
-Added ICSS-EMAC LwIP example configured in Switch and MAC mode                                  | ICSS-EMAC
-I2C LLD driver support (\ref DRIVERS_I2C_LLD_PAGE)                                              | I2C
-QSPI LLD driver support (\ref DRIVERS_QSPI_LLD_PAGE)                                            | QSPI
+Feature                                                                                                  | Module
+---------------------------------------------------------------------------------------------------------|-----------------------------------
+Updated empty example to support PRU1 core                                                               | PRU-IO
+Added ICSS-EMAC driver support                                                                           | ICSS-EMAC
+Added ICSS-EMAC LwIP example configured in Switch and MAC mode                                           | ICSS-EMAC
+I2C LLD driver support (\ref DRIVERS_I2C_LLD_PAGE)                                                       | I2C
+QSPI LLD driver support (\ref DRIVERS_QSPI_LLD_PAGE)                                                     | QSPI
+Added short serial message format, enhanced serial nessage Format support in SENT Decoder IEP CAP EXAMPLE| PRU-IO    
 
 ## Device and Validation Information
 
@@ -52,9 +53,10 @@ Mbed-TLS                | R5F            | mbedtls-3.0.0
 
 Feature                                                             | Module
 --------------------------------------------------------------------|--------------------------
-SENT Encoder Example                                                | PRU_IO
-SENT Decoder Example                                                | PRU_IO
-Empty PRU firmware Example                                          | PRU_IO
+SENT Encoder Example                                                | PRU-IO
+SENT Decoder Example                                                | PRU-IO
+SENT Decoder IEP CAP EXAMPLE                                        | PRU-IO
+Empty PRU firmware Example                                          | PRU-IO
 GUI for UART Uniflash Tool                                          | Bootloader
 GUI for UART Uniflash Tool                                          | Bootloader
 
@@ -92,12 +94,12 @@ Bootloader | R5FSS0-0        | YES               | NORTOS           | Boot modes
 
 Peripheral   | Supported CPUs | SysConfig Support | DMA Supported                         | Key features tested                                                                                                                                             | Key features not tested / NOT supported
 -------------|----------------|-------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------
-ADC          | R5F            | YES               | Yes. Example:  adc_soc_continuous_dma | Single software triggered conversion, Multiple ADC trigger using PWM, Result read using DMA, EPWM trip through PPB limit, PPB limits, PPB offsets, burst mode oversampling, differential mode, Offset, EPWM triggered conversion                | -
+ADC          | R5F            | YES               | Yes. Example:  adc_soc_continuous_dma | Single software triggered conversion, Multiple ADC trigger using PWM, Result read using DMA, EPWM trip through PPB limit, PPB features, Burst mode, Single and Differential mode, Interrupt with Offset from Aquisition Window, EPWM/ECAP/RTI triggered conversions | -
 Bootloader   | R5F            | YES               | Yes. DMA enabled for SBL QSPI         | Boot modes: QSPI, UART. All R5F's                                                                                                                               | -
-CMPSS        | R5F            | YES               | NA                                    | Asynchronous PWM trip                                                                                                                                           | -
+CMPSS        | R5F            | YES               | NA                                    | Asynchronous PWM trip, Digital Filter                                                                                                                                           | -
 CPSW         | R5F            | YES               | No                                    | MAC loopback, PHY loopback, LWIP: Getting IP, Ping, Iperf, Layer 2 MAC, Layer 2 PTP Timestamping and Ethernet CPSW Switch support, TSN stack                      | RMII, MII mode
 DAC          | R5F            | YES               | Yes. Example: dac_sine_dma            | Constant voltage, Square wave generation, Sine wave generation with and without DMA, Ramp wave generation, Random Voltage generation                            | -
-ECAP         | R5F            | YES               | No                                    | ECAP APWM mode, PWM capture                                                                                                                                     | -
+ECAP         | R5F            | YES               | yes. Example : ecap_edma              | ECAP APWM mode, PWM capture, DMA trigger in both APWM and Capture Modes                                                                                                                                     | -
 EDMA         | R5F            | YES               | NA                                    | DMA transfer using interrupt and polling mode, QDMA Transfer, Channel Chaining, PaRAM Linking                                                                   | -
 EPWM         | R5F            | YES               | Yes. Example: epwm_dma                | PWM outputs A and B in up-down count mode, Trip zone, Update PWM using EDMA, Valley switching, High resolution time period adjustment, type5 feature            | -
 EQEP         | R5F            | YES               | NA                                    | Speed and Position measurement. Frequency Measurement                                                                                                                                 | -
@@ -116,7 +118,7 @@ PMU          | R5F            | NO                | NA                          
 PRUICSS      | R5F            | YES               | NA                                    | Tested with Ethercat FW HAL                                                                                                                                     | -
 QSPI         | R5F            | YES               | Yes. Example: qspi_flash_dma_transfer | Read direct, Write indirect, Read/Write commands, DMA for read                                                                                                  | -
 RTI          | R5F            | YES               | No                                    | Counter read, timebase selction, comparator setup for Interrupt, DMA requests                                                                                   | Capture feature, fast enabling/disabling of events not tested
-SDFM         | R5F            | YES               | No                                    | Filter data read from CPU, Filter data read with PWM sync                                                                                                       | -
+SDFM         | R5F            | YES               | Yes. Example: sdfm_filter_sync_dmaread| Filter data read from CPU, Filter data read with PWM sync                                                                                                       | -
 SOC          | R5F            | YES               | NA                                    | Lock/unlock MMRs, clock enable, set Hz, Xbar configuration, SW Warm Reset, Address Translation                                                                  | -
 SPINLOCK     | R5F            | NA                | NA                                    | Lock, unlock HW spinlocks                                                                                                                                       | -
 UART         | R5F            | YES               | Yes. Example: uart_echo_dma           | Basic read/write at baud rate 115200, polling, interrupt mode                                                                                                   | HW flow control not tested, DMA mode not supported
@@ -255,6 +257,20 @@ R5F STC(LBIST), Static Register Read| R5F               | NA                |  N
     <td> 09.01.00 onwards
     <td> Timeout implemented while calling IpcNotify_send.
 </tr>
+<tr>
+    <td> MCUSDK-11462
+    <td> EPWM: Illegal Combo Logic example fails
+    <td> EPWM
+    <td> 09.02.00
+    <td> Fixed example.
+</tr>
+<tr>
+    <td> PINDSW-7750
+    <td> PRUICSS SENT: fix bug while computing crc
+    <td> PRUICSS SENT
+    <td> 09.00.00 onwards
+    <td> Updated the code.
+</tr>
 </table>
 
 ## Known Issues
@@ -292,13 +308,6 @@ R5F STC(LBIST), Static Register Read| R5F               | NA                |  N
     <td> UART LLD EDMA Mode not generating interrupt with TX and RX trigger levels greater than 1
     <td> UART
     <td> 09.01.00 onwards
-    <td> -
-</tr>
-<tr>
-    <td> MCUSDK-11462
-    <td> EPWM: Illegal Combo Logic example fails
-    <td> EPWM
-    <td> 09.00.00 onwards
     <td> -
 </tr>
 <tr>
@@ -351,25 +360,11 @@ R5F STC(LBIST), Static Register Read| R5F               | NA                |  N
     <td> None
 </tr>
 <tr>
-    <td> PROC_SDL-5616
-    <td> ECC Bus Safety SEC and DED Error Injection fails for CPSW.
-    <td> SDL
-    <td> 8.6.0 onwards
-    <td> None.
-</tr>
-<tr>
-    <td> PROC_SDL-5617
-    <td> ECC Bus Safety SEC and DED Error Injection fails for MSS_L2.
-    <td> SDL
-    <td> 8.6.0 onwards
-    <td> None.
-</tr>
-<tr>
-    <td> PROC_SDL-4749
-    <td> ECC Bus Safety DED Error Injection fails for AXI.
-    <td> SDL
-    <td> 8.5.0 onwards
-    <td> None.
+    <td> PINDSW-7746
+    <td> icss_emac_lwip example having low iperf values in TCP and UDP
+    <td> ICSS-EMAC
+    <td> 09.02.00 onwards
+    <td> None
 </tr>
 <tr>
     <td> PROC_SDL-5979
@@ -385,6 +380,28 @@ R5F STC(LBIST), Static Register Read| R5F               | NA                |  N
     <td> 08.06.00 onwards
     <td> None
 </tr>
+<tr>
+    <td> MCUSDK-13164
+    <td> AM263x: epwm deadband example validation failure
+    <td> EPWM
+    <td> 09.01.00 onwards
+    <td> The Waveform of the EPWM is correct and is as expected.
+</tr>
+<tr>
+    <td> PROC_SDL-7615
+    <td> ECC example fails for SEC and DED for TPTC memories.
+    <td> SDL
+    <td> 09.02.00 onwards
+    <td> None
+</tr>
+<tr>
+    <td> MCUSDK-13202
+    <td> Frame drops are seen in PRU GPIO based SENT decoder example while sending frames in burst format
+    <td> PRU-IO
+    <td> 09.00.00 onwards
+    <td> None
+</tr>
+
 </table>
 
 ## Errata

@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2021 Texas Instruments Incorporated
+ *  Copyright (C) 2021-2024 Texas Instruments Incorporated
  *
  *  Redistribution and use in source and binary forms, with or without
  *  modification, are permitted provided that the following conditions
@@ -59,6 +59,13 @@ typedef struct OspiDma_UdmaArgs_s
     /**< Size of Ring Memory */
     uint32_t        ringElemCount;
     /**< Ring Element Count */
+    void            *cqMem;
+    /**< UDMA Cq memory pointers */
+    uint32_t        cqMemSize;
+    /**< Size of Cq memory */
+    uint32_t        isCqRingMem;
+    /**< UDMA completion queue ring memory is enabled or disabled */
+    /**< This is only used for AM65x */
 
 } OspiDma_UdmaArgs;
 

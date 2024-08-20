@@ -17,19 +17,46 @@ DEVICE_TYPE?=GP
 LIBNAME:=drivers.am64x.a53.gcc-aarch64.$(PROFILE).lib
 
 FILES_common := \
+    adc.c \
+    canfd.c \
+    canfd_soc.c \
+    canfd_dma_udma.c \
     csl_bcdma.c \
     csl_intaggr.c \
     csl_lcdma_ringacc.c \
     csl_pktdma.c \
     csl_sec_proxy.c \
+    elm_v0.c \
+    ecap.c \
+    epwm.c \
+    eqep.c \
     gpio.c \
+    gpmc_v0.c \
+    gpmc_priv_v0.c \
+    gpmc_nandlike_v0.c \
+    gpmc_norlike_v0.c \
+    gpmc_dma.c \
+    gpmc_dma_udma.c \
     gtc.c \
     i2c_v0.c \
     i2c_v0_lld.c \
+    ipc_notify_soc.c \
     ipc_notify_v0.c \
     ipc_notify_v0_cfg.c \
     ipc_rpmsg.c \
     ipc_rpmsg_vring.c \
+    mcan.c \
+    mcspi_v0.c \
+    mcspi_dma_udma.c \
+    mcspi_v0_lld.c \
+    ospi_v0.c \
+    ospi_dma.c \
+    ospi_dma_udma.c \
+    ospi_nor_flash.c \
+    ospi_phy_dqs.c \
+    mmcsd_v0.c \
+    mmcsd_v0_lld.c \
+    mmcsd_parse.c \
     pinmux.c \
     sciclient.c \
     sciclient_pm.c \
@@ -46,6 +73,7 @@ FILES_common := \
     uart_v0.c \
     uart_v0_lld.c \
     uart_dma_udma.c \
+    uart_dma_soc.c \
     udma.c \
     udma_ch.c \
     udma_event.c \
@@ -61,14 +89,38 @@ FILES_common := \
     watchdog_soc.c \
 
 FILES_PATH_common = \
+    adc/v0 \
+    ecap/v0 \
+    epwm/v0 \
+    eqep/v0 \
+    elm/v0 \
+    gpmc/v0 \
+    gpmc/v0/dma \
+    gpmc/v0/dma/udma \
     gpio/v0 \
     gtc/v0 \
-    pinmux/am64x_am243x \
     i2c/v0 \
     i2c/v0/lld \
     ipc_notify/v0 \
+    ipc_notify/v0/soc \
     ipc_notify/v0/soc/am64x \
     ipc_rpmsg/ \
+    mcan/v0 \
+    mcan/v0/soc/am64x_am243x \
+    mcan/v0/dma/udma \
+    mcspi/v0 \
+    mcspi/v0/lld \
+    mcspi/v0/lld/dma \
+    mcspi/v0/lld/dma/udma \
+    mcspi/v0/lld/dma/dummy \
+    ospi \
+    ospi/v0 \
+    ospi/v0/dma \
+    ospi/v0/dma/udma \
+    mmcsd/v0 \
+    mmcsd/v0/lld \
+    mmcsd/v0/lld/internal \
+    pinmux/am64x_am243x \
     sciclient \
     sciclient/soc/am64x_am243x \
     soc/am64x_am243x \
@@ -77,7 +129,8 @@ FILES_PATH_common = \
     uart/v0/lld \
     uart/v0/lld/dma \
     uart/v0/lld/dma/udma \
-    udma \
+    udma/v0 \
+    uart/v0/lld/dma/soc/am64x_am243x \
     udma/hw_include \
     udma/soc \
     udma/soc/am64x_am243x \
@@ -86,6 +139,7 @@ FILES_PATH_common = \
 
 INCLUDES_common := \
     -I${MCU_PLUS_SDK_PATH}/source \
+    -I${MCU_PLUS_SDK_PATH}/source/security \
 
 DEFINES_common := \
     -DSOC_AM64X \

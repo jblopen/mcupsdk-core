@@ -12,6 +12,10 @@ const filedirs = {
     ],
 };
 
+const buildOptionCombos_am261x = [
+    { device: device, cpu: "r5f", cgt: "ti-arm-clang"},
+];
+
 const buildOptionCombos_am263px = [
     { device: device, cpu: "r5f", cgt: "ti-arm-clang"},
 ];
@@ -47,9 +51,14 @@ const buildOptionCombos_am62x = [
     { device: device, cpu: "m4f", cgt: "ti-arm-clang"},
 ];
 
+const buildOptionCombos_am65x = [
+    { device: device, cpu: "r5f", cgt: "ti-arm-clang"},
+];
+
 function getComponentProperty(device) {
     let property = {};
     let buildOptionCombos = {
+		"am261x": buildOptionCombos_am261x,
 		"am263px": buildOptionCombos_am263px,
         "am64x": buildOptionCombos_am64x,
         "am243x": buildOptionCombos_am243x,
@@ -57,6 +66,7 @@ function getComponentProperty(device) {
         "am273x": buildOptionCombos_am273x,
         "awr294x": buildOptionCombos_awr294x,
         "am62x": buildOptionCombos_am62x,
+        "am65x": buildOptionCombos_am65x,
     };
 
     property.dirPath = path.resolve(__dirname, "..");

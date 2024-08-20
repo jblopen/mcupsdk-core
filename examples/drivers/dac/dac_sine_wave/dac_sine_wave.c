@@ -89,6 +89,8 @@ void dac_sine_wave_main(void *args)
     Drivers_open();
     Board_driversOpen();
 
+    
+
     DebugP_log("DAC Sine Wave Test Started ...\r\n");
 
     /* Start the timer to get interrupt at a rate of 20KHz*/

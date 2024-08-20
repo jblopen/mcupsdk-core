@@ -24,6 +24,7 @@ const includes_r5f = {
         "${MCU_PLUS_SDK_PATH}/source/fs/freertos_fat/portable",
         "${MCU_PLUS_SDK_PATH}/source/fs/freertos_fat/portable/nortos",
         "${MCU_PLUS_SDK_PATH}/source/fs/freertos_fat/config",
+        "${MCU_PLUS_SDK_PATH}/source/security",
     ],
 };
 
@@ -34,6 +35,7 @@ const libdirs_nortos = {
         "${MCU_PLUS_SDK_PATH}/source/board/lib",
         "${MCU_PLUS_SDK_PATH}/source/fs/freertos_fat/lib",
         "${MCU_PLUS_SDK_PATH}/source/sdl/lib",
+        "${MCU_PLUS_SDK_PATH}/source/security/lib",
     ],
 };
 
@@ -44,6 +46,7 @@ const libs_nortos_r5f = {
         "board.am263x.r5f.ti-arm-clang.${ConfigName}.lib",
         "freertos_fat.am263x.r5f.ti-arm-clang.${ConfigName}.lib",
         "sdl.am263x.r5f.ti-arm-clang.${ConfigName}.lib",
+        "security.am263x.r5f.ti-arm-clang.${ConfigName}.lib",
     ],
 };
 
@@ -59,6 +62,18 @@ const r5f0_macro = {
     ],
 
 };
+const templates =
+[
+    {
+        input: ".project/templates/am263x/sbl/sbl_sd/main.c.xdt",
+        output: "../main.c",
+        options: {
+            bootformat: "RPRC",
+            enableFastBoot: false,
+        }
+    }
+];
+
 
 const syscfgfile = "../example.syscfg";
 
@@ -91,6 +106,7 @@ function getComponentBuildProperty(buildOption) {
     build_property.lnkfiles = lnkfiles;
     build_property.syscfgfile = syscfgfile;
     build_property.readmeDoxygenPageTag = readmeDoxygenPageTag;
+    build_property.templates = templates;
 
     if(buildOption.cpu.match(/r5f*/)) {
         build_property.libs = libs_nortos_r5f;

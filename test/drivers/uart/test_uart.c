@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2021 Texas Instruments Incorporated
+ *  Copyright (C) 2021-2024 Texas Instruments Incorporated
  *
  *  Redistribution and use in source and binary forms, with or without
  *  modification, are permitted provided that the following conditions
@@ -93,6 +93,10 @@ static void uart_autobaud_external_loopback_full_test(void *args);
 static void uart_write_cancel_external_loopback_full_test(void *args);
 static void uart_read_cancel_external_loopback_full_test(void *args);
 static void uart_six_bit_char_length_external_loopback_full_test(void *args);
+#if defined(SOC_AM65X)
+extern void UART_intr_router_configInit(void);
+extern void UART_intr_router_configDeinit(void);
+#endif
 
 void test_main(void *args)
 {
@@ -100,6 +104,9 @@ void test_main(void *args)
 
     Drivers_open();
     Board_driversOpen();
+    #if defined(SOC_AM65X)
+    UART_intr_router_configInit();
+    #endif
 
     UNITY_BEGIN();
 
@@ -184,7 +191,7 @@ void test_main(void *args)
     test_uart_set_params(&testParams, 12603);
     RUN_TEST(uart_read_cancel_external_loopback_full_test, 12603, (void*)&testParams);
 #endif
-    #if defined(SOC_AM64X) || defined(SOC_AM243X)
+    #if defined(SOC_AM64X) || defined(SOC_AM243X) || defined(SOC_AM65X)
     test_uart_set_params(&testParams, 2514);
     RUN_TEST(uart_echo_read_full_test_dmaMode, 2514, (void*)&testParams);
     #endif
@@ -196,6 +203,9 @@ void test_main(void *args)
 
     UNITY_END();
 
+    #if defined(SOC_AM65X)
+    UART_intr_router_configDeinit();
+    #endif
     Board_driversClose();
     Drivers_close();
 }
@@ -276,7 +286,7 @@ static void uart_echo_read_full_test(void *args)
     return;
 }
 
-#if defined(SOC_AM64X) || defined(SOC_AM243X)
+#if defined(SOC_AM64X) || defined(SOC_AM243X) || defined(SOC_AM65X)
 static void uart_echo_read_full_test_dmaMode(void *args)
 {
     int32_t          transferOK, status;
@@ -923,6 +933,7 @@ static void test_printExitString(void *args)
 {
     int32_t          transferOK;
     UART_Transaction trans;
+#if !defined(SOC_AM65X)
     UART_Handle      uartHandle;
     UART_TestParams *testParams = (UART_TestParams*)args;
     UART_Params     *uartParams;
@@ -931,15 +942,22 @@ static void test_printExitString(void *args)
     uartHandle = UART_open(CONFIG_UART0, uartParams);
     TEST_ASSERT_NOT_NULL(uartHandle);
 
+#endif
     UART_Transaction_init(&trans);
     /* Send exit string */
     trans.buf   = &gUartTxBuffer[0U];
     strncpy(trans.buf, "All tests have passed!!\r\n", APP_UART_BUFSIZE);
     trans.count = strlen(trans.buf);
+#if defined(SOC_AM65X)
+    CacheP_wb((void *)trans.buf, trans.count, CacheP_TYPE_ALL);
+    transferOK = UART_write(gUartHandle[CONFIG_UART1], &trans);
+    APP_UART_ASSERT_ON_FAILURE(transferOK, trans);
+#else
     transferOK = UART_write(gUartHandle[CONFIG_UART0], &trans);
     APP_UART_ASSERT_ON_FAILURE(transferOK, trans);
 
     UART_close(uartHandle);
+#endif
 
     return;
 }
@@ -999,6 +1017,9 @@ static void test_uart_set_params(UART_TestParams *testParams, uint32_t tcId)
     #endif
     #if defined(SOC_AM62X)
     params->intrNum = CSLR_MCU_M4FSS0_CORE0_NVIC_MCU_UART0_USART_IRQ_0 + 16;
+    #endif
+    #if defined(SOC_AM65X)
+    params->intrNum = CSL_MCU0_INTR_MAIN2MCU_LVL_INTR0_OUTL_8;
     #endif
     switch (tcId)
     {

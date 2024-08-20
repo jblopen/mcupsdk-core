@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2021-23 Texas Instruments Incorporated
+ *  Copyright (C) 2021-2024 Texas Instruments Incorporated
  *
  *  Redistribution and use in source and binary forms, with or without
  *  modification, are permitted provided that the following conditions
@@ -83,6 +83,11 @@ extern "C"
 #define BOOTLOADER_MEDIA_BUFIO     (0xB0070005)
 #define BOOTLOADER_MEDIA_PCIE      (0xB0070006)
 #define BOOTLOADER_MEDIA_USB       (0xB0070007)
+
+/**
+ * \brief Bootloader buffer enable
+ */
+#define BOOTLOADER_SCRATCH_MEM_ENABLE  (1U)
 
 /**
  * \brief Handle to the Bootloader driver returned by Bootloader_open()
@@ -180,6 +185,18 @@ typedef void (*Bootloader_imgSeekFxn)(uint32_t location, void *args);
  */
 typedef void (*Bootloader_imgCloseFxn)(void* handle, void *args);
 
+/**
+ * \brief Driver implementation to enable a custom function for a specific bootloader driver - Memory, OSPI, UART, MMCSD etc
+ *
+ * Typically this callback is hidden from the end application and is implemented
+ * when a new boot media needs to be supported.
+ *
+ * \param args   [in] Boot media specific arguments, obtained from the config
+ *
+ * \return SystemP_SUCCESS on success, else failure
+ */
+typedef int32_t (*Bootloader_imgCustomFxn)(void *args);
+
 /** @} */
 
 
@@ -193,7 +210,8 @@ typedef struct Bootloader_Fxns_s
     Bootloader_imgOffsetFxn imgOffsetFxn;
     Bootloader_imgSeekFxn   imgSeekFxn;
     Bootloader_imgCloseFxn  imgCloseFxn;
-
+    Bootloader_imgCustomFxn imgCustomFxn;
+    
 } Bootloader_Fxns;
 
 /**
@@ -214,6 +232,7 @@ typedef struct Bootloader_Config_s
     uint32_t disableAppImageAuth;
     /* Whether to initialize ICSS cores or not */
     uint32_t initICSSCores;
+    uint32_t enableScratchMem;
 
 } Bootloader_Config;
 
@@ -288,9 +307,26 @@ Bootloader_Handle Bootloader_open(uint32_t instanceNum, Bootloader_Params *openP
 void Bootloader_close(Bootloader_Handle handle);
 
 /**
+ * \brief API to initialize a non-self CPU
+ *
+ * This API will initialize a non-self CPU, i.e a CPU on which the bootloader application is not running. This API
+ * is not applicable for cores from self cluster. They will be loaded by the \ref Bootloader_loadSelfCpu API.
+ *
+ * NOTE: No checks are done to confirm non-self CPU ID is passed, user need to make sure non-self CPU ID is passed, else
+ *       the load could fail.
+ *
+ * \param handle  [in] Bootloader driver handle from \ref Bootloader_open
+ * \param cpuInfo [in] Data structure containing information regarding the CPU. This should have been filled
+ *                     by the \ref Bootloader_parseMultiCoreAppImage API
+ *
+ * \return SystemP_SUCCESS on success, else failure
+ */
+int32_t Bootloader_initCpu(Bootloader_Handle handle, Bootloader_CpuInfo *cpuInfo);
+
+/**
  * \brief API to load a non-self CPU
  *
- * This API will load RPRC images a non-self CPU, i.e a CPU on which the bootloader application is not running. This API
+ * This API will load RPRC images on a non-self CPU, i.e a CPU on which the bootloader application is not running. This API
  * is not applicable for cores from self cluster. They will be loaded by the \ref Bootloader_loadSelfCpu API.
  *
  * NOTE: No checks are done to confirm non-self CPU ID is passed, user need to make sure non-self CPU ID is passed, else
@@ -394,6 +430,16 @@ int32_t Bootloader_bootSelfCpu(Bootloader_Handle handle, Bootloader_BootImageInf
 int32_t Bootloader_parseMultiCoreAppImage(Bootloader_Handle handle, Bootloader_BootImageInfo *bootImageInfo);
 
 /**
+ * \brief Set Application entry point for self CPU in the AM65x SOC from reset
+ *
+ * \param bootImageInfo  [out] Pointer to a \ref Bootloader_BootImageInfo structure
+ * \param bDualSelfR5F  TRUE (1U) if dual cores enabled, FALSE (0U) if not.
+ *
+ * \return SystemP_SUCCESS on success, else failure
+ */
+int32_t Bootloader_cpuSetAppEntryPoint(Bootloader_BootImageInfo *bootImageInfo, uint32_t bDualSelfR5F);
+
+/**
  * \brief Parse entrypoint from RPRC
  *
  * This API reads the RPRC image to parse the entry points of a particular CPU
@@ -463,6 +509,41 @@ uint32_t Bootloader_isCorePresent(Bootloader_Handle handle, uint32_t cslCoreId);
  * \return Boot media ID of the selected media
  */
 uint32_t Bootloader_getBootMedia(Bootloader_Handle handle);
+
+/**
+ * \brief API to parse and load MCELF image
+ *
+ * This API parses the MCELF file and loads the loadable segments into xthe respective cores.
+ *
+ * \param handle Bootloader driver handle from \ref Bootloader_open
+ * \param bootImageInfo [in] Data structure of type Bootloader_BootImageInfo which will be filled
+ *
+ * \return SystemP_SUCCESS on success, else failure
+ */
+int32_t Bootloader_parseAndLoadMultiCoreELF(Bootloader_Handle handle, Bootloader_BootImageInfo *bootImageInfo);
+
+/**
+ * \brief API to get the length of an x509 certificate
+ *
+ * This API calculates the length of an x509 certificate from the 4 byte x509 header present at the top.
+ *
+ * \param x509_cert_ptr Pointer to the 4 byte x509 header present at the start of the certificate.
+ *
+ * \return Length of the certificate
+ */
+uint32_t Bootloader_getX509CertLen(uint8_t *x509_cert_ptr);
+
+/**
+ * \brief API to get image length from a x509 certificate
+ *
+ * This API calculates the length of an image from the x509 certificate.
+ *
+ * \param x509_cert_ptr Pointer to the x509 certificate.
+ * \param x509_cert_size Length of the x509 certificate.
+ *
+ * \return Length of the image 
+ */
+uint32_t Bootloader_getMsgLen(uint8_t *x509_cert_ptr, uint32_t x509_cert_size);
 /** @} */
 
 #ifdef __cplusplus

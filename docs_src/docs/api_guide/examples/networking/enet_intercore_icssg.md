@@ -1,4 +1,4 @@
-# Intercore Ethenret packet exchange with ICSSG, using LwIP bridge {#EXAMPLES_ENET_INTERCORE_ICSSG}
+# Intercore Ethernet Packet Exchange With ICSSG, Using LwIP Bridge {#EXAMPLES_ENET_INTERCORE_ICSSG}
 
 [TOC]
 
@@ -29,10 +29,14 @@ Few details on the operating sequence of this example is mentioned below:
 - CPU r5fss0-0 initializes ICSSG ethernet driver (LwIP netif 0) and shared memory enet (LwIP netif 1) driver. Setups LwIP bridge with bridgeIF, linked to netif0 and netif1.
 - CPU r5fss0-1 initializes shared memory enet driver and links to LwIP netif. Prints of r5fss0-1 is directed to CCS console and Prints of r5fss0-0 is directed to UART terminal.
 - CPU cores r5fss0-0 and r5fss0-1 are referred respectively as main core and remote core in the example.  
-- Both r5fss0-0 and r5fss0-1 uss RPMsg to intercommunciated the control messages, in addition to shared memeory interface (which is used to communicate packet data).
+- Both r5fss0-0 and r5fss0-1 uses RPMsg to intercommunciated the control messages, in addition to shared memeory interface (which is used to communicate packet data).
   TCP Server tasks running on each core awaits for connection from external client on port 8888. When connection is established, it waits for a message from the connected client.
 - In response to external clients message. TCP Server task sends back "Greetings from Texas Instruments!" message back to client and closes the connection.
-- Supports iPerf TCP and UDP performance tests
+- Supports iPerf TCP performance tests, ping (ICMP) applications across both the cores.
+
+\imageStyle{example_enet_intercore_icssg_fig1.drawio.png,width:80%}
+\image html example_enet_intercore_icssg_fig1.drawio.png Application Block Diagram
+
 
 # Supported Combinations
 
@@ -63,6 +67,7 @@ Note: To cnfigura anycore as main core other than r5fss0-0, user needs to change
 
 <tr>
     <td>Pkt Pool Enable Flag
+nable Flag
     <td>Flag to enable packet allocation from enet utils library. It should be disabled to avoid utils memory wastage, in case application allots packet via other mechanism. (Ex- Lwip pools)
     <td>Default is true. It is disabled for lwip based examples. If enabled size of pkt pool size depends on Number of Tx Packet and Number of Rx Packet.
 </tr>
@@ -163,7 +168,7 @@ to a network which has a DHCP server running.
   \image html lwip_example_01.png Local network between PC and EVM
 
 - To check the router connection with host PC, recommend to disconnect all other networking conenctions
-  on the PC, sometimes you may need to disable firewall SW, and make sure the router is able
+  on the PC, sometimes you may need to disable firewall SW, and make sure the routeuter is able
   to assign a IP address to your host PC
 
 - After we run the example on the EVM (next step), the EVM will similarly be assigned a IP address, and then host
@@ -181,7 +186,7 @@ to a network which has a DHCP server running.
 - Note the IP address seen in the log, this is what we will use to communicate with the EVM.
 
 
-## Sample output for CPSW example
+## Sample output
 
 \code
 
@@ -236,15 +241,10 @@ to a network which has a DHCP server running.
 - If you see MAC address as `00:00:00:00:00:00`, likely you are using a very early Si sample which does not
   have MAC address "fused" in, in this case do below steps
 
-   - Open file `source/networking/.meta/enet_cpsw/templates/am64x_am243x/enet_soc_cfg.c.xdt`
-   - Uncomment below line
-        \code
-        #define ENET_MAC_ADDR_HACK (TRUE)
-        \endcode
-   - Rebuild the libraries and examples (\ref MAKEFILE_BUILD_PAGE)
+   - Use manual MAC address populate option from sysconfig GUI
 \endcond
 
-- If you see a valid, non-zero MAC address and continuosly seieing "Waiting for network UP..." prints in UART terminal
+- If you see a valid, non-zero MAC address and continuosly see "Waiting for network UP..." prints in UART terminal
    - Make sure you see `Enet IF UP Event.` message, if not check the ethernet cable
    - Check the local network and check if the DHCP server is indeed running as expected
    - When using a home broadband/wifi router, its possible to check the clients connected to the DHCP server via a web

@@ -15,6 +15,7 @@ const bootloader1     = bootloader.addInstance();
 const uart            = scripting.addModule("/drivers/uart/uart", {}, false);
 const uart1           = uart.addInstance();
 const debug_log       = scripting.addModule("/kernel/dpl/debug_log");
+const dpl_cfg = scripting.addModule("/kernel/dpl/dpl_cfg");
 const mpu_armv7       = scripting.addModule("/kernel/dpl/mpu_armv7", {}, false);
 const mpu_armv71      = mpu_armv7.addInstance();
 const mpu_armv72      = mpu_armv7.addInstance();
@@ -119,7 +120,6 @@ region1.memory_region[5].size               = 0x190100;
 
 section1.load_memory                              = "MSRAM_VECS";
 section1.group                                    = false;
-section1.run_memory                               = "R5F_VECS";
 section1.$name                                    = "Sbl Initialization Code";
 section1.output_section.create(1);
 section1.output_section[0].$name                  = ".sbl_init_code";

@@ -24,18 +24,19 @@ endif
 PROFILE?=release
 ConfigName:=$(PROFILE)
 
-OUTNAME:=adc.$(PROFILE).out
+OUTNAME:=ads85x8.$(PROFILE).out
 
 BOOTIMAGE_PATH=$(abspath .)
-BOOTIMAGE_NAME:=adc.$(PROFILE).appimage
-BOOTIMAGE_NAME_XIP:=adc.$(PROFILE).appimage_xip
-BOOTIMAGE_NAME_SIGNED:=adc.$(PROFILE).appimage.signed
-BOOTIMAGE_RPRC_NAME:=adc.$(PROFILE).rprc
-BOOTIMAGE_RPRC_NAME_XIP:=adc.$(PROFILE).rprc_xip
-BOOTIMAGE_RPRC_NAME_TMP:=adc.$(PROFILE).rprc_tmp
-BOOTIMAGE_NAME_HS:=adc.$(PROFILE).appimage.hs
-BOOTIMAGE_NAME_HS_FS:=adc.$(PROFILE).appimage.hs_fs
+BOOTIMAGE_NAME:=ads85x8.$(PROFILE).appimage
+BOOTIMAGE_NAME_XIP:=ads85x8.$(PROFILE).appimage_xip
+BOOTIMAGE_NAME_SIGNED:=ads85x8.$(PROFILE).appimage.signed
+BOOTIMAGE_RPRC_NAME:=ads85x8.$(PROFILE).rprc
+BOOTIMAGE_RPRC_NAME_XIP:=ads85x8.$(PROFILE).rprc_xip
+BOOTIMAGE_RPRC_NAME_TMP:=ads85x8.$(PROFILE).rprc_tmp
+BOOTIMAGE_NAME_HS:=ads85x8.$(PROFILE).appimage.hs
+BOOTIMAGE_NAME_HS_FS:=ads85x8.$(PROFILE).appimage.hs_fs
 TARGETS := $(BOOTIMAGE_NAME)
+
 
 FILES_common := \
 	ads8598_example.c \
@@ -61,7 +62,7 @@ INCLUDES_common := \
 	-I${MCU_PLUS_SDK_PATH}/source/kernel/freertos/portable/TI_ARM_CLANG/ARM_CR5F \
 	-I${MCU_PLUS_SDK_PATH}/source/kernel/freertos/config/am243x/r5f \
 	-I${MCU_PLUS_SDK_PATH}/source/pru_io/driver \
-	-I${MCU_PLUS_SDK_PATH}/examples/pru_io/adc/ads85x8/firmware/am243x-evm/icssg0-pru0_fw/ti-pru-cgt \
+	-I${MCU_PLUS_SDK_PATH}/examples/pru_io/adc/ads85x8/firmware \
 	-Igenerated \
 
 DEFINES_common := \
@@ -207,7 +208,7 @@ clean:
 	$(RMDIR) generated/
 
 scrub:
-	@echo  Scrubing: am243x:r5fss0-0:freertos:ti-arm-clang adc ...
+	@echo  Scrubing: am243x:r5fss0-0:freertos:ti-arm-clang ads85x8 ...
 	$(RMDIR) obj
 ifeq ($(OS),Windows_NT)
 	$(RM) \*.out
@@ -253,9 +254,9 @@ ifeq ($(OS),Windows_NT)
 EXE_EXT=.exe
 endif
 ifeq ($(OS),Windows_NT)
-  BOOTIMAGE_CERT_GEN_CMD=powershell -executionpolicy unrestricted -command $(MCU_PLUS_SDK_PATH)/tools/boot/signing/x509CertificateGen.ps1
+  BOOTIMAGE_CERT_GEN_CMD=powershell -executionpolicy unrestricted -command $(MCU_PLUS_SDK_PATH)/source/security/security_common/tools/boot/signing/x509CertificateGen.ps1
 else
-  BOOTIMAGE_CERT_GEN_CMD=$(MCU_PLUS_SDK_PATH)/tools/boot/signing/x509CertificateGen.sh
+  BOOTIMAGE_CERT_GEN_CMD=$(MCU_PLUS_SDK_PATH)/source/security/security_common/tools/boot/signing/x509CertificateGen.sh
 endif
 BOOTIMAGE_TEMP_OUT_FILE=temp_stdout_$(PROFILE).txt
 
@@ -271,7 +272,7 @@ SBL_DEV_ID=55
 
 MULTI_CORE_IMAGE_GEN = $(SYSCFG_NODE) $(MCU_PLUS_SDK_PATH)/tools/boot/multicoreImageGen/multicoreImageGen.js
 OUTRPRC_CMD = $(SYSCFG_NODE) $(MCU_PLUS_SDK_PATH)/tools/boot/out2rprc/elf2rprc.js
-APP_IMAGE_SIGN_CMD = $(MCU_PLUS_SDK_PATH)/tools/boot/signing/appimage_x509_cert_gen.py
+APP_IMAGE_SIGN_CMD = $(MCU_PLUS_SDK_PATH)/source/security/security_common/tools/boot/signing/appimage_x509_cert_gen.py
 
 ifeq ($(OS),Windows_NT)
   XIPGEN_CMD=$(MCU_PLUS_SDK_PATH)/tools/boot/xipGen/xipGen.exe
@@ -298,7 +299,6 @@ endif
 	$(MULTI_CORE_IMAGE_GEN) --devID $(SBL_DEV_ID) --out $(BOOTIMAGE_NAME_XIP) $(MULTI_CORE_IMAGE_PARAMS_XIP) >> $(BOOTIMAGE_TEMP_OUT_FILE)
 	$(RM) $(BOOTIMAGE_RPRC_NAME_TMP)
 	$(RM) $(BOOTIMAGE_TEMP_OUT_FILE)
-
 ifeq ($(DEVICE_TYPE), HS)
 # Sign the appimage using appimage signing script
 ifeq ($(ENC_ENABLED),no)
@@ -319,14 +319,17 @@ else
 	@echo  Boot image: am243x:r5fss0-0:freertos:ti-arm-clang $(BOOTIMAGE_PATH)/$(BOOTIMAGE_NAME_HS_FS) Done !!!
 	@echo  .
 endif
+
+
+
 .PHONY: coverage
 coverage:
-	@echo Creating Coverage Report for adc.$(PROFILE) ...
+	@echo Creating Coverage Report for ads85x8.$(PROFILE) ...
 	$(MKDIR) coverage
-	$(PROFDATA) merge -sparse -obj-file=$(OUTNAME) $(OUTNAME).cnt -o adc.$(PROFILE).profdata
-	$(COV) show --format=html --show-expansions --show-instantiations --show-branches=count --object=$(OUTNAME) -instr-profile=adc.$(PROFILE).profdata --output-dir=$(COVERAGE_PATH)/coverage --ignore-filename-regex=build_jenkins
-	$(COV) export --format=text --object=$(OUTNAME) --instr-profile=adc.$(PROFILE).profdata > coverage/adc.$(PROFILE).profdata.json
-	node $(MCU_PLUS_SDK_PATH)/tools/smart_placement/clang_coverage_analyse.js --input=coverage/adc.$(PROFILE).profdata.json --output-json=coverage/adc.$(PROFILE).analysis.json --output=../adc.annotations.$(PROFILE).S --top-function-count=500
+	$(PROFDATA) merge -sparse -obj-file=$(OUTNAME) $(OUTNAME).cnt -o ads85x8.$(PROFILE).profdata
+	$(COV) show --format=html --show-expansions --show-instantiations --show-branches=count --object=$(OUTNAME) -instr-profile=ads85x8.$(PROFILE).profdata --output-dir=$(COVERAGE_PATH)/coverage --ignore-filename-regex=build_jenkins
+	$(COV) export --format=text --object=$(OUTNAME) --instr-profile=ads85x8.$(PROFILE).profdata > coverage/ads85x8.$(PROFILE).profdata.json
+	node $(MCU_PLUS_SDK_PATH)/tools/smart_placement/clang_coverage_analyse.js --input=coverage/ads85x8.$(PROFILE).profdata.json --output-json=coverage/ads85x8.$(PROFILE).analysis.json --output=../ads85x8.annotations.$(PROFILE).S --top-function-count=500
 	@echo Coverage Report Generated at $(COVERAGE_PATH)/coverage folder !!!
 
 -include $(addprefix $(OBJDIR)/, $(DEPS))

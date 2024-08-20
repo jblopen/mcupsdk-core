@@ -24,18 +24,19 @@ endif
 PROFILE?=release
 ConfigName:=$(PROFILE)
 
-OUTNAME:=enet_cpsw_tcpserver.$(PROFILE).out
+OUTNAME:=enet_test__cpsw_tcpserver.$(PROFILE).out
 
 BOOTIMAGE_PATH=$(abspath .)
-BOOTIMAGE_NAME:=enet_cpsw_tcpserver.$(PROFILE).appimage
-BOOTIMAGE_NAME_XIP:=enet_cpsw_tcpserver.$(PROFILE).appimage_xip
-BOOTIMAGE_NAME_SIGNED:=enet_cpsw_tcpserver.$(PROFILE).appimage.signed
-BOOTIMAGE_RPRC_NAME:=enet_cpsw_tcpserver.$(PROFILE).rprc
-BOOTIMAGE_RPRC_NAME_XIP:=enet_cpsw_tcpserver.$(PROFILE).rprc_xip
-BOOTIMAGE_RPRC_NAME_TMP:=enet_cpsw_tcpserver.$(PROFILE).rprc_tmp
-BOOTIMAGE_NAME_HS:=enet_cpsw_tcpserver.$(PROFILE).appimage.hs
-BOOTIMAGE_NAME_HS_FS:=enet_cpsw_tcpserver.$(PROFILE).appimage.hs_fs
+BOOTIMAGE_NAME:=enet_test__cpsw_tcpserver.$(PROFILE).appimage
+BOOTIMAGE_NAME_XIP:=enet_test__cpsw_tcpserver.$(PROFILE).appimage_xip
+BOOTIMAGE_NAME_SIGNED:=enet_test__cpsw_tcpserver.$(PROFILE).appimage.signed
+BOOTIMAGE_RPRC_NAME:=enet_test__cpsw_tcpserver.$(PROFILE).rprc
+BOOTIMAGE_RPRC_NAME_XIP:=enet_test__cpsw_tcpserver.$(PROFILE).rprc_xip
+BOOTIMAGE_RPRC_NAME_TMP:=enet_test__cpsw_tcpserver.$(PROFILE).rprc_tmp
+BOOTIMAGE_NAME_HS:=enet_test__cpsw_tcpserver.$(PROFILE).appimage.hs
+BOOTIMAGE_NAME_HS_FS:=enet_test__cpsw_tcpserver.$(PROFILE).appimage.hs_fs
 TARGETS := $(BOOTIMAGE_NAME)
+
 
 FILES_common := \
 	ipc_rpmsg_echo.c \
@@ -246,7 +247,7 @@ clean:
 	$(RMDIR) generated/
 
 scrub:
-	@echo  Scrubing: am243x:r5fss0-1:freertos:ti-arm-clang enet_cpsw_tcpserver ...
+	@echo  Scrubing: am243x:r5fss0-1:freertos:ti-arm-clang enet_test__cpsw_tcpserver ...
 	$(RMDIR) obj
 ifeq ($(OS),Windows_NT)
 	$(RM) \*.out
@@ -292,9 +293,9 @@ ifeq ($(OS),Windows_NT)
 EXE_EXT=.exe
 endif
 ifeq ($(OS),Windows_NT)
-  BOOTIMAGE_CERT_GEN_CMD=powershell -executionpolicy unrestricted -command $(MCU_PLUS_SDK_PATH)/tools/boot/signing/x509CertificateGen.ps1
+  BOOTIMAGE_CERT_GEN_CMD=powershell -executionpolicy unrestricted -command $(MCU_PLUS_SDK_PATH)/source/security/security_common/tools/boot/signing/x509CertificateGen.ps1
 else
-  BOOTIMAGE_CERT_GEN_CMD=$(MCU_PLUS_SDK_PATH)/tools/boot/signing/x509CertificateGen.sh
+  BOOTIMAGE_CERT_GEN_CMD=$(MCU_PLUS_SDK_PATH)/source/security/security_common/tools/boot/signing/x509CertificateGen.sh
 endif
 BOOTIMAGE_TEMP_OUT_FILE=temp_stdout_$(PROFILE).txt
 
@@ -310,7 +311,7 @@ SBL_DEV_ID=55
 
 MULTI_CORE_IMAGE_GEN = $(SYSCFG_NODE) $(MCU_PLUS_SDK_PATH)/tools/boot/multicoreImageGen/multicoreImageGen.js
 OUTRPRC_CMD = $(SYSCFG_NODE) $(MCU_PLUS_SDK_PATH)/tools/boot/out2rprc/elf2rprc.js
-APP_IMAGE_SIGN_CMD = $(MCU_PLUS_SDK_PATH)/tools/boot/signing/appimage_x509_cert_gen.py
+APP_IMAGE_SIGN_CMD = $(MCU_PLUS_SDK_PATH)/source/security/security_common/tools/boot/signing/appimage_x509_cert_gen.py
 
 ifeq ($(OS),Windows_NT)
   XIPGEN_CMD=$(MCU_PLUS_SDK_PATH)/tools/boot/xipGen/xipGen.exe
@@ -337,7 +338,6 @@ endif
 	$(MULTI_CORE_IMAGE_GEN) --devID $(SBL_DEV_ID) --out $(BOOTIMAGE_NAME_XIP) $(MULTI_CORE_IMAGE_PARAMS_XIP) >> $(BOOTIMAGE_TEMP_OUT_FILE)
 	$(RM) $(BOOTIMAGE_RPRC_NAME_TMP)
 	$(RM) $(BOOTIMAGE_TEMP_OUT_FILE)
-
 ifeq ($(DEVICE_TYPE), HS)
 # Sign the appimage using appimage signing script
 ifeq ($(ENC_ENABLED),no)
@@ -358,14 +358,17 @@ else
 	@echo  Boot image: am243x:r5fss0-1:freertos:ti-arm-clang $(BOOTIMAGE_PATH)/$(BOOTIMAGE_NAME_HS_FS) Done !!!
 	@echo  .
 endif
+
+
+
 .PHONY: coverage
 coverage:
-	@echo Creating Coverage Report for enet_cpsw_tcpserver.$(PROFILE) ...
+	@echo Creating Coverage Report for enet_test__cpsw_tcpserver.$(PROFILE) ...
 	$(MKDIR) coverage
-	$(PROFDATA) merge -sparse -obj-file=$(OUTNAME) $(OUTNAME).cnt -o enet_cpsw_tcpserver.$(PROFILE).profdata
-	$(COV) show --format=html --show-expansions --show-instantiations --show-branches=count --object=$(OUTNAME) -instr-profile=enet_cpsw_tcpserver.$(PROFILE).profdata --output-dir=$(COVERAGE_PATH)/coverage --ignore-filename-regex=build_jenkins
-	$(COV) export --format=text --object=$(OUTNAME) --instr-profile=enet_cpsw_tcpserver.$(PROFILE).profdata > coverage/enet_cpsw_tcpserver.$(PROFILE).profdata.json
-	node $(MCU_PLUS_SDK_PATH)/tools/smart_placement/clang_coverage_analyse.js --input=coverage/enet_cpsw_tcpserver.$(PROFILE).profdata.json --output-json=coverage/enet_cpsw_tcpserver.$(PROFILE).analysis.json --output=../enet_cpsw_tcpserver.annotations.$(PROFILE).S --top-function-count=500
+	$(PROFDATA) merge -sparse -obj-file=$(OUTNAME) $(OUTNAME).cnt -o enet_test__cpsw_tcpserver.$(PROFILE).profdata
+	$(COV) show --format=html --show-expansions --show-instantiations --show-branches=count --object=$(OUTNAME) -instr-profile=enet_test__cpsw_tcpserver.$(PROFILE).profdata --output-dir=$(COVERAGE_PATH)/coverage --ignore-filename-regex=build_jenkins
+	$(COV) export --format=text --object=$(OUTNAME) --instr-profile=enet_test__cpsw_tcpserver.$(PROFILE).profdata > coverage/enet_test__cpsw_tcpserver.$(PROFILE).profdata.json
+	node $(MCU_PLUS_SDK_PATH)/tools/smart_placement/clang_coverage_analyse.js --input=coverage/enet_test__cpsw_tcpserver.$(PROFILE).profdata.json --output-json=coverage/enet_test__cpsw_tcpserver.$(PROFILE).analysis.json --output=../enet_test__cpsw_tcpserver.annotations.$(PROFILE).S --top-function-count=500
 	@echo Coverage Report Generated at $(COVERAGE_PATH)/coverage folder !!!
 
 -include $(addprefix $(OBJDIR)/, $(DEPS))

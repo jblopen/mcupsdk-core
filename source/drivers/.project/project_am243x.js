@@ -12,9 +12,15 @@ const files_r5f = {
         "bootloader_mmcsd_raw.c",
         "bootloader_soc.c",
         "bootloader_xmodem.c",
-        "bootloader_uniflash.c",
+		"bootloader_uniflash_common.c",
+		"bootloader_uniflash.c",
+		"bootloader_uniflash_rprc.c",
+		"bootloader_uniflash_mcelf.c",
         "bootloader_profile.c",
         "xmodem.c",
+        "canfd.c",
+        "canfd_soc.c",
+        "canfd_dma_udma.c",
         "crc16.c",
         "crc.c",
         "csl_bcdma.c",
@@ -43,11 +49,15 @@ const files_r5f = {
         "fsi_tx.c",
         "gpio.c",
         "gpmc_v0.c",
+        "gpmc_priv_v0.c",
+        "gpmc_nandlike_v0.c",
+        "gpmc_norlike_v0.c",
         "gpmc_dma.c",
         "gpmc_dma_udma.c",
         "gtc.c",
         "i2c_v0.c",
         "i2c_v0_lld.c",
+        "ipc_notify_soc.c",
         "ipc_notify_v0.c",
         "ipc_notify_v0_cfg.c",
         "ipc_rpmsg.c",
@@ -64,7 +74,8 @@ const files_r5f = {
         "mcspi_dma_udma.c",
         "mdio_v0.c",
         "mmcsd_v0.c",
-        "mmcsd_priv.c",
+        "mmcsd_v0_lld.c",
+        "mmcsd_parse.c",
         "ospi_v0.c",
         "ospi_dma.c",
         "ospi_dma_udma.c",
@@ -94,6 +105,7 @@ const files_r5f = {
         "uart_v0.c",
         "uart_v0_lld.c",
         "uart_dma_udma.c",
+        "uart_dma_soc.c",
         "udma.c",
         "udma_ch.c",
         "udma_event.c",
@@ -107,12 +119,16 @@ const files_r5f = {
         "udma_utils.c",
         "watchdog_rti.c",
         "watchdog_soc.c",
+        "gp_timer.c",
     ],
 };
 
 const files_m4f = {
     common: [
         "adc.c",
+        "canfd.c",
+        "canfd_soc.c",
+        "canfd_dma_udma.c",
         "crc.c",
         "csl_sec_proxy.c",
         "ecap.c",
@@ -124,6 +140,7 @@ const files_m4f = {
         "gtc.c",
         "i2c_v0.c",
         "i2c_v0_lld.c",
+        "ipc_notify_soc.c",
         "ipc_notify_v0.c",
         "ipc_notify_v0_cfg.c",
         "ipc_rpmsg.c",
@@ -158,6 +175,9 @@ const filedirs = {
     common: [
         "adc/v0",
         "bootloader",
+		"bootloader/bootloader_uniflash",
+		"bootloader/bootloader_uniflash/bootloader_uniflash_rprc",
+		"bootloader/bootloader_uniflash/bootloader_uniflash_mcelf",
         `bootloader/soc/am64x_am243x`,
         "crc/v0",
         "ddr/v0",
@@ -187,20 +207,28 @@ const filedirs = {
         "i2c/v0",
         "i2c/v0/lld",
         "ipc_notify/v0",
+        "ipc_notify/v0/soc",
         `ipc_notify/v0/soc/${device}`,
         "ipc_rpmsg/",
         "mcan/v0",
+        "mcan/v0/soc/am64x_am243x",
+        "mcan/v0/dma/udma",
         "mcspi/v0",
         "mcspi/v0/lld",
         "mcspi/v0/lld/dma",
         "mcspi/v0/lld/dma/udma",
         "mcspi/v0/lld/dma/dummy",
         "mdio/v0",
+        "mmcsd",
         "mmcsd/v0",
+        "mmcsd/v0/lld",
+        "mmcsd/v0/lld/internal",
         "ospi",
         "ospi/v0",
         "ospi/v0/dma",
+        "ospi/v0/dma/soc/am64x_am243x",
         "ospi/v0/dma/udma",
+        "ospi/v0/soc/am64x_am243x",
         "pcie",
         "pcie/v0",
         "pcie/v0/soc/am64x_am243x",
@@ -217,12 +245,14 @@ const filedirs = {
         "uart/v0/lld/dma",
         "uart/v0/lld/dma/udma",
         "uart/v0/lld/dma/dummy",
-        "udma",
+        "uart/v0/lld/dma/soc/am64x_am243x",
+        "udma/v0",
         "udma/hw_include",
         "udma/soc",
         `udma/soc/am64x_am243x`,
         "watchdog/v1",
         `watchdog/v1/soc/am64x_am243x`,
+        "gp_timer/v0",
     ],
 };
 
@@ -243,6 +273,12 @@ const cflags_r5f = {
     release: [
         "-Oz",
         "-flto",
+    ],
+};
+
+const includes = {
+    common: [
+        "${MCU_PLUS_SDK_PATH}/source/security",
     ],
 };
 
@@ -280,6 +316,8 @@ function getComponentBuildProperty(buildOption) {
         build_property.files = files_m4f;
     }
 
+    build_property.includes = includes;
+    
     return build_property;
 }
 

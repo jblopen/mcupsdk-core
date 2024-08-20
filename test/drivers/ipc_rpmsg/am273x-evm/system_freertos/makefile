@@ -31,10 +31,15 @@ CORES = \
 
 SYSTEM_FLAG := true
 
-all: syscfg
+all: postBuild
+
+corebuild: syscfg
 	$(MAKE) -C ../r5fss0-0_freertos/ti-arm-clang/ all SYSTEM_FLAG=${SYSTEM_FLAG}
 	$(MAKE) -C ../r5fss0-1_freertos/ti-arm-clang/ all SYSTEM_FLAG=${SYSTEM_FLAG}
 	$(MAKE) -C ../c66ss0_freertos/ti-c6000/ all SYSTEM_FLAG=${SYSTEM_FLAG}
+
+
+postBuild: corebuild
 	$(MAKE) $(MULTI_CORE_BOOTIMAGE_NAME)
 ifeq ($(DEVICE_TYPE), HS)
 	$(MAKE) $(MULTI_CORE_BOOTIMAGE_NAME_HS)
@@ -87,7 +92,7 @@ SBL_DEV_ID=55
 
 MULTI_CORE_IMAGE_GEN = $(SYSCFG_NODE) $(MCU_PLUS_SDK_PATH)/tools/boot/multicoreImageGen/multicoreImageGen.js
 OUTRPRC_CMD = $(SYSCFG_NODE) $(MCU_PLUS_SDK_PATH)/tools/boot/out2rprc/elf2rprc.js
-APP_IMAGE_SIGN_CMD = $(MCU_PLUS_SDK_PATH)/tools/boot/signing/mcu_appimage_x509_cert_gen.py
+APP_IMAGE_SIGN_CMD = $(MCU_PLUS_SDK_PATH)/source/security/security_common/tools/boot/signing/mcu_appimage_x509_cert_gen.py
 
 MULTI_CORE_APP_PARAMS = \
     ../r5fss0-0_freertos/ti-arm-clang/test_ipc_rpmsg.$(PROFILE).rprc@$(BOOTIMAGE_CORE_ID_r5fss0-0) \

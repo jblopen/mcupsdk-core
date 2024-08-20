@@ -17,9 +17,9 @@ const files = {
 
 const filedirs = {
     common: [
-        "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/tsn_lldp",
-        "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/tsn_lldp/yangs/generated",
-        "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/tsn_lldp/tilld",
+        "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/eval_src/tsn_lldp",
+        "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/eval_src/tsn_lldp/yangs/generated",
+        "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/eval_src/tsn_lldp/tilld",
     ],
 };
 
@@ -39,9 +39,11 @@ const includes = {
         "${MCU_PLUS_SDK_PATH}/source/networking/enet/utils",
         "${MCU_PLUS_SDK_PATH}/source/networking/enet/utils/include",
         "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack",
-        "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/tsn_lldp",
-        "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/tsn_lldp/yangs/generated",
-        "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/tsn_lldp/non-posix",
+        "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/eval_inc",
+        "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/eval_inc/tsn_lldp",
+        "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/eval_src/tsn_lldp",
+        "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/eval_src/tsn_lldp/yangs/generated",
+        "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/eval_src/tsn_lldp/non-posix",
         "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/tsn_uniconf",
         "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/tsn_uniconf/rtos",
         "${MCU_PLUS_SDK_PATH}/source/networking/tsn/tsn-stack/tsn_uniconf/rtos/am243x",
@@ -72,6 +74,9 @@ const deviceSpecificIncludes = {
     ],
     am263px : [
         "${MCU_PLUS_SDK_PATH}/source/kernel/freertos/config/am263px/r5f",
+    ],
+    am2631x : [
+        "${MCU_PLUS_SDK_PATH}/source/kernel/freertos/config/am261x/r5f",
     ],
     am273x : [
         "${MCU_PLUS_SDK_PATH}/source/kernel/freertos/config/am273x/r5f",
@@ -106,6 +111,8 @@ const deviceSpecific_cflags = {
    ],
    am263px : [
    ],
+   am261x : [
+   ],
    am273x : [
        "-fno-strict-aliasing",
    ],
@@ -117,6 +124,7 @@ const deviceSpecific_cflags = {
 const buildOptionCombos = [
     { device: "am263x", cpu: "r5f", cgt: "ti-arm-clang"},
     { device: "am263px", cpu: "r5f", cgt: "ti-arm-clang"},
+    { device: "am261x", cpu: "r5f", cgt: "ti-arm-clang"},
     { device: "am243x", cpu: "r5f", cgt: "ti-arm-clang"},
     { device: "am273x", cpu: "r5f", cgt: "ti-arm-clang"},
     { device: "am64x",  cpu: "r5f", cgt: "ti-arm-clang"},
@@ -126,7 +134,7 @@ const buildOptionCombos = [
 function getComponentProperty(device) {
     let property = {};
 
-    property.dirPath = path.resolve(__dirname, "..");
+    property.dirPath = path.resolve(__dirname, "../tsn-stack/eval_src");
     property.type = "library";
     property.name = "tsn_lldp-freertos";
     property.tag  = "tsn_lldp_freertos";

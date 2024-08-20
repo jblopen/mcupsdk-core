@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2021-2023 Texas Instruments Incorporated
+ *  Copyright (C) 2021-2024 Texas Instruments Incorporated
  *
  *  Redistribution and use in source and binary forms, with or without
  *  modification, are permitted provided that the following conditions
@@ -40,10 +40,13 @@ extern "C"
 
 
 #include <drivers/hw_include/cslr_soc.h>
-#include <drivers/hsmclient.h>
+#include <security/security_common/drivers/hsmclient/hsmclient.h>
 /* ========================================================================== */
 /*                           Macros & Typedefs                                */
 /* ========================================================================== */
+
+/** Maximum supported size of the application certificate */
+#define BOOTLOADER_SOC_APP_CERT_SIZE (0x1000)
 
 /**
  *  \anchor DevTypes
@@ -291,6 +294,27 @@ void Bootloader_socLoadHsmRtFw(HsmClient_t *gHSMClient, const uint8_t *HsmRtFw, 
  * \brief API to set CPU clock to 200 MHz or 400 MHz on the basis of eFUSE bits configuration
  */
 void Bootloader_socSetAutoClock();
+
+/**
+ * dummy api call
+ */
+int32_t Bootloader_socCpuSetAppEntryPoint(uint32_t cpuId, uintptr_t entryPoint);
+
+/**
+ * \brief API to start streaming boot authentication
+ */
+int32_t Bootloader_authStart(uintptr_t startAddr, uint32_t size);
+
+/**
+ * \brief API to update the Secure Boot Stream with a new segment
+ */
+int32_t Bootloader_authUpdate(uintptr_t startAddr, uint32_t size, uint8_t enc);
+
+/**
+ * \brief API to finish streaming boot authentication
+ */
+int32_t Bootloader_authFinish();
+
 #ifdef __cplusplus
 }
 #endif

@@ -71,6 +71,8 @@ void dac_square_wave_main(void *args)
     Drivers_open();
     Board_driversOpen();
 
+    
+
     DebugP_log("DAC Square Wave Test Started ...\r\n");
 
     while(loopCnt > 0)

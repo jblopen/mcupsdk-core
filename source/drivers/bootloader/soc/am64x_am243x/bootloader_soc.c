@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2021-2023 Texas Instruments Incorporated
+ *  Copyright (C) 2021-2024 Texas Instruments Incorporated
  *
  *  Redistribution and use in source and binary forms, with or without
  *  modification, are permitted provided that the following conditions
@@ -716,7 +716,7 @@ int32_t Bootloader_socCpuPowerOnResetR5f(uint32_t cpuId, uintptr_t entry_point, 
         }
         if(status != SystemP_SUCCESS)
         {
-            DebugP_logError("CPU power off failed for %s\r\n", Bootloader_socGetCoreName(cpuId));
+            DebugP_logError("CPU power on failed for %s\r\n", Bootloader_socGetCoreName(cpuId));
         }
     }
     if(status == SystemP_SUCCESS)
@@ -735,7 +735,7 @@ int32_t Bootloader_socCpuPowerOnResetA53(uint32_t cpuId)
 {
     int32_t status = SystemP_SUCCESS;
 
-    /* nothing to do, we keep A53 powered off since we dont need it powered-on to load code for it */
+    /* Power on A53, this can be skipped if we only want to load code for A53 */
     status = Sciclient_pmSetModuleState(TISCI_DEV_A53SS0, TISCI_MSG_VALUE_DEVICE_SW_STATE_ON, 0, SystemP_WAIT_FOREVER);
     if(status != SystemP_SUCCESS)
     {
@@ -1357,4 +1357,27 @@ void Bootloader_socNotifyFirewallOpen(void)
 void Bootloader_socGetBootSeqOid(uint8_t* boot_seq_oid){
     uint8_t boot_seq[] = {0x06, 0x09, 0x2B, 0x06, 0x01, 0x04, 0x01, 0x82, 0x26, 0x01, 0x22};
     memcpy(boot_seq_oid, boot_seq, sizeof(boot_seq));
+}
+
+int32_t Bootloader_socCpuSetAppEntryPoint(uint32_t cpuId, uintptr_t entryPoint)
+{
+   int32_t status = SystemP_SUCCESS;
+   /* dummy api call */
+
+    return status;
+}
+
+int32_t Bootloader_authStart(uintptr_t startAddr, uint32_t size)
+{
+    return SystemP_SUCCESS;
+}
+
+int32_t Bootloader_authUpdate(uintptr_t startAddr, uint32_t size, uint8_t enc)
+{
+    return SystemP_SUCCESS;
+}
+
+int32_t Bootloader_authFinish()
+{
+    return SystemP_SUCCESS;
 }

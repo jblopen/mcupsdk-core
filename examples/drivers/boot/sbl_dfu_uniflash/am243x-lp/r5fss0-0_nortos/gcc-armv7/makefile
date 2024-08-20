@@ -98,12 +98,14 @@ LIBS_PATH_common = \
 	-L${MCU_PLUS_SDK_PATH}/source/board/lib \
 	-L${MCU_PLUS_SDK_PATH}/source/usb/cdn/lib \
 	-L${MCU_PLUS_SDK_PATH}/source/usb/tinyusb/lib \
+	-L${MCU_PLUS_SDK_PATH}/source/middleware/lib \
 	-L${CGT_GCC_ARMV7_PATH}/lib \
 
 LIBS_common = \
 	-l:nortos.am243x.r5f.gcc-armv7.${ConfigName}.lib \
 	-l:drivers.am243x.r5f.gcc-armv7.${ConfigName}.lib \
 	-l:board.am243x.r5f.gcc-armv7.${ConfigName}.lib \
+	-l:middleware.am243x.r5f.gcc-armv7.${ConfigName}.lib \
 	-l:usbd_cdn_nortos.am243x.r5f.gcc-armv7.${ConfigName}.lib \
 	-l:usbd_tusb_dfu_nortos.am243x.r5f.gcc-armv7.${ConfigName}.lib \
 
@@ -125,6 +127,7 @@ LIBS_NAME = \
 	nortos.am243x.r5f.gcc-armv7.${ConfigName}.lib \
 	drivers.am243x.r5f.gcc-armv7.${ConfigName}.lib \
 	board.am243x.r5f.gcc-armv7.${ConfigName}.lib \
+	middleware.am243x.r5f.gcc-armv7.${ConfigName}.lib \
 	usbd_cdn_nortos.am243x.r5f.gcc-armv7.${ConfigName}.lib \
 	usbd_tusb_dfu_nortos.am243x.r5f.gcc-armv7.${ConfigName}.lib \
 
@@ -134,6 +137,7 @@ LIBS_PATH_NAME = \
 	${MCU_PLUS_SDK_PATH}/source/board/lib \
 	${MCU_PLUS_SDK_PATH}/source/usb/cdn/lib \
 	${MCU_PLUS_SDK_PATH}/source/usb/tinyusb/lib \
+	${MCU_PLUS_SDK_PATH}/source/middleware/lib \
 	${CGT_GCC_ARMV7_PATH}/lib \
 
 FILES := $(FILES_common) $(FILES_$(PROFILE))
@@ -245,9 +249,9 @@ ifeq ($(OS),Windows_NT)
 EXE_EXT=.exe
 endif
 ifeq ($(OS),Windows_NT)
-  BOOTIMAGE_CERT_GEN_CMD=powershell -executionpolicy unrestricted -command $(MCU_PLUS_SDK_PATH)/tools/boot/signing/x509CertificateGen.ps1
+  BOOTIMAGE_CERT_GEN_CMD=powershell -executionpolicy unrestricted -command $(MCU_PLUS_SDK_PATH)/source/security/security_common/tools/boot/signing/x509CertificateGen.ps1
 else
-  BOOTIMAGE_CERT_GEN_CMD=$(MCU_PLUS_SDK_PATH)/tools/boot/signing/x509CertificateGen.sh
+  BOOTIMAGE_CERT_GEN_CMD=$(MCU_PLUS_SDK_PATH)/source/security/security_common/tools/boot/signing/x509CertificateGen.sh
 endif
 BOOTIMAGE_TEMP_OUT_FILE=temp_stdout_$(PROFILE).txt
 
@@ -258,7 +262,7 @@ BOOTIMAGE_CERT_KEY=$(APP_SIGNING_KEY)
 else
 BOOTIMAGE_CERT_KEY=$(ROM_DEGENERATE_KEY)
 endif
-BOOTIMAGE_CERT_GEN_CMD=$(PYTHON) $(MCU_PLUS_SDK_PATH)/tools/boot/signing/rom_image_gen.py
+BOOTIMAGE_CERT_GEN_CMD=$(PYTHON) $(MCU_PLUS_SDK_PATH)/source/security/security_common/tools/boot/signing/rom_image_gen.py
 SYSFW_PATH=$(MCU_PLUS_SDK_PATH)/source/drivers/sciclient/soc/am64x_am243x
 SYSFW_LOAD_ADDR=0x44000
 BOARDCFG_LOAD_ADDR=0x7B000
@@ -290,5 +294,8 @@ endif
 	@echo  Boot image: am243x:r5fss0-0:nortos:gcc-armv7 $(BOOTIMAGE_PATH)/$@ Done !!!
 
 	@echo  .
+
+
+
 
 -include $(addprefix $(OBJDIR)/, $(DEPS))

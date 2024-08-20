@@ -25,9 +25,15 @@ FILES_common := \
     bootloader_soc.c \
     bootloader_hsmRt_load.c \
     bootloader_xmodem.c \
+    bootloader_uniflash_common.c \
     bootloader_uniflash.c \
+    bootloader_uniflash_rprc.c \
+    bootloader_uniflash_mcelf.c \
     bootloader_profile.c \
     xmodem.c \
+    canfd.c \
+    canfd_soc.c \
+    canfd_dma_edma.c \
     crc16.c \
     cmpss.c \
     dac.c \
@@ -39,10 +45,10 @@ FILES_common := \
     fsi_tx.c \
     gpio.c \
     gpmc_v0.c \
+    gpmc_priv_v0.c \
+    gpmc_nandlike_v0.c \
+    gpmc_norlike_v0.c \
     gpmc_dma.c \
-    hsmclient.c \
-    hsmclient_loadhsmrt.c \
-    hsmclient_utils.c \
     i2c_v1.c \
     i2c_v1_lld.c \
     ipc_notify_v1.c \
@@ -56,6 +62,8 @@ FILES_common := \
     mcspi_dma_edma.c \
     mdio_v0.c \
     mmcsd_v1.c \
+    mmcsd_v1_lld.c \
+    mmcsd_parse.c \
     mpu_firewall.c \
     mpu_firewall_v0_cfg.c \
     pinmux.c \
@@ -67,8 +75,6 @@ FILES_common := \
     qspi_edma_lld.c \
     rti.c \
     sdfm.c \
-    sipc_notify_src.c \
-    sipc_notify_cfg.c \
     spinlock.c \
     soc.c \
     soc_rcm.c \
@@ -84,6 +90,9 @@ ASMFILES_common := \
 FILES_PATH_common = \
     adc/v1 \
     bootloader \
+    bootloader/bootloader_uniflash \
+    bootloader/bootloader_uniflash/bootloader_uniflash_rprc \
+    bootloader/bootloader_uniflash/bootloader_uniflash_mcelf \
     bootloader/soc/am263x \
     cmpss/v0 \
     dac/v0 \
@@ -95,9 +104,6 @@ FILES_PATH_common = \
     gpio/v0 \
     gpmc/v0 \
     gpmc/v0/dma \
-    hsmclient \
-    hsmclient/soc/am263x \
-    hsmclient/utils \
     i2c/v1 \
     i2c/v1/lld \
     ipc_notify/v1 \
@@ -105,12 +111,16 @@ FILES_PATH_common = \
     ipc_rpmsg/ \
     lin/v0 \
     mcan/v0 \
+    mcan/v0/soc/am263x \
+    mcan/v0/dma/edma \
     mcspi/v0 \
     mcspi/v0/lld \
     mcspi/v0/lld/dma \
     mcspi/v0/lld/dma/edma \
     mdio/v0 \
     mmcsd/v1 \
+    mmcsd/v1/lld \
+    mmcsd/v1/lld/internal \
     mpu_firewall/v0 \
     mpu_firewall/v0/soc/am263x \
     pinmux/am263x \
@@ -124,9 +134,6 @@ FILES_PATH_common = \
     rti/v0 \
     spinlock/v0 \
     sdfm/v0 \
-    secure_ipc_notify/ \
-    secure_ipc_notify/soc/am263x \
-    secure_ipc_notify/soc/ \
     soc/am263x \
     uart/v0 \
     uart/v0/lld \
@@ -140,6 +147,7 @@ FILES_PATH_common = \
 INCLUDES_common := \
     -I${CG_TOOL_ROOT}/include/c \
     -I${MCU_PLUS_SDK_PATH}/source \
+    -I${MCU_PLUS_SDK_PATH}/source/security \
 
 DEFINES_common := \
     -DSOC_AM263X \

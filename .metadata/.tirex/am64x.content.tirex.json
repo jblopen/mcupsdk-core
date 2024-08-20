@@ -265,6 +265,72 @@
         "resourceSubClass": [
             "example.general"
         ],
+        "description": "An ADC singleshot example. This example demonstrates interrupts in ADC. CPU is A53SS0-0 running FREERTOS.",
+        "name": "adc_singleshot",
+        "location": "../../examples/drivers/adc/adc_singleshot/am64x-evm/a53ss0-0_freertos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "adc",
+            "adc_singleshot",
+            "a53ss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "An ADC singleshot example. This example demonstrates interrupts in ADC. CPU is A53SS0-0 running NORTOS.",
+        "name": "adc_singleshot",
+        "location": "../../examples/drivers/adc/adc_singleshot/am64x-evm/a53ss0-0_nortos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "adc",
+            "adc_singleshot",
+            "a53ss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
         "description": "A Sbl Emmc Example. CPU is R5FSS0-0 running NORTOS.",
         "name": "sbl_emmc",
         "location": "../../examples/drivers/boot/sbl_emmc/am64x-evm/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
@@ -1255,6 +1321,72 @@
         "resourceSubClass": [
             "example.general"
         ],
+        "description": "An ECAP APWM mode example. This example sets up ECAP in APWM mode. CPU is A53SS0-0 running FREERTOS.",
+        "name": "ecap_apwm_mode",
+        "location": "../../examples/drivers/ecap/ecap_apwm_mode/am64x-evm/a53ss0-0_freertos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "ecap",
+            "ecap_apwm_mode",
+            "a53ss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "An ECAP APWM mode example. This example sets up ECAP in APWM mode. CPU is A53SS0-0 running NORTOS.",
+        "name": "ecap_apwm_mode",
+        "location": "../../examples/drivers/ecap/ecap_apwm_mode/am64x-evm/a53ss0-0_nortos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "ecap",
+            "ecap_apwm_mode",
+            "a53ss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
         "description": "An ECAP EPWM Loopback Example. This example captures a square wave with 25% duty cycle. CPU is R5FSS0-0 running NORTOS.",
         "name": "ecap_epwm_loopback",
         "location": "../../examples/drivers/ecap/ecap_epwm_loopback/am64x-evm/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
@@ -1305,6 +1437,72 @@
             "ecap",
             "ecap_epwm_loopback",
             "r5fss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "An ECAP EPWM Loopback Example. This example captures a square wave with 25% duty cycle. CPU is A53SS0-0 running FREERTOS.",
+        "name": "ecap_epwm_loopback",
+        "location": "../../examples/drivers/ecap/ecap_epwm_loopback/am64x-evm/a53ss0-0_freertos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "ecap",
+            "ecap_epwm_loopback",
+            "a53ss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "An ECAP EPWM Loopback Example. This example captures a square wave with 25% duty cycle. CPU is A53SS0-0 running NORTOS.",
+        "name": "ecap_epwm_loopback",
+        "location": "../../examples/drivers/ecap/ecap_epwm_loopback/am64x-evm/a53ss0-0_nortos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "ecap",
+            "ecap_epwm_loopback",
+            "a53ss0-0_nortos"
         ],
         "mainCategories": [
             [
@@ -1387,6 +1585,72 @@
         "resourceSubClass": [
             "example.general"
         ],
+        "description": "An EPWM duty test example. This example generates a 1KHz wave with 25% duty cycle. CPU is A53SS0-0 running FREERTOS.",
+        "name": "epwm_duty_cycle",
+        "location": "../../examples/drivers/epwm/epwm_duty_cycle/am64x-evm/a53ss0-0_freertos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "epwm",
+            "epwm_duty_cycle",
+            "a53ss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "An EPWM duty test example. This example generates a 1KHz wave with 25% duty cycle. CPU is A53SS0-0 running NORTOS.",
+        "name": "epwm_duty_cycle",
+        "location": "../../examples/drivers/epwm/epwm_duty_cycle/am64x-evm/a53ss0-0_nortos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "epwm",
+            "epwm_duty_cycle",
+            "a53ss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
         "description": "An EPWM duty test example. This example generates synchronized output for EPMW0/1/2 with changing duty cycle. CPU is R5FSS0-0 running NORTOS.",
         "name": "epwm_duty_cycle_sync",
         "location": "../../examples/drivers/epwm/epwm_duty_cycle_sync/am64x-evm/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
@@ -1404,6 +1668,72 @@
             "epwm",
             "epwm_duty_cycle_sync",
             "r5fss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "An EPWM duty test example. This example generates synchronized output for EPMW0/1/2 with changing duty cycle. CPU is A53SS0-0 running FREERTOS.",
+        "name": "epwm_duty_cycle_sync",
+        "location": "../../examples/drivers/epwm/epwm_duty_cycle_sync/am64x-evm/a53ss0-0_freertos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "epwm",
+            "epwm_duty_cycle_sync",
+            "a53ss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "An EPWM duty test example. This example generates synchronized output for EPMW0/1/2 with changing duty cycle. CPU is A53SS0-0 running NORTOS.",
+        "name": "epwm_duty_cycle_sync",
+        "location": "../../examples/drivers/epwm/epwm_duty_cycle_sync/am64x-evm/a53ss0-0_nortos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "epwm",
+            "epwm_duty_cycle_sync",
+            "a53ss0-0_nortos"
         ],
         "mainCategories": [
             [
@@ -1470,6 +1800,72 @@
             "eqep",
             "eqep_capture",
             "r5fss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "An EQEP Capture Example. This example captures the quadrature input signal and measures it's frequency. CPU is A53SS0-0 running FREERTOS.",
+        "name": "eqep_capture",
+        "location": "../../examples/drivers/eqep/eqep_capture/am64x-evm/a53ss0-0_freertos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "eqep",
+            "eqep_capture",
+            "a53ss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "An EQEP Capture Example. This example captures the quadrature input signal and measures it's frequency. CPU is A53SS0-0 running NORTOS.",
+        "name": "eqep_capture",
+        "location": "../../examples/drivers/eqep/eqep_capture/am64x-evm/a53ss0-0_nortos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "eqep",
+            "eqep_capture",
+            "a53ss0-0_nortos"
         ],
         "mainCategories": [
             [
@@ -1602,6 +1998,402 @@
             "fsi",
             "fsi_loopback_polling",
             "r5fss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A GPTIMER Example. This example Runs a Timers and prints approximate Frequency. CPU is R5FSS0-0 running NORTOS.",
+        "name": "gp_timer_free_run",
+        "location": "../../examples/drivers/gp_timer/gp_timer_free_run/am64x-evm/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "gp_timer",
+            "gp_timer_free_run",
+            "r5fss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A GPTIMER Example. This example Runs a Timers and prints approximate Frequency. CPU is R5FSS0-0 running FREERTOS.",
+        "name": "gp_timer_free_run",
+        "location": "../../examples/drivers/gp_timer/gp_timer_free_run/am64x-evm/r5fss0-0_freertos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "gp_timer",
+            "gp_timer_free_run",
+            "r5fss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A GPTIMER Example. This example Runs a Timers and prints approximate Frequency. CPU is R5FSS0-0 running NORTOS.",
+        "name": "gp_timer_free_run",
+        "location": "../../examples/drivers/gp_timer/gp_timer_free_run/am64x-sk/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_SK_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "gp_timer",
+            "gp_timer_free_run",
+            "r5fss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A GPTIMER Example. This example Runs a Timers and prints approximate Frequency. CPU is R5FSS0-0 running FREERTOS.",
+        "name": "gp_timer_free_run",
+        "location": "../../examples/drivers/gp_timer/gp_timer_free_run/am64x-sk/r5fss0-0_freertos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_SK_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "gp_timer",
+            "gp_timer_free_run",
+            "r5fss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A GPTIMER Example. This example Runs the Timer with interrupt enabled and Triggers a Overflow Callback. CPU is R5FSS0-0 running NORTOS.",
+        "name": "gp_timer_overflow_callback",
+        "location": "../../examples/drivers/gp_timer/gp_timer_overflow_callback/am64x-evm/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "gp_timer",
+            "gp_timer_overflow_callback",
+            "r5fss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A GPTIMER Example. This example Runs the Timer with interrupt enabled and Triggers a Overflow Callback. CPU is R5FSS0-0 running FREERTOS.",
+        "name": "gp_timer_overflow_callback",
+        "location": "../../examples/drivers/gp_timer/gp_timer_overflow_callback/am64x-evm/r5fss0-0_freertos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "gp_timer",
+            "gp_timer_overflow_callback",
+            "r5fss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A GPTIMER Example. This example Runs the Timer with interrupt enabled and Triggers a Overflow Callback. CPU is R5FSS0-0 running NORTOS.",
+        "name": "gp_timer_overflow_callback",
+        "location": "../../examples/drivers/gp_timer/gp_timer_overflow_callback/am64x-sk/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_SK_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "gp_timer",
+            "gp_timer_overflow_callback",
+            "r5fss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A GPTIMER Example. This example Runs the Timer with interrupt enabled and Triggers a Overflow Callback. CPU is R5FSS0-0 running FREERTOS.",
+        "name": "gp_timer_overflow_callback",
+        "location": "../../examples/drivers/gp_timer/gp_timer_overflow_callback/am64x-sk/r5fss0-0_freertos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_SK_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "gp_timer",
+            "gp_timer_overflow_callback",
+            "r5fss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A GPTIMER Example. This example Runs the Timer in Compare match mode and triggers a callback on match. CPU is R5FSS0-0 running NORTOS.",
+        "name": "gp_timer_compare_match_callback",
+        "location": "../../examples/drivers/gp_timer/gp_timer_compare_match_callback/am64x-evm/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "gp_timer",
+            "gp_timer_compare_match_callback",
+            "r5fss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A GPTIMER Example. This example Runs the Timer in Compare match mode and triggers a callback on match. CPU is R5FSS0-0 running FREERTOS.",
+        "name": "gp_timer_compare_match_callback",
+        "location": "../../examples/drivers/gp_timer/gp_timer_compare_match_callback/am64x-evm/r5fss0-0_freertos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "gp_timer",
+            "gp_timer_compare_match_callback",
+            "r5fss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A GPTIMER Example. This example Runs the Timer in Compare match mode and triggers a callback on match. CPU is R5FSS0-0 running NORTOS.",
+        "name": "gp_timer_compare_match_callback",
+        "location": "../../examples/drivers/gp_timer/gp_timer_compare_match_callback/am64x-sk/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_SK_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "gp_timer",
+            "gp_timer_compare_match_callback",
+            "r5fss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A GPTIMER Example. This example Runs the Timer in Compare match mode and triggers a callback on match. CPU is R5FSS0-0 running FREERTOS.",
+        "name": "gp_timer_compare_match_callback",
+        "location": "../../examples/drivers/gp_timer/gp_timer_compare_match_callback/am64x-sk/r5fss0-0_freertos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_SK_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "gp_timer",
+            "gp_timer_compare_match_callback",
+            "r5fss0-0_freertos"
         ],
         "mainCategories": [
             [
@@ -1998,6 +2790,138 @@
             "gpmc",
             "gpmc_flash_io",
             "r5fss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Gpmc Flash Io Example. CPU is A53SS0-0 running FREERTOS.",
+        "name": "gpmc_flash_io",
+        "location": "../../examples/drivers/gpmc/gpmc_flash_io/am64x-evm/a53ss0-0_freertos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "gpmc",
+            "gpmc_flash_io",
+            "a53ss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Gpmc Flash Io Example. CPU is A53SS0-0 running NORTOS.",
+        "name": "gpmc_flash_io",
+        "location": "../../examples/drivers/gpmc/gpmc_flash_io/am64x-evm/a53ss0-0_nortos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "gpmc",
+            "gpmc_flash_io",
+            "a53ss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Gpmc Psram Io Example. CPU is R5FSS0-0 running NORTOS.",
+        "name": "gpmc_psram_io",
+        "location": "../../examples/drivers/gpmc/gpmc_psram_io/am64x-evm/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "gpmc",
+            "gpmc_psram_io",
+            "r5fss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Gpmc Psram Io Example. CPU is A53SS0-0 running NORTOS.",
+        "name": "gpmc_psram_io",
+        "location": "../../examples/drivers/gpmc/gpmc_psram_io/am64x-evm/a53ss0-0_nortos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "gpmc",
+            "gpmc_psram_io",
+            "a53ss0-0_nortos"
         ],
         "mainCategories": [
             [
@@ -4555,6 +5479,72 @@
         "resourceSubClass": [
             "example.general"
         ],
+        "description": "A Mcan External Loopback Interrupt2 Example. CPU is R5FSS0-0 running FREERTOS.",
+        "name": "mcan_external_loopback_interrupt2",
+        "location": "../../examples/drivers/mcan/mcan_external_loopback_interrupt2/am64x-evm/r5fss0-0_freertos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "mcan",
+            "mcan_external_loopback_interrupt2",
+            "r5fss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Mcan External Loopback Interrupt2 Example. CPU is A53SS0-0 running FREERTOS.",
+        "name": "mcan_external_loopback_interrupt2",
+        "location": "../../examples/drivers/mcan/mcan_external_loopback_interrupt2/am64x-evm/a53ss0-0_freertos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "mcan",
+            "mcan_external_loopback_interrupt2",
+            "a53ss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
         "description": "A Mcan Loopback Dma Example. CPU is R5FSS0-0 running NORTOS.",
         "name": "mcan_loopback_dma",
         "location": "../../examples/drivers/mcan/mcan_loopback_dma/am64x-evm/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
@@ -4753,6 +5743,39 @@
         "resourceSubClass": [
             "example.general"
         ],
+        "description": "A Mcan Loopback Interrupt Example. CPU is A53SS0-0 running FREERTOS.",
+        "name": "mcan_loopback_interrupt",
+        "location": "../../examples/drivers/mcan/mcan_loopback_interrupt/am64x-evm/a53ss0-0_freertos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "mcan",
+            "mcan_loopback_interrupt",
+            "a53ss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
         "description": "A Mcan Loopback Polling Example. CPU is R5FSS0-0 running NORTOS.",
         "name": "mcan_loopback_polling",
         "location": "../../examples/drivers/mcan/mcan_loopback_polling/am64x-evm/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
@@ -4868,6 +5891,237 @@
             "drivers",
             "mcan",
             "mcan_loopback_polling",
+            "r5fss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Mcan Loopback Polling Example. CPU is A53SS0-0 running FREERTOS.",
+        "name": "mcan_loopback_polling",
+        "location": "../../examples/drivers/mcan/mcan_loopback_polling/am64x-evm/a53ss0-0_freertos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "mcan",
+            "mcan_loopback_polling",
+            "a53ss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Canfd Loopback Polling Example. CPU is R5FSS0-0 running NORTOS.",
+        "name": "canfd_loopback_polling",
+        "location": "../../examples/drivers/mcan/canfd_loopback_polling/am64x-evm/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "mcan",
+            "canfd_loopback_polling",
+            "r5fss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Canfd Loopback Polling Example. CPU is R5FSS0-0 running FREERTOS.",
+        "name": "canfd_loopback_polling",
+        "location": "../../examples/drivers/mcan/canfd_loopback_polling/am64x-evm/r5fss0-0_freertos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "mcan",
+            "canfd_loopback_polling",
+            "r5fss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Canfd Loopback Interrupt Example. CPU is R5FSS0-0 running NORTOS.",
+        "name": "canfd_loopback_interrupt",
+        "location": "../../examples/drivers/mcan/canfd_loopback_interrupt/am64x-evm/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "mcan",
+            "canfd_loopback_interrupt",
+            "r5fss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Canfd Loopback Interrupt Example. CPU is R5FSS0-0 running FREERTOS.",
+        "name": "canfd_loopback_interrupt",
+        "location": "../../examples/drivers/mcan/canfd_loopback_interrupt/am64x-evm/r5fss0-0_freertos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "mcan",
+            "canfd_loopback_interrupt",
+            "r5fss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Canfd Loopback Dma Example. CPU is R5FSS0-0 running NORTOS.",
+        "name": "canfd_loopback_dma",
+        "location": "../../examples/drivers/mcan/canfd_loopback_dma/am64x-evm/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "mcan",
+            "canfd_loopback_dma",
+            "r5fss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Canfd Loopback Dma Example. CPU is R5FSS0-0 running FREERTOS.",
+        "name": "canfd_loopback_dma",
+        "location": "../../examples/drivers/mcan/canfd_loopback_dma/am64x-evm/r5fss0-0_freertos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "mcan",
+            "canfd_loopback_dma",
             "r5fss0-0_freertos"
         ],
         "mainCategories": [
@@ -5083,6 +6337,39 @@
         "resourceSubClass": [
             "example.general"
         ],
+        "description": "A Mcspi Loopback Example. CPU is A53SS0-0 running FREERTOS.",
+        "name": "mcspi_loopback",
+        "location": "../../examples/drivers/mcspi/mcspi_loopback/am64x-evm/a53ss0-0_freertos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "mcspi",
+            "mcspi_loopback",
+            "a53ss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
         "description": "A Mcspi Loopback Dma Example. CPU is R5FSS0-0 running NORTOS.",
         "name": "mcspi_loopback_dma",
         "location": "../../examples/drivers/mcspi/mcspi_loopback_dma/am64x-evm/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
@@ -5199,6 +6486,39 @@
             "mcspi",
             "mcspi_loopback_dma",
             "r5fss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Mcspi Loopback Dma Example. CPU is A53SS0-0 running FREERTOS.",
+        "name": "mcspi_loopback_dma",
+        "location": "../../examples/drivers/mcspi/mcspi_loopback_dma/am64x-evm/a53ss0-0_freertos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "mcspi",
+            "mcspi_loopback_dma",
+            "a53ss0-0_freertos"
         ],
         "mainCategories": [
             [
@@ -5875,6 +7195,39 @@
         "resourceSubClass": [
             "example.general"
         ],
+        "description": "A Mcspi Performance 8bit Example. CPU is A53SS0-0 running FREERTOS.",
+        "name": "mcspi_performance_8bit",
+        "location": "../../examples/drivers/mcspi/mcspi_performance_8bit/am64x-evm/a53ss0-0_freertos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "mcspi",
+            "mcspi_performance_8bit",
+            "a53ss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
         "description": "A Mcspi Performance 32bit Example. CPU is R5FSS0-0 running NORTOS.",
         "name": "mcspi_performance_32bit",
         "location": "../../examples/drivers/mcspi/mcspi_performance_32bit/am64x-evm/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
@@ -6073,6 +7426,39 @@
         "resourceSubClass": [
             "example.general"
         ],
+        "description": "A Mcspi Performance 32bit Example. CPU is A53SS0-0 running FREERTOS.",
+        "name": "mcspi_performance_32bit",
+        "location": "../../examples/drivers/mcspi/mcspi_performance_32bit/am64x-evm/a53ss0-0_freertos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "mcspi",
+            "mcspi_performance_32bit",
+            "a53ss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
         "description": "A Mmcsd Raw Io Example. CPU is R5FSS0-0 running NORTOS.",
         "name": "mmcsd_raw_io",
         "location": "../../examples/drivers/mmcsd/mmcsd_raw_io/am64x-evm/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
@@ -6090,6 +7476,39 @@
             "mmcsd",
             "mmcsd_raw_io",
             "r5fss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Mmcsd Raw Io Example. CPU is R5FSS0-0 running FREERTOS.",
+        "name": "mmcsd_raw_io",
+        "location": "../../examples/drivers/mmcsd/mmcsd_raw_io/am64x-evm/r5fss0-0_freertos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "mmcsd",
+            "mmcsd_raw_io",
+            "r5fss0-0_freertos"
         ],
         "mainCategories": [
             [
@@ -6139,6 +7558,72 @@
         "resourceSubClass": [
             "example.general"
         ],
+        "description": "A Mmcsd Raw Io Example. CPU is A53SS0-0 running FREERTOS.",
+        "name": "mmcsd_raw_io",
+        "location": "../../examples/drivers/mmcsd/mmcsd_raw_io/am64x-evm/a53ss0-0_freertos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "mmcsd",
+            "mmcsd_raw_io",
+            "a53ss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Mmcsd Raw Io Example. CPU is R5FSS0-0 running FREERTOS.",
+        "name": "mmcsd_raw_io",
+        "location": "../../examples/drivers/mmcsd/mmcsd_raw_io/am64x-sk/r5fss0-0_freertos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_SK_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "mmcsd",
+            "mmcsd_raw_io",
+            "r5fss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
         "description": "A Mmcsd File Io Example. CPU is R5FSS0-0 running NORTOS.",
         "name": "mmcsd_file_io",
         "location": "../../examples/drivers/mmcsd/mmcsd_file_io/am64x-evm/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
@@ -6172,6 +7657,39 @@
         "resourceSubClass": [
             "example.general"
         ],
+        "description": "A Mmcsd File Io Example. CPU is R5FSS0-0 running FREERTOS.",
+        "name": "mmcsd_file_io",
+        "location": "../../examples/drivers/mmcsd/mmcsd_file_io/am64x-evm/r5fss0-0_freertos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "mmcsd",
+            "mmcsd_file_io",
+            "r5fss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
         "description": "A Mmcsd File Io Example. CPU is R5FSS0-0 running NORTOS.",
         "name": "mmcsd_file_io",
         "location": "../../examples/drivers/mmcsd/mmcsd_file_io/am64x-sk/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
@@ -6188,6 +7706,336 @@
             "drivers",
             "mmcsd",
             "mmcsd_file_io",
+            "r5fss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Mmcsd File Io Example. CPU is A53SS0-0 running NORTOS.",
+        "name": "mmcsd_file_io",
+        "location": "../../examples/drivers/mmcsd/mmcsd_file_io/am64x-evm/a53ss0-0_nortos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "mmcsd",
+            "mmcsd_file_io",
+            "a53ss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Mmcsd File Io Example. CPU is A53SS0-0 running FREERTOS.",
+        "name": "mmcsd_file_io",
+        "location": "../../examples/drivers/mmcsd/mmcsd_file_io/am64x-evm/a53ss0-0_freertos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "mmcsd",
+            "mmcsd_file_io",
+            "a53ss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Mmcsd Raw Io Sd Lld Example. CPU is R5FSS0-0 running NORTOS.",
+        "name": "mmcsd_raw_io_sd_lld",
+        "location": "../../examples/drivers/mmcsd/mmcsd_raw_io_sd_lld/am64x-evm/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "mmcsd",
+            "mmcsd_raw_io_sd_lld",
+            "r5fss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Mmcsd Raw Io Sd Lld Example. CPU is R5FSS0-0 running NORTOS.",
+        "name": "mmcsd_raw_io_sd_lld",
+        "location": "../../examples/drivers/mmcsd/mmcsd_raw_io_sd_lld/am64x-sk/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_SK_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "mmcsd",
+            "mmcsd_raw_io_sd_lld",
+            "r5fss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Mmcsd Raw Io Sd Intr Lld Example. CPU is R5FSS0-0 running NORTOS.",
+        "name": "mmcsd_raw_io_sd_intr_lld",
+        "location": "../../examples/drivers/mmcsd/mmcsd_raw_io_sd_intr_lld/am64x-evm/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "mmcsd",
+            "mmcsd_raw_io_sd_intr_lld",
+            "r5fss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Mmcsd Raw Io Sd Intr Lld Example. CPU is R5FSS0-0 running NORTOS.",
+        "name": "mmcsd_raw_io_sd_intr_lld",
+        "location": "../../examples/drivers/mmcsd/mmcsd_raw_io_sd_intr_lld/am64x-sk/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_SK_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "mmcsd",
+            "mmcsd_raw_io_sd_intr_lld",
+            "r5fss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Mmcsd Raw Io Emmc Lld Example. CPU is R5FSS0-0 running NORTOS.",
+        "name": "mmcsd_raw_io_emmc_lld",
+        "location": "../../examples/drivers/mmcsd/mmcsd_raw_io_emmc_lld/am64x-evm/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "mmcsd",
+            "mmcsd_raw_io_emmc_lld",
+            "r5fss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Mmcsd Raw Io Emmc Lld Example. CPU is R5FSS0-0 running NORTOS.",
+        "name": "mmcsd_raw_io_emmc_lld",
+        "location": "../../examples/drivers/mmcsd/mmcsd_raw_io_emmc_lld/am64x-sk/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_SK_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "mmcsd",
+            "mmcsd_raw_io_emmc_lld",
+            "r5fss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Mmcsd Raw Io Emmc Intr Lld Example. CPU is R5FSS0-0 running NORTOS.",
+        "name": "mmcsd_raw_io_emmc_intr_lld",
+        "location": "../../examples/drivers/mmcsd/mmcsd_raw_io_emmc_intr_lld/am64x-evm/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "mmcsd",
+            "mmcsd_raw_io_emmc_intr_lld",
+            "r5fss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Mmcsd Raw Io Emmc Intr Lld Example. CPU is R5FSS0-0 running NORTOS.",
+        "name": "mmcsd_raw_io_emmc_intr_lld",
+        "location": "../../examples/drivers/mmcsd/mmcsd_raw_io_emmc_intr_lld/am64x-sk/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_SK_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "mmcsd",
+            "mmcsd_raw_io_emmc_intr_lld",
             "r5fss0-0_nortos"
         ],
         "mainCategories": [
@@ -6337,6 +8185,204 @@
         "resourceSubClass": [
             "example.general"
         ],
+        "description": "A Ospi Flash Dma Example. CPU is A53SS0-0 running FREERTOS.",
+        "name": "ospi_flash_dma",
+        "location": "../../examples/drivers/ospi/ospi_flash_dma/am64x-evm/a53ss0-0_freertos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "ospi",
+            "ospi_flash_dma",
+            "a53ss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Ospi Flash Dma Example. CPU is A53SS0-0 running NORTOS.",
+        "name": "ospi_flash_dma",
+        "location": "../../examples/drivers/ospi/ospi_flash_dma/am64x-evm/a53ss0-0_nortos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "ospi",
+            "ospi_flash_dma",
+            "a53ss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.gettingstarted"
+        ],
+        "description": "A simple \"OSPI Flash File IO\" Example.  CPU is R5FSS0-0 running NORTOS.",
+        "name": "ospi_flash_file_io",
+        "location": "../../examples/drivers/ospi/ospi_flash_file_io/am64x-evm/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "ospi",
+            "ospi_flash_file_io",
+            "r5fss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.gettingstarted"
+        ],
+        "description": "A simple \"OSPI Flash File IO\" Example.  CPU is R5FSS0-0 running FREERTOS.",
+        "name": "ospi_flash_file_io",
+        "location": "../../examples/drivers/ospi/ospi_flash_file_io/am64x-evm/r5fss0-0_freertos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "ospi",
+            "ospi_flash_file_io",
+            "r5fss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.gettingstarted"
+        ],
+        "description": "A simple \"OSPI Flash File IO\" Example.  CPU is R5FSS0-0 running NORTOS.",
+        "name": "ospi_flash_file_io",
+        "location": "../../examples/drivers/ospi/ospi_flash_file_io/am64x-sk/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_SK_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "ospi",
+            "ospi_flash_file_io",
+            "r5fss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.gettingstarted"
+        ],
+        "description": "A simple \"OSPI Flash File IO\" Example.  CPU is R5FSS0-0 running FREERTOS.",
+        "name": "ospi_flash_file_io",
+        "location": "../../examples/drivers/ospi/ospi_flash_file_io/am64x-sk/r5fss0-0_freertos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_SK_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "ospi",
+            "ospi_flash_file_io",
+            "r5fss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
         "description": "A Ospi Flash Io Example. CPU is R5FSS0-0 running NORTOS.",
         "name": "ospi_flash_io",
         "location": "../../examples/drivers/ospi/ospi_flash_io/am64x-evm/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
@@ -6403,6 +8449,72 @@
         "resourceSubClass": [
             "example.general"
         ],
+        "description": "A Ospi Flash Io Example. CPU is A53SS0-0 running FREERTOS.",
+        "name": "ospi_flash_io",
+        "location": "../../examples/drivers/ospi/ospi_flash_io/am64x-evm/a53ss0-0_freertos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "ospi",
+            "ospi_flash_io",
+            "a53ss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Ospi Flash Io Example. CPU is A53SS0-0 running NORTOS.",
+        "name": "ospi_flash_io",
+        "location": "../../examples/drivers/ospi/ospi_flash_io/am64x-evm/a53ss0-0_nortos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "ospi",
+            "ospi_flash_io",
+            "a53ss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
         "description": "A Ospi Flash Xip Example. CPU is R5FSS0-0 running NORTOS.",
         "name": "ospi_flash_xip",
         "location": "../../examples/drivers/ospi/ospi_flash_xip/am64x-evm/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
@@ -6453,6 +8565,72 @@
             "ospi",
             "ospi_flash_xip",
             "r5fss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Ospi Flash Xip Example. CPU is A53SS0-0 running FREERTOS.",
+        "name": "ospi_flash_xip",
+        "location": "../../examples/drivers/ospi/ospi_flash_xip/am64x-evm/a53ss0-0_freertos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "ospi",
+            "ospi_flash_xip",
+            "a53ss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Ospi Flash Xip Example. CPU is A53SS0-0 running NORTOS.",
+        "name": "ospi_flash_xip",
+        "location": "../../examples/drivers/ospi/ospi_flash_xip/am64x-evm/a53ss0-0_nortos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "nortos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "ospi",
+            "ospi_flash_xip",
+            "a53ss0-0_nortos"
         ],
         "mainCategories": [
             [
@@ -6589,6 +8767,39 @@
             "pcie_buf_transfer",
             "pcie_buf_transfer_rc",
             "r5fss0-0_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Pcie Enumerate Ep Example. CPU is R5FSS0-0 running FREERTOS.",
+        "name": "pcie_enumerate_ep",
+        "location": "../../examples/drivers/pcie/pcie_enumerate_ep/am64x-evm/r5fss0-0_freertos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "drivers",
+            "pcie",
+            "pcie_enumerate_ep",
+            "r5fss0-0_freertos"
         ],
         "mainCategories": [
             [
@@ -10371,6 +12582,39 @@
             "example"
         ],
         "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Mcspi Loopback Turbo Mode Example. CPU is A53SS0-0 running FREERTOS.",
+        "name": "mcspi_loopback_turbo_mode",
+        "location": "../../examples/drivers/mcspi/mcspi_loopback_turbo_mode/am64x-evm/a53ss0-0_freertos/gcc-aarch64/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "gcc"
+        ],
+        "subCategories": [
+            "drivers",
+            "mcspi",
+            "mcspi_loopback_turbo_mode",
+            "a53ss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
             "example.gettingstarted"
         ],
         "description": "An Empty Example. This example is intended to be a starting point for new development CPU is R5FSS0-0 running FREERTOS.",
@@ -13728,9 +15972,9 @@
         "resourceSubClass": [
             "example.general"
         ],
-        "description": "A Enet Cpsw Loopback Example. CPU is R5FSS0-0 running FREERTOS.",
-        "name": "enet_cpsw_loopback",
-        "location": "../../examples/networking/enet_loopback/enet_cpsw_loopback/am64x-evm/r5fss0-0_freertos/ti-arm-clang/example.projectspec",
+        "description": "A Enet Cpsw Loopback Mac End Example. CPU is R5FSS0-0 running FREERTOS.",
+        "name": "enet_cpsw_loopback_mac_end",
+        "location": "../../examples/networking/enet_loopback/enet_cpsw_loopback/loopback_mac_end/am64x-evm/r5fss0-0_freertos/ti-arm-clang/example.projectspec",
         "devtools": [
             "AM64x_GP_EVM"
         ],
@@ -13744,6 +15988,7 @@
             "networking",
             "enet_loopback",
             "enet_cpsw_loopback",
+            "loopback_mac_end",
             "r5fss0-0_freertos"
         ],
         "mainCategories": [
@@ -13761,9 +16006,9 @@
         "resourceSubClass": [
             "example.general"
         ],
-        "description": "A Enet Cpsw Loopback Example. CPU is R5FSS0-0 running FREERTOS.",
-        "name": "enet_cpsw_loopback",
-        "location": "../../examples/networking/enet_loopback/enet_cpsw_loopback/am64x-sk/r5fss0-0_freertos/ti-arm-clang/example.projectspec",
+        "description": "A Enet Cpsw Loopback Mac End Example. CPU is R5FSS0-0 running FREERTOS.",
+        "name": "enet_cpsw_loopback_mac_end",
+        "location": "../../examples/networking/enet_loopback/enet_cpsw_loopback/loopback_mac_end/am64x-sk/r5fss0-0_freertos/ti-arm-clang/example.projectspec",
         "devtools": [
             "AM64x_SK_EVM"
         ],
@@ -13777,6 +16022,75 @@
             "networking",
             "enet_loopback",
             "enet_cpsw_loopback",
+            "loopback_mac_end",
+            "r5fss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Enet Cpsw Loopback Phy End Example. CPU is R5FSS0-0 running FREERTOS.",
+        "name": "enet_cpsw_loopback_phy_end",
+        "location": "../../examples/networking/enet_loopback/enet_cpsw_loopback/loopback_phy_end/am64x-evm/r5fss0-0_freertos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "networking",
+            "enet_loopback",
+            "enet_cpsw_loopback",
+            "loopback_phy_end",
+            "r5fss0-0_freertos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Enet Cpsw Loopback Phy End Example. CPU is R5FSS0-0 running FREERTOS.",
+        "name": "enet_cpsw_loopback_phy_end",
+        "location": "../../examples/networking/enet_loopback/enet_cpsw_loopback/loopback_phy_end/am64x-sk/r5fss0-0_freertos/ti-arm-clang/example.projectspec",
+        "devtools": [
+            "AM64x_SK_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "compiler": [
+            "ticlang"
+        ],
+        "subCategories": [
+            "networking",
+            "enet_loopback",
+            "enet_cpsw_loopback",
+            "loopback_phy_end",
             "r5fss0-0_freertos"
         ],
         "mainCategories": [
@@ -14715,7 +17029,7 @@
         ],
         "description": "A Enet Icssg Loopback Example. CPU is R5FSS0-0 running NORTOS.",
         "name": "enet_icssg_loopback",
-        "location": "../../examples/networking/enet_loopback/enet_icssg_loopback/am64x-evm/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
+        "location": "../../examples/networking/enet_loopback/enet_icssg_loopback/loopback_phy_end/am64x-evm/r5fss0-0_nortos/ti-arm-clang/example.projectspec",
         "devtools": [
             "AM64x_GP_EVM"
         ],
@@ -14729,6 +17043,7 @@
             "networking",
             "enet_loopback",
             "enet_icssg_loopback",
+            "loopback_phy_end",
             "r5fss0-0_nortos"
         ],
         "mainCategories": [
@@ -14991,39 +17306,6 @@
             "networking",
             "lwip",
             "enet_lwip_icssg",
-            "r5fss0-0_freertos"
-        ],
-        "mainCategories": [
-            [
-                "Examples",
-                "Development Tools"
-            ]
-        ]
-    },
-    {
-        "resourceType": "project.ccs",
-        "resourceClass": [
-            "example"
-        ],
-        "resourceSubClass": [
-            "example.general"
-        ],
-        "description": "R5F ADC Project CPU is R5FSS0-0 running FREERTOS.",
-        "name": "adc",
-        "location": "../../examples/pru_io/adc/ads85x8/am64x-evm/r5fss0-0_freertos/ti-arm-clang/example.projectspec",
-        "devtools": [
-            "AM64x_GP_EVM"
-        ],
-        "kernel": [
-            "freertos"
-        ],
-        "compiler": [
-            "ticlang"
-        ],
-        "subCategories": [
-            "pru_io",
-            "adc",
-            "ads85x8",
             "r5fss0-0_freertos"
         ],
         "mainCategories": [
@@ -16335,6 +18617,36 @@
             "mcan",
             "mcan_external_loopback_interrupt",
             "system_freertos_nortos"
+        ],
+        "mainCategories": [
+            [
+                "Examples",
+                "Development Tools"
+            ]
+        ]
+    },
+    {
+        "resourceType": "project.ccs",
+        "resourceClass": [
+            "example"
+        ],
+        "resourceSubClass": [
+            "example.general"
+        ],
+        "description": "A Mcan External Loopback Interrupt2 System Example.",
+        "name": "mcan_external_loopback_interrupt2",
+        "location": "../../examples/drivers/mcan/mcan_external_loopback_interrupt2/am64x-evm/system_freertos/system.projectspec",
+        "devtools": [
+            "AM64x_GP_EVM"
+        ],
+        "kernel": [
+            "freertos"
+        ],
+        "subCategories": [
+            "drivers",
+            "mcan",
+            "mcan_external_loopback_interrupt2",
+            "system_freertos"
         ],
         "mainCategories": [
             [

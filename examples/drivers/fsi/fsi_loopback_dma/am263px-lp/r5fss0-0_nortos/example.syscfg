@@ -15,6 +15,7 @@ const fsi_rx1         = fsi_rx.addInstance();
 const fsi_tx          = scripting.addModule("/drivers/fsi_tx/fsi_tx", {}, false);
 const fsi_tx1         = fsi_tx.addInstance();
 const debug_log       = scripting.addModule("/kernel/dpl/debug_log");
+const dpl_cfg = scripting.addModule("/kernel/dpl/dpl_cfg");
 const mpu_armv7       = scripting.addModule("/kernel/dpl/mpu_armv7", {}, false);
 const mpu_armv71      = mpu_armv7.addInstance();
 const mpu_armv72      = mpu_armv7.addInstance();
@@ -286,7 +287,7 @@ section12.$name                       = "SIPC R5F Queue Memory";
 section12.group                       = false;
 section12.type                        = "NOLOAD";
 section12.output_section.create(1);
-section12.output_section[0].$name     = ".bss.sipc_r5f_queue_mem";
+section12.output_section[0].$name     = ".bss.sipc_secure_host_queue_mem";
 section12.output_section[0].alignment = 0;
 
 dma_trig_xbar1.$name            = "CONFIG_DMA_TRIG_XBAR0";

@@ -36,7 +36,9 @@ BOOTLOADER_UNIFLASH_OPTYPE_FLASH_TUNING_DATA         = 0xF4
 BOOTLOADER_UNIFLASH_OPTYPE_FLASH_ERASE               = 0xFE
 BOOTLOADER_UNIFLASH_OPTYPE_EMMC_FLASH                = 0xF5
 BOOTLOADER_UNIFLASH_OPTYPE_EMMC_VERIFY               = 0xF6
-
+BOOTLOADER_UNIFLASH_OPTYPE_MEM                       = 0xF7
+BOOTLOADER_UNIFLASH_OPTYPE_FLASH_REMAP_A             = 0xF8
+BOOTLOADER_UNIFLASH_OPTYPE_FLASH_REMAP_B             = 0xF9
 BOOTLOADER_UNIFLASH_STATUSCODE_SUCCESS                = 0x00000000
 BOOTLOADER_UNIFLASH_STATUSCODE_MAGIC_ERROR            = 0x10000001
 BOOTLOADER_UNIFLASH_STATUSCODE_OPTYPE_ERROR           = 0x20000001
@@ -53,6 +55,9 @@ optypewords = {
     "erase" : BOOTLOADER_UNIFLASH_OPTYPE_FLASH_ERASE,
     "flash-emmc":BOOTLOADER_UNIFLASH_OPTYPE_EMMC_FLASH,
     "flashverify-emmc":BOOTLOADER_UNIFLASH_OPTYPE_EMMC_VERIFY,
+    "flash-remap-A":BOOTLOADER_UNIFLASH_OPTYPE_FLASH_REMAP_A,
+    "flash-remap-B":BOOTLOADER_UNIFLASH_OPTYPE_FLASH_REMAP_B,
+    "mem" : BOOTLOADER_UNIFLASH_OPTYPE_MEM
 }
 
 statuscodes = {
@@ -135,7 +140,7 @@ def create_temp_file(linecfg):
     '''
     file_header_str = '<LLLLLLLL'
 
-    if(linecfg.optype in ("erase", "flash-phy-tuning-data")):
+    if(linecfg.optype in ("erase", "flash-phy-tuning-data", "flash-remap-A", "flash-remap-B")):
         # No separate file required
         tempfilename = "{}_command".format(linecfg.optype)
     else:
@@ -148,7 +153,7 @@ def create_temp_file(linecfg):
 
     # Determine the offset if applicable
     offset_val = rsv_word
-    if(linecfg.optype not in ("flash-xip", "flashverify-xip", "flash-phy-tuning-data")):
+    if(linecfg.optype not in ("flash-xip", "flashverify-xip", "flash-phy-tuning-data", "flash-remap-A", "flash-remap-B", "mem")):
         offset_val = get_numword(linecfg.offset)
 
     # Determine the erase size if applicable
@@ -158,7 +163,7 @@ def create_temp_file(linecfg):
 
     # Determine the actual file size if applicable, no original file in case of erase or phy tuning
     actual_file_size = 0
-    if(linecfg.optype not in ("erase","flash-phy-tuning-data")):
+    if(linecfg.optype not in ("erase","flash-phy-tuning-data", "flash-remap-A", "flash-remap-B")):
         actual_file_size = os.path.getsize(linecfg.filename)
 
     file_header = struct.pack(file_header_str,
@@ -174,7 +179,7 @@ def create_temp_file(linecfg):
     f.write(file_header)
 
     # No original file in case of erase or phy tuning
-    if(linecfg.optype not in ("erase","flash-phy-tuning-data")):
+    if(linecfg.optype not in ("erase","flash-phy-tuning-data", "flash-remap-A", "flash-remap-B")):
         # copy the original file to this file
         original_file = open(linecfg.filename, "rb")
         f.write(original_file.read())
@@ -354,14 +359,16 @@ def main(argv):
     my_parser.add_argument('-p', '--serial-port', required=True, help="[Mandatory argument] Serial port to use for the transfer. COM3, COM4 etc if on windows and /dev/ttyUSB1,/dev/ttyUSB2 etc if on linux.")
     my_parser.add_argument('-f', '--file', required=False, help="Filename to send for an operation. Not required if using config mode (--cfg)")
     my_parser.add_argument('-o', '--flash-offset', required=False, help="Offset (in hexadecimal format starting with a 0x) at which the flash/verify flash is to be done. Not required if using config mode (--cfg)")
-    my_parser.add_argument('--operation', required=False, help='Operation to be done on the file => "flash" or "flashverify" or "erase" or "flash-xip" or "flashverify-xip" or "flash-phy-tuning-data" or "flash-emmc" or "flashverify-emmc". Not required if using config mode (--cfg)')
+    my_parser.add_argument('--operation', required=False, help='Operation to be done on the file => "flash" or "flashverify" or "erase" or "flash-xip" or "flashverify-xip" or "flash-phy-tuning-data" or "flash-emmc" or "flashverify-emmc" or "mem". Not required if using config mode (--cfg)')
     my_parser.add_argument('--flash-writer', required=False, help="Special option. This will load the sbl_uart_uniflash binary which will be booted by ROM. Other arguments are irrelevant and hence ignored when --flash-writer argument is present. Not required if using config mode (--cfg)")
     my_parser.add_argument('--erase-size', required=False, help='Size of flash to erase. Only valid when operation is "erase"')
     my_parser.add_argument('--cfg', required=False, help=g_cfg_file_description)
     my_parser.add_argument('--chunk-size-kb', required=False, default=CONST_KB, help="Size of the receive buffer in multiples of KB. Defaults to 1024")
+    my_parser.add_argument('--flash-remap-A', required=False, help="Remap flash addres to region A if upported by the device")
+    my_parser.add_argument('--flash-remap-B', required=False, help="Remap flash addres to region B if upported by the device")
 
     args = my_parser.parse_args()
-    
+
     global BOOTLOADER_UNIFLASH_BUF_SIZE_BYTES
     BOOTLOADER_UNIFLASH_BUF_SIZE_BYTES = CONST_KB * int(args.chunk_size_kb)
 
@@ -396,7 +403,7 @@ def main(argv):
                 # Found flash writer, flash it
                 cfg_flash_writer_file = filecfg.cfgs[filecfg.flash_writer_index].flashwriter
                 print("Executing command {} of {} ...".format(1, len(filecfg.cfgs)))
-                print("Found flash writer ... sending {}".format(cfg_flash_writer_file))
+                print("Found flash writer ... sending {}\r\n".format(cfg_flash_writer_file))
                 status, timetaken = xmodem_send_receive_file(cfg_flash_writer_file, serialport, get_response=False)
                 print("Sent flashwriter {} of size {} bytes in {}s.".format(cfg_flash_writer_file, os.path.getsize(cfg_flash_writer_file), timetaken))
                 print("")
@@ -408,27 +415,36 @@ def main(argv):
                     linecfg = filecfg.cfgs[i]
                     print("Executing command {} of {} ...".format(i+1, len(filecfg.cfgs)))
                     print("Command arguments : {}".format(line.rstrip('\n')))
-                    # Check if the size of application image is larger than buffer size in target side.
-                    f_size = 0
-                    if linecfg.filename is not None:
-                        f_size = os.path.getsize(linecfg.filename)
 
-                    if((f_size + BOOTLOADER_UNIFLASH_HEADER_SIZE >= BOOTLOADER_UNIFLASH_BUF_SIZE_BYTES) and (linecfg.optype in ["flash", "flashverify"])):
-                        # Send by parts
-                        status, timetaken = send_file_by_parts(linecfg, serialport)
-                    else:
-                        # Send normally
+                    if(linecfg.optype == "mem"):
+                        orig_filename = linecfg.filename
                         tempfilename = create_temp_file(linecfg)
-                        status, timetaken = xmodem_send_receive_file(tempfilename, serialport, get_response=True)
-
-                    orig_filename = linecfg.filename
-                    if(linecfg.optype == "erase"):
-                        print("Sent flash erase command.")
-                    elif(linecfg.optype == "flash-phy-tuning-data"):
-                        print("Sent flash phy tuning data in {}s.".format(timetaken))
-                    else:
+                        status, timetaken = xmodem_send_receive_file(orig_filename, serialport, get_response=False)
                         print("Sent {} of size {} bytes in {}s.".format(orig_filename, os.path.getsize(orig_filename), timetaken))
-                    print(status)
+                        print("")
+                    else:
+                        # Check if the size of application image is larger than buffer size in target side.
+                        f_size = 0
+                        tempfilename = ''
+                        if linecfg.filename is not None:
+                            f_size = os.path.getsize(linecfg.filename)
+
+                        if((f_size + BOOTLOADER_UNIFLASH_HEADER_SIZE >= BOOTLOADER_UNIFLASH_BUF_SIZE_BYTES) and (linecfg.optype in ["flash", "flashverify"])):
+                            # Send by parts
+                            status, timetaken = send_file_by_parts(linecfg, serialport)
+                        else:
+                            # Send normally
+                            tempfilename = create_temp_file(linecfg)
+                            status, timetaken = xmodem_send_receive_file(tempfilename, serialport, get_response=True)
+
+                        orig_filename = linecfg.filename
+                        if(linecfg.optype == "erase"):
+                            print("Sent flash erase command.")
+                        elif(linecfg.optype in {"flash-phy-tuning-data", "flash-remap-A", "flash-remap-B"}):
+                            print("Sent command in {}s.".format(timetaken))
+                        else:
+                            print("Sent {} of size {} bytes in {}s.".format(orig_filename, os.path.getsize(orig_filename), timetaken))
+                        print(status)
                     # Delete the tempfile if it exists
                     if(os.path.exists(tempfilename)):
                         os.remove(tempfilename)
@@ -542,7 +558,7 @@ class LineCfg():
                             self.offset = config_dict["--flash-offset"]
 
                     if(self.optype == "flash" or self.optype == "flashverify" or self.optype == "flash-xip" or self.optype == "flashverify-xip" or\
-                        self.optype == "flash-emmc" or self.optype == "flashverify-emmc"):
+                        self.optype == "flash-emmc" or self.optype == "flashverify-emmc" or self.optype == "mem"):
                         if "--file" not in config_dict.keys():
                             status = "[ERROR] Operation selected was {}, but no filename provided !!!".format(self.optype)
                             return status
@@ -558,7 +574,7 @@ class LineCfg():
 
                     #No errors in parsing, now validate params to the extent possible
 
-                    if(self.optype not in ("erase", "flash-phy-tuning-data")):
+                    if(self.optype not in ("erase", "flash-phy-tuning-data", "flash-remap-A", "flash-remap-B")):
                         try:
                             f = open(self.filename)
                         except FileNotFoundError:
@@ -636,7 +652,7 @@ class LineCfg():
                         return status
                     else:
                         pass
-                if(self.optype not in ("erase", "flash-phy-tuning-data")):
+                if(self.optype not in ("erase", "flash-phy-tuning-data", "flash-remap-A", "flash-remap-B")):
                     try:
                         f = open(self.filename)
                     except FileNotFoundError:
@@ -703,4 +719,3 @@ class FileCfg():
 
 if __name__ == "__main__":
     main(sys.argv[1:])
-    

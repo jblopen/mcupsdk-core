@@ -183,7 +183,8 @@ void HwiP_post(uint32_t intNum);
  * \brief Disable all interrupts
  *
  * \note In case of ARM R5F, ARM M4F, this only disables IRQ. \n
- *       FIQ is not disabled.
+ *       FIQ is not disabled. \n
+ *       In case of ARM M4F, this only disables interrupts which has priority between 1-7.
  *
  * \return interrupt state before disable, typically used by \ref HwiP_restore later
  */
@@ -255,7 +256,51 @@ int32_t HwiP_registerNmiHandler(HwiP_FxnCallback nmiHandler, void *args);
  */
 int32_t HwiP_unregisterNmiHandler(void);
 
+typedef struct {
+    volatile uint32_t index;
+    /* index bit*/
+    volatile uint32_t side_ext;
+    /* side extension*/
+    volatile uint32_t recoverable_error;
+    /* recoverable error*/
+    volatile uint32_t cacheway;
+    /* cacheway*/
+}AIFSR;
+
+typedef struct {
+    volatile uint32_t status;
+    /* status */
+    volatile uint32_t sd;
+    /* SD bit */
+}IFSR;
+
+typedef struct {
+    volatile uint32_t index;
+    /* index bit*/
+    volatile uint32_t side_ext;
+    /* side extension*/
+    volatile uint32_t recoverable_error;
+    /* recoverable error*/
+    volatile uint32_t cacheway;
+    /* cacheway*/
+}ADFSR;
+typedef struct {
+    volatile uint32_t status;
+    /* status */
+    volatile uint32_t sd;
+    /* SD bit */
+    volatile uint32_t rw;
+    /* read or write error */
+}DFSR;
+
+
+
+
 /** @} */
+
+
+
+
 
 #ifdef __cplusplus
 }

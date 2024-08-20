@@ -39,7 +39,7 @@
 #include <drivers/sciclient.h>
 #include <drivers/bootloader.h>
 #include <drivers/bootloader/bootloader_xmodem.h>
-#include <drivers/bootloader/bootloader_uniflash.h>
+#include <drivers/bootloader/bootloader_uniflash/bootloader_uniflash.h>
 
 #undef FLASH_WRITE_SECTOR
 
@@ -105,6 +105,7 @@ int main(void)
     }
     /* clear buffer to reset stale data if any */
     memset(gFileBuf, 0, BOOTLOADER_UNIFLASH_MAX_FILE_SIZE);
+    OSPI_enableDacMode(gOspiHandle[CONFIG_OSPI0]);
     Drivers_close();
     System_deinit();
 

@@ -23,6 +23,7 @@ const libdirs_nortos = {
         "${MCU_PLUS_SDK_PATH}/source/kernel/nortos/lib",
         "${MCU_PLUS_SDK_PATH}/source/drivers/lib",
         "${MCU_PLUS_SDK_PATH}/source/board/lib",
+        "${MCU_PLUS_SDK_PATH}/source/middleware/lib",
     ],
 };
 
@@ -31,6 +32,7 @@ const libs_nortos_r5f = {
         "nortos.am263px.r5f.ti-arm-clang.${ConfigName}.lib",
         "drivers.am263px.r5f.ti-arm-clang.${ConfigName}.lib",
         "board.am263px.r5f.ti-arm-clang.${ConfigName}.lib",
+        "middleware.am263px.r5f.ti-arm-clang.${ConfigName}.lib",
     ],
 };
 
@@ -39,6 +41,26 @@ const lnkfiles = {
         "linker.cmd",
     ]
 };
+
+const includes = {
+    common: [
+        "${MCU_PLUS_SDK_PATH}/source/security",
+    ],
+};
+
+const templates =
+[
+    {
+        input: ".project/templates/am263px/sbl/sbl_uart_uniflash/main.c.xdt",
+        output: "../main.c",
+        options: {
+            bootformat: "RPRC",
+            supportFotaSwap: false,
+            enableFastBoot: false,
+        }
+    }
+];
+
 
 const syscfgfile = "../example.syscfg";
 
@@ -68,6 +90,7 @@ function getComponentBuildProperty(buildOption) {
     build_property.files = files;
     build_property.filedirs = filedirs;
     build_property.libdirs = libdirs_nortos;
+    build_property.templates = templates;
     build_property.lnkfiles = lnkfiles;
     build_property.syscfgfile = syscfgfile;
     build_property.readmeDoxygenPageTag = readmeDoxygenPageTag;
@@ -75,7 +98,8 @@ function getComponentBuildProperty(buildOption) {
     if(buildOption.cpu.match(/r5f*/)) {
         build_property.libs = libs_nortos_r5f;
     }
-    
+    build_property.includes = includes;
+
     return build_property;
 }
 

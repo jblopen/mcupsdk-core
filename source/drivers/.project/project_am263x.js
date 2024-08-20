@@ -13,9 +13,15 @@ const files_r5f = {
         "bootloader_soc.c",
         "bootloader_hsmRt_load.c",
         "bootloader_xmodem.c",
-        "bootloader_uniflash.c",
+		"bootloader_uniflash_common.c",
+		"bootloader_uniflash.c",
+		"bootloader_uniflash_rprc.c",
+		"bootloader_uniflash_mcelf.c",
         "bootloader_profile.c",
         "xmodem.c",
+        "canfd.c",
+        "canfd_soc.c",
+        "canfd_dma_edma.c",
         "crc16.c",
         "cmpss.c",
         "dac.c",
@@ -27,10 +33,10 @@ const files_r5f = {
         "fsi_tx.c",
         "gpio.c",
         "gpmc_v0.c",
+        "gpmc_priv_v0.c",
+        "gpmc_nandlike_v0.c",
+        "gpmc_norlike_v0.c",
         "gpmc_dma.c",
-        "hsmclient.c",
-        "hsmclient_loadhsmrt.c",
-        "hsmclient_utils.c",
         "i2c_v1.c",
         "i2c_v1_lld.c",
         "ipc_notify_v1.c",
@@ -44,6 +50,8 @@ const files_r5f = {
         "mcspi_dma_edma.c",
         "mdio_v0.c",
         "mmcsd_v1.c",
+        "mmcsd_v1_lld.c",
+        "mmcsd_parse.c",
         "mpu_firewall.c",
         "mpu_firewall_v0_cfg.c",
         "pinmux.c",
@@ -55,8 +63,6 @@ const files_r5f = {
         "qspi_edma_lld.c",
         "rti.c",
         "sdfm.c",
-        "sipc_notify_src.c",
-        "sipc_notify_cfg.c",
         "spinlock.c",
         "soc.c",
         "soc_rcm.c",
@@ -73,6 +79,9 @@ const filedirs = {
     common: [
         "adc/v1",
         "bootloader",
+		"bootloader/bootloader_uniflash",
+		"bootloader/bootloader_uniflash/bootloader_uniflash_rprc",
+		"bootloader/bootloader_uniflash/bootloader_uniflash_mcelf",
         "bootloader/soc/am263x",
         "cmpss/v0",
         "dac/v0",
@@ -84,9 +93,6 @@ const filedirs = {
         "gpio/v0",
         "gpmc/v0",
         "gpmc/v0/dma",
-        "hsmclient",
-        "hsmclient/soc/am263x",
-        "hsmclient/utils",
         "i2c/v1",
         "i2c/v1/lld",
         "ipc_notify/v1",
@@ -94,12 +100,17 @@ const filedirs = {
         "ipc_rpmsg/",
         "lin/v0",
         "mcan/v0",
+        "mcan/v0/soc/am263x",
+        "mcan/v0/dma/edma",
         "mcspi/v0",
         "mcspi/v0/lld",
         "mcspi/v0/lld/dma",
         "mcspi/v0/lld/dma/edma",
         "mdio/v0",
+        // "mmcsd/v1",
         "mmcsd/v1",
+        "mmcsd/v1/lld",
+        "mmcsd/v1/lld/internal",
         "mpu_firewall/v0",
         "mpu_firewall/v0/soc/am263x",
         `pinmux/am263x`,
@@ -113,9 +124,6 @@ const filedirs = {
         "rti/v0",
         "spinlock/v0",
         "sdfm/v0",
-        "secure_ipc_notify/",
-        "secure_ipc_notify/soc/am263x",
-        "secure_ipc_notify/soc/",
         "soc/am263x",
         "uart/v0",
         "uart/v0/lld",
@@ -146,6 +154,12 @@ const cflags_r5f = {
     ],
 };
 
+const includes = {
+    common: [
+        "${MCU_PLUS_SDK_PATH}/source/security",
+    ],
+};
+
 const buildOptionCombos = [
     { device: device, cpu: "r5f", cgt: "ti-arm-clang"},
 ];
@@ -172,6 +186,7 @@ function getComponentBuildProperty(buildOption) {
         build_property.files = files_r5f;
         build_property.asmfiles = asmfiles_r5f;
     }
+    build_property.includes = includes;
 
     return build_property;
 }

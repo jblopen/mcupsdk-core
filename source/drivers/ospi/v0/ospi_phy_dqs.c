@@ -1857,4 +1857,3 @@ int32_t OSPI_phyTuneDDR(OSPI_Handle handle, uint32_t flashOffset)
 
     return status;
 }
-

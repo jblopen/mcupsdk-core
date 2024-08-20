@@ -3,6 +3,7 @@ const common = require("../common.js");
 const component_file_list = [
     "source/board/.project/project.js",
     "source/drivers/.project/project.js",
+    "source/middleware/.project/project.js",
     "source/kernel/freertos/.project/project.js",
     "source/kernel/nortos/.project/project.js",
     "source/kernel/safertos/.project/project.js",
@@ -86,7 +87,8 @@ const example_file_list = [
     "examples/kernel/freertos/posix_demo/.project/project.js",
     "examples/kernel/freertos/interrupt_profiling/.project/project.js",
     "examples/kernel/freertos/task_switch/.project/project.js",
-    "examples/networking/enet_loopback/enet_cpsw_loopback/.project/project.js",
+    "examples/networking/enet_loopback/enet_cpsw_loopback/loopback_mac_end/.project/project.js",
+    "examples/networking/enet_loopback/enet_cpsw_loopback/loopback_phy_end/.project/project.js",
     "examples/networking/lwip/enet_lwip_cpsw/.project/project.js",
     "examples/networking/lwip/enet_cpsw_tcpserver/.project/project.js",
     "examples/networking/lwip/enet_cpsw_rawhttpserver/.project/project.js",

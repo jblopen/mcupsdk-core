@@ -41,10 +41,23 @@
 #include <pmic_core.h>
 #include <pmic_power.h>
 #include <string.h>
+#include <stdlib.h>
 
 /* ========================================================================== */
 /*                           Macros & Typedefs                                */
 /* ========================================================================== */
+
+#define PMIC_MCSPI_MSGSIZE 1U
+
+/* Sub address command as per tps653860xx datasheet */
+#define CRC_POLY			(0x107U)
+#define CRC_LEN 			(9U)
+#define CMD_SHIFT 			(24U)
+#define RW_SHIFT 			(16U)
+#define DAT_SHIFT 			(8U)
+#define CRC_SHIFT 			(0U)
+#define CMD_RD_EN 			(0x10U)
+#define CMD_WR_EN 			(0x00U)
 
 SemaphoreP_Object gPmicCoreObj;
 
@@ -129,7 +142,11 @@ int32_t PMIC_tps653860xxOpen(PMIC_Config *config, const PMIC_Params *params)
 
         /* Allocate memory for PMIC core Handle */
         coreHandle = (Pmic_CoreHandle_t *)malloc(sizeof(Pmic_CoreHandle_t));
-        memset(coreHandle, 0, sizeof(Pmic_CoreHandle_t));
+        if (NULL != coreHandle)
+        {
+            memset(coreHandle, 0, sizeof(Pmic_CoreHandle_t));
+            object->pmicCoreHandle = coreHandle;
+        }
 
         /* Fill parameters to pmicConfigData */
         pmicConfigData.pmicDeviceType = params->deviceType;
@@ -148,10 +165,6 @@ int32_t PMIC_tps653860xxOpen(PMIC_Config *config, const PMIC_Params *params)
 
         status += Pmic_init(&pmicConfigData, coreHandle);
 
-        if(status == SystemP_SUCCESS)
-        {
-            object->pmicCoreHandle = coreHandle;
-        }
     }
 
     if(SystemP_SUCCESS == status)
@@ -159,9 +172,14 @@ int32_t PMIC_tps653860xxOpen(PMIC_Config *config, const PMIC_Params *params)
         object->isOpen = 1;
         object->handle = (PMIC_Handle)config;
     }
+    else
+    {
+        PMIC_tps653860xxClose(config);
+    }
 
    return status;
 }
+
 
 /**
  * @brief  Configure the PMIC instance
@@ -189,13 +207,7 @@ int32_t PMIC_tps653860xxConfigure(PMIC_Config *config)
         object = (PMIC_Object *)config->object;
         pmicCoreHandle = object->pmicCoreHandle;
 
-        Pmic_CommonCtrlCfg_t commonCtrlCfg;
-
-        /* Unlock Register */
-        commonCtrlCfg.regLock_1 = PMIC_REGISTER_UNLOCK_DATA1;
-        commonCtrlCfg.regLock_2 = PMIC_REGISTER_UNLOCK_DATA2;
-
-        pmicStatus = Pmic_setRegisterLockUnlock(pmicCoreHandle, commonCtrlCfg);
+        Pmic_setRegLockState(pmicCoreHandle, PMIC_LOCK_DISABLE);
 
         uint8_t ldoNumber = 0U;
         Pmic_ldoCfgReg_t ldoCfg_exp;

@@ -159,6 +159,7 @@ static Bool UART_statusIsDataReady(UARTLLD_Handle handle);
 static uint32_t UART_fifoRead(UARTLLD_Handle handle, uint8_t *buffer, uint32_t readSizeRemaining);
 static void UART_readDataPolling(UARTLLD_Handle handle);
 static int32_t UART_readPolling(UARTLLD_Handle handle, UART_Transaction *trans);
+static int32_t UART_readPollingWithCounter(UARTLLD_Handle handle, UART_Transaction *trans);
 static void UART_i2310WA(uint32_t baseAddr);
 
 static void UART_configInstance(UARTLLD_Handle handle);
@@ -1863,6 +1864,72 @@ int32_t UART_lld_read(UARTLLD_Handle hUart, void * rxBuf, uint32_t size, uint32_
     return status;
 }
 
+int32_t UART_lld_readWithCounter(UARTLLD_Handle hUart, void * rxBuf, uint32_t size, uint32_t timeout,
+                     const UART_ExtendedParams *extendedParams)
+{
+    int32_t status = UART_TRANSFER_STATUS_SUCCESS;
+    UART_Transaction    *trans;
+
+    if(NULL_PTR != hUart)
+    {
+        trans = &hUart->readTrans;
+        /* Check if any transaction is in progress */
+        if(NULL_PTR != trans->buf)
+        {
+            trans->status = UART_TRANSFER_STATUS_ERROR_INUSE;
+            status = UART_TRANSFER_STATUS_FAILURE;
+        }
+        else
+        {
+             /* Initialize the input parameters */
+            UART_lld_Transaction_init(trans);
+            if(extendedParams != NULL)
+            {
+                trans->args   = extendedParams->args;
+            }
+            else
+            {
+                trans->args = NULL;
+            }
+
+            trans->buf = (void *) rxBuf;
+            trans->count = size;
+            trans->timeout = timeout;
+
+            if(hUart->state == UART_STATE_READY)
+            {
+                status = UART_checkTransaction(trans);
+            }
+            else
+            {
+                status = UART_TRANSFER_BUSY;
+            }
+
+            if(UART_TRANSFER_STATUS_SUCCESS == status)
+            {
+                /* Initialize transaction params */
+                hUart->readBuf             = trans->buf;
+                hUart->readTrans.timeout   = trans->timeout;
+                hUart->readCount           = 0U;
+                hUart->rxTimeoutCnt        = 0U;
+                hUart->readErrorCnt        = 0U;
+                hUart->state = UART_STATE_BUSY;
+
+                /* Polled mode */
+                status = UART_readPollingWithCounter(hUart, trans);
+                hUart->state = UART_STATE_READY;
+            }
+        }
+    }
+
+    else
+    {
+        status = UART_INVALID_PARAM;
+    }
+
+    return status;
+}
+
 int32_t UART_lld_readIntr(UARTLLD_Handle hUart, void * rxBuf, uint32_t size,
                           const UART_ExtendedParams *extendedParams)
 {
@@ -2281,10 +2348,14 @@ void UART_lld_controllerIsr(void* args)
     uint8_t             rdData;
     UARTLLD_Handle         hUart;
     uint32_t            retVal = TRUE;
+    uint32_t            lineStatus      = 0U;
+    uint32_t            startTicks, elapsedTicks;
+    UARTLLD_InitHandle        hUartInit;
 
     if(NULL != args)
     {
         hUart = (UARTLLD_Handle)args;
+        hUartInit = hUart->hUartInit;
 
         while (retVal == TRUE)
         {
@@ -2354,21 +2425,43 @@ void UART_lld_controllerIsr(void* args)
                     hUart->writeSizeRemaining = (uint32_t)UART_writeData(hUart, (hUart->writeSizeRemaining));
                     if ((hUart->writeSizeRemaining) == 0U)
                     {
-                        UART_intrDisable(hUart->baseAddr, UART_INTR_THR);
-
-                        /* Reset the write buffer so we can pass it back */
-                        hUart->writeBuf = (const void *)((uint8_t *)hUart->writeBuf - hUart->writeCount);
-                        if (hUart->writeTrans.buf != NULL)
+                        /* Update current tick value to perform timeout operation */
+                        startTicks = hUartInit->clockP_get();
+                        do
                         {
-                            hUart->writeTrans.count = (uint32_t)(hUart->writeCount);
-                            hUart->writeTrans.status = UART_TRANSFER_STATUS_SUCCESS;
+                            lineStatus = UART_readLineStatus(hUart->baseAddr);
+                            elapsedTicks = hUartInit->clockP_get() - startTicks;
                         }
-                        /*
-                        * Post transfer Sem in case of bloacking transfer.
-                        * Call the callback function in case of Callback mode.
-                        */
-                        hUart->hUartInit->writeCompleteCallbackFxn(hUart);
-                        UART_lld_Transaction_deInit(&hUart->writeTrans);
+                        while (((uint32_t) (UART_LSR_TX_FIFO_E_MASK |
+                                            UART_LSR_TX_SR_E_MASK) !=
+                                (lineStatus & (uint32_t) (UART_LSR_TX_FIFO_E_MASK |
+                                                        UART_LSR_TX_SR_E_MASK)))
+                                && (elapsedTicks < hUart->lineStatusTimeout));
+                        if(elapsedTicks >= hUart->lineStatusTimeout)
+                        {
+                            retVal             = UART_TRANSFER_TIMEOUT;
+                            hUart->writeTrans.status      = UART_TRANSFER_STATUS_TIMEOUT;
+                            hUart->writeTrans.count       = hUart->writeCount;
+                            UART_lld_Transaction_deInit(&hUart->writeTrans);
+                        }
+                        else
+                        {
+                            UART_intrDisable(hUart->baseAddr, UART_INTR_THR);
+
+                            /* Reset the write buffer so we can pass it back */
+                            hUart->writeBuf = (const void *)((uint8_t *)hUart->writeBuf - hUart->writeCount);
+                            if (hUart->writeTrans.buf != NULL)
+                            {
+                                hUart->writeTrans.count = (uint32_t)(hUart->writeCount);
+                                hUart->writeTrans.status = UART_TRANSFER_STATUS_SUCCESS;
+                            }
+                            /*
+                            * Post transfer Sem in case of bloacking transfer.
+                            * Call the callback function in case of Callback mode.
+                            */
+                            hUart->hUartInit->writeCompleteCallbackFxn(hUart);
+                            UART_lld_Transaction_deInit(&hUart->writeTrans);
+                        }
                     }
                 }
                 else
@@ -2441,6 +2534,45 @@ static int32_t UART_readPolling(UARTLLD_Handle hUart, UART_Transaction *trans)
         {
             /* timeout occured */
             timeoutElapsed = TRUE;
+        }
+    }
+
+    if ((hUart->readSizeRemaining == 0U) &&
+        (hUart->readErrorCnt == 0U) && (hUart->rxTimeoutCnt == 0U))
+    {
+        retVal             = UART_TRANSFER_STATUS_SUCCESS;
+        trans->status      = UART_TRANSFER_STATUS_SUCCESS;
+        UART_lld_Transaction_deInit(&hUart->readTrans);
+    }
+    else
+    {
+        /* Return UART_TRANSFER_TIMEOUT so that application gets whatever bytes are
+         * transmitted. Set the trans status to timeout so that
+         * application can handle the timeout. */
+        retVal             = UART_TRANSFER_TIMEOUT;
+        trans->status      = UART_TRANSFER_STATUS_TIMEOUT;
+        trans->count       = hUart->readCount;
+        UART_lld_Transaction_deInit(&hUart->readTrans);
+    }
+
+    return (retVal);
+}
+
+static int32_t UART_readPollingWithCounter(UARTLLD_Handle hUart, UART_Transaction *trans)
+{
+    int32_t             retVal  = UART_TRANSFER_STATUS_SUCCESS;
+    uint32_t            timeout = 0x6ffff;
+    hUart->readSizeRemaining = trans->count;
+
+    /* timeout operation */
+    while (( timeout > (uint32_t) 0U) && (0U != hUart->readSizeRemaining))
+    {
+        /* Transfer DATA */
+        UART_readDataPolling(hUart);
+        /* Check whether timeout happened or not */
+        if ( timeout > (uint32_t) 0U)
+        {
+            timeout--;
         }
     }
 

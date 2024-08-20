@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2019 Texas Instruments Incorporated
+ *  Copyright (C) 2019-2024 Texas Instruments Incorporated
  *
  *  Redistribution and use in source and binary forms, with or without
  *  modification, are permitted provided that the following conditions
@@ -51,6 +51,11 @@
 #if defined (SOC_AM62X)
 #include <drivers/sciclient/soc/am62x/sciclient_soc_priv.h>
 #include <drivers/sciclient/soc/am62x/sciclient_irq_rm.h>
+#endif
+
+#if defined (SOC_AM65X)
+#include <drivers/sciclient/soc/am65x/sciclient_soc_priv.h>
+#include <drivers/sciclient/soc/am65x/sciclient_irq_rm.h>
 #endif
 
 #ifdef __cplusplus

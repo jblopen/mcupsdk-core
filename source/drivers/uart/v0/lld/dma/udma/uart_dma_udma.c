@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2021-2023 Texas Instruments Incorporated
+ *  Copyright (C) 2021-2024 Texas Instruments Incorporated
  *
  *  Redistribution and use in source and binary forms, with or without
  *  modification, are permitted provided that the following conditions
@@ -35,6 +35,7 @@
 #include <drivers/uart/v0/lld/dma/uart_dma.h>
 #include <drivers/uart/v0/lld/dma/udma/uart_dma_udma.h>
 #include <drivers/uart/v0/lld/uart_lld.h>
+#include <drivers/uart/v0/lld/dma/soc/uart_dma_soc.h>
 #include <kernel/dpl/CacheP.h>
 
 /* Static Function Declarations */
@@ -88,6 +89,11 @@ static int32_t UART_udmaInitRxCh(UARTLLD_Handle hUart, const UART_UdmaChConfig *
     chPrms.fqRingPrms.ringMem       = udmaChCfg->rxRingMem;
     chPrms.fqRingPrms.ringMemSize   = udmaChCfg->ringMemSize;
     chPrms.fqRingPrms.elemCnt       = udmaChCfg->ringElemCnt;
+    if(udmaChCfg->isCqRingMem == UDMA_COMP_QUEUE_RING_MEM_ENABLED){
+        chPrms.cqRingPrms.ringMem       = udmaChCfg->cqRxRingMem;
+        chPrms.cqRingPrms.ringMemSize   = udmaChCfg->ringMemSize;
+        chPrms.cqRingPrms.elemCnt       = udmaChCfg->ringElemCnt;
+    }
     rxChHandle                      = udmaChCfg->rxChHandle;
     drvHandle                       = udmaChCfg->drvHandle;
 
@@ -133,6 +139,11 @@ static int32_t UART_udmaInitTxCh(UARTLLD_Handle hUart, const UART_UdmaChConfig *
     chPrms.fqRingPrms.ringMem       = udmaChCfg->txRingMem;
     chPrms.fqRingPrms.ringMemSize   = udmaChCfg->ringMemSize;
     chPrms.fqRingPrms.elemCnt       = udmaChCfg->ringElemCnt;
+    if(udmaChCfg->isCqRingMem == UDMA_COMP_QUEUE_RING_MEM_ENABLED){
+        chPrms.cqRingPrms.ringMem       = udmaChCfg->cqTxRingMem;
+        chPrms.cqRingPrms.ringMemSize   = udmaChCfg->ringMemSize;
+        chPrms.cqRingPrms.elemCnt       = udmaChCfg->ringElemCnt;
+    }
     txChHandle                      = udmaChCfg->txChHandle;
     drvHandle                       = udmaChCfg->drvHandle;
 
@@ -294,14 +305,10 @@ static void UART_udmaHpdInit(Udma_ChHandle chHandle,
     CSL_udmapCppi5SetIds(pHpd, descType, 0x321, UDMA_DEFAULT_FLOW_ID);
     CSL_udmapCppi5SetSrcTag(pHpd, 0x0000);     /* Not used */
     CSL_udmapCppi5SetDstTag(pHpd, 0x0000);     /* Not used */
-    /* Return Policy descriptors are reserved in case of AM243X/Am64X */
-    CSL_udmapCppi5SetReturnPolicy(
-        pHpd,
-        descType,
-        0U,
-        0U,
-        0U,
-        0U);
+
+    /* Return Policy descriptors*/
+    UART_udmapSetReturnPolicy(chHandle, pHpdMem);
+
     CSL_udmapCppi5LinkDesc(pHpd, 0U);
     CSL_udmapCppi5SetBufferAddr(pHpd, (uint64_t) Udma_defaultVirtToPhyFxn(destBuf, 0U, NULL));
     CSL_udmapCppi5SetBufferLen(pHpd, length);
@@ -397,11 +404,15 @@ static void UART_udmaIsrTx(Udma_EventHandle eventHandle,
     Udma_ChHandle      txChHandle;
     UART_UdmaChConfig   *udmaChCfg;
     UARTLLD_Handle        hUart;
+    UARTLLD_InitHandle hUartInit;
+    uint32_t            lineStatus      = 0U;
+    uint32_t            startTicks, elapsedTicks;
 
     /* Check parameters */
     if(NULL != args)
     {
         hUart = (UARTLLD_Handle)args;
+        hUartInit = hUart->hUartInit;
         udmaChCfg    = (UART_UdmaChConfig *)hUart->hUartInit->dmaChCfg;
         txChHandle  = udmaChCfg->txChHandle;
 
@@ -421,8 +432,29 @@ static void UART_udmaIsrTx(Udma_EventHandle eventHandle,
                 hUart->writeTrans.status = UART_TRANSFER_STATUS_ERROR_OTH;
             }
 
-            hUart->hUartInit->writeCompleteCallbackFxn(hUart);
-            UART_lld_Transaction_deInit(&hUart->writeTrans);
+            /* Update current tick value to perform timeout operation */
+            startTicks = hUartInit->clockP_get();
+            do
+            {
+                lineStatus = UART_readLineStatus(hUart->baseAddr);
+                elapsedTicks = hUartInit->clockP_get() - startTicks;
+            }
+            while (((uint32_t) (UART_LSR_TX_FIFO_E_MASK |
+                                UART_LSR_TX_SR_E_MASK) !=
+                    (lineStatus & (uint32_t) (UART_LSR_TX_FIFO_E_MASK |
+                                            UART_LSR_TX_SR_E_MASK)))
+                    && (elapsedTicks < hUart->lineStatusTimeout));
+
+            if(elapsedTicks >= hUart->lineStatusTimeout)
+            {
+                hUart->writeTrans.status      = UART_TRANSFER_STATUS_TIMEOUT;
+                hUart->writeTrans.count       = hUart->writeCount;
+            }
+            else
+            {
+                hUart->hUartInit->writeCompleteCallbackFxn(hUart);
+                UART_lld_Transaction_deInit(&hUart->writeTrans);
+            }
         }
         else
         {

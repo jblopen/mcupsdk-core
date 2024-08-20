@@ -25,13 +25,19 @@ FILES_common := \
     bootloader_hsmRt_load.c \
     bootloader_utils_addrxlate.c \
     bootloader_xmodem.c \
+    bootloader_uniflash_common.c \
     bootloader_uniflash.c \
+    bootloader_uniflash_rprc.c \
+    bootloader_uniflash_mcelf.c \
     bootloader_profile.c \
     xmodem.c \
     cbuff.c \
     cbuff_lvds.c \
     cbuff_transfer.c \
     cbuff_edma.c \
+    canfd.c \
+    canfd_soc.c \
+    canfd_dma_edma.c \
     crc16.c \
     crc.c \
     csirx.c \
@@ -43,9 +49,6 @@ FILES_common := \
     gpadc.c \
     gpadc_soc.c \
     gpio_v1.c \
-    hsmclient.c \
-    hsmclient_loadhsmrt.c \
-    hsmclient_utils.c \
     hwa.c \
     i2c_v1.c \
     i2c_v1_lld.c \
@@ -65,8 +68,6 @@ FILES_common := \
     qspi_lld.c \
     qspi_edma_lld.c \
     rti.c \
-    sipc_notify_src.c \
-    sipc_notify_cfg.c \
     soc.c \
     soc_rcm.c \
     uart_sci.c \
@@ -79,6 +80,9 @@ ASMFILES_common := \
 
 FILES_PATH_common = \
     bootloader \
+    bootloader/bootloader_uniflash \
+    bootloader/bootloader_uniflash/bootloader_uniflash_rprc \
+    bootloader/bootloader_uniflash/bootloader_uniflash_mcelf \
     bootloader/soc/am273x \
     cbuff/v1 \
     crc/v1 \
@@ -91,9 +95,6 @@ FILES_PATH_common = \
     gpadc/v0 \
     gpadc/v0/soc/am273x \
     gpio/v1 \
-    hsmclient \
-    hsmclient/soc/am273x \
-    hsmclient/utils \
     hwa/v0 \
     i2c/v1 \
     i2c/v1/lld \
@@ -102,6 +103,8 @@ FILES_PATH_common = \
     ipc_rpmsg \
     mcasp/v0 \
     mcan/v0 \
+    mcan/v0/soc/am273x \
+    mcan/v0/dma/edma \
     mibspi/v0 \
     mibspi/v0/edma \
     mibspi/v0/soc/am273x \
@@ -112,9 +115,6 @@ FILES_PATH_common = \
     qspi/v0 \
     qspi/v0/lld \
     qspi/v0/lld/edma \
-    secure_ipc_notify/ \
-    secure_ipc_notify/soc/am273x \
-    secure_ipc_notify/soc/ \
     soc/am273x \
     uart/v1 \
     watchdog/v0 \
@@ -125,6 +125,7 @@ FILES_PATH_common = \
 INCLUDES_common := \
     -I${CG_TOOL_ROOT}/include/c \
     -I${MCU_PLUS_SDK_PATH}/source \
+    -I${MCU_PLUS_SDK_PATH}/source/security \
 
 DEFINES_common := \
     -DSOC_AM273X \

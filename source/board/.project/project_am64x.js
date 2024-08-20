@@ -12,6 +12,8 @@ const files_r5f = {
         "flash.c",
         "flash_nand_gpmc.c",
         "flash_nor_ospi.c",
+        "ram.c",
+        "psram_gpmc.c",
         "led.c",
         "led_gpio.c",
         "led_tpic2810.c",
@@ -38,10 +40,17 @@ const files_m4f = {
 
 const files_a53 = {
     common: [
+		"flash.c",
+        "flash_nand_gpmc.c",
+        "flash_nand_ospi.c",
+        "flash_nor_ospi.c",
+        "ram.c",
+        "psram_gpmc.c",
         "led.c",
         "led_gpio.c",
         "led_tpic2810.c",
         "led_ioexp.c",
+        "nor_spi_sfdp.c",
         "ioexp_tca6424.c",
     ]
 }
@@ -54,10 +63,19 @@ const filedirs = {
         "flash/gpmc",
         "flash/sfdp",
         "flash/ospi",
+        "ram",
+        "ram/gpmc",
         "led",
         "ioexp",
     ],
 };
+
+const cflags_a53 = {
+    common: [
+        "-Wno-unused-function",
+        "-Wno-uninitialized"
+    ]
+}
 
 const buildOptionCombos = [
     { device: device, cpu: "r5f", cgt: "ti-arm-clang"},
@@ -90,6 +108,7 @@ function getComponentBuildProperty(buildOption) {
     }
     if(buildOption.cpu.match(/a53*/)) {
         build_property.files = files_a53;
+		build_property.cflags = cflags_a53;
     }
 
     return build_property;

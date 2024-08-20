@@ -24,6 +24,7 @@ const libdirs_nortos = {
         "${MCU_PLUS_SDK_PATH}/source/drivers/lib",
         "${MCU_PLUS_SDK_PATH}/source/board/lib",
         "${MCU_PLUS_SDK_PATH}/source/sdl/lib",
+        "${MCU_PLUS_SDK_PATH}/source/security/lib",
     ],
 };
 
@@ -33,6 +34,7 @@ const libs_nortos_r5f = {
         "drivers.am263x.r5f.ti-arm-clang.${ConfigName}.lib",
         "board.am263x.r5f.ti-arm-clang.${ConfigName}.lib",
         "sdl.am263x.r5f.ti-arm-clang.${ConfigName}.lib",
+        "security.am263x.r5f.ti-arm-clang.${ConfigName}.lib",
     ],
 };
 
@@ -48,6 +50,26 @@ const r5f0_macro = {
     ],
 
 };
+
+const includes = {
+    common: [
+        "${MCU_PLUS_SDK_PATH}/source/security",
+    ],
+};
+
+const template_options = {
+    bootformat: "RPRC",
+    enableFastBoot: false,
+}
+
+const templates =
+[
+    {
+        input: ".project/templates/am263x/sbl/sbl_qspi/main_backsupport.c.xdt",
+        output: "../main.c",
+        options: template_options
+    }
+];
 
 const syscfgfile = "../example.syscfg";
 
@@ -80,11 +102,13 @@ function getComponentBuildProperty(buildOption) {
     build_property.lnkfiles = lnkfiles;
     build_property.syscfgfile = syscfgfile;
     build_property.readmeDoxygenPageTag = readmeDoxygenPageTag;
+    build_property.templates = templates;
 
     if(buildOption.cpu.match(/r5f*/)) {
         build_property.libs = libs_nortos_r5f;
         build_property.defines = r5f0_macro;
     }
+    build_property.includes = includes;
 
     return build_property;
 }

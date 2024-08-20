@@ -1,7 +1,7 @@
 
 
 /*
- *  Copyright (C) 2023 Texas Instruments Incorporated
+ *  Copyright (C) 2024 Texas Instruments Incorporated
  *
  *  Redistribution and use in source and binary forms, with or without
  *  modification, are permitted provided that the following conditions
@@ -35,7 +35,7 @@
 
 /* Input file name = sciclient_defaultBoardcfg_pm_hex.bin.signed */
 
-/* Image generation timestamp : 2024-03-28 15:28:14.179376 */
+/* Image generation timestamp : 2024-07-23 13:56:35.348345 */
 
 #ifndef SCICLIENT_DEFAULTBOARDCFG_PM_HEX_H_
 #define SCICLIENT_DEFAULTBOARDCFG_PM_HEX_H_

@@ -63,6 +63,8 @@ void dac_constant_voltage_main(void *args)
     Drivers_open();
     Board_driversOpen();
 
+    
+    
     DebugP_log("DAC Constant Voltage Test Started ...\r\n");
 
     /* Set the DAC Output Value */

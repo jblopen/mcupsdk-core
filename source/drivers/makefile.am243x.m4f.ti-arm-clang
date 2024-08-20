@@ -18,6 +18,9 @@ LIBNAME:=drivers.am243x.m4f.ti-arm-clang.$(PROFILE).lib
 
 FILES_common := \
     adc.c \
+    canfd.c \
+    canfd_soc.c \
+    canfd_dma_udma.c \
     crc.c \
     csl_sec_proxy.c \
     ecap.c \
@@ -29,6 +32,7 @@ FILES_common := \
     gtc.c \
     i2c_v0.c \
     i2c_v0_lld.c \
+    ipc_notify_soc.c \
     ipc_notify_v0.c \
     ipc_notify_v0_cfg.c \
     ipc_rpmsg.c \
@@ -60,6 +64,9 @@ FILES_common := \
 FILES_PATH_common = \
     adc/v0 \
     bootloader \
+    bootloader/bootloader_uniflash \
+    bootloader/bootloader_uniflash/bootloader_uniflash_rprc \
+    bootloader/bootloader_uniflash/bootloader_uniflash_mcelf \
     bootloader/soc/am64x_am243x \
     crc/v0 \
     ddr/v0 \
@@ -89,20 +96,28 @@ FILES_PATH_common = \
     i2c/v0 \
     i2c/v0/lld \
     ipc_notify/v0 \
+    ipc_notify/v0/soc \
     ipc_notify/v0/soc/am243x \
     ipc_rpmsg/ \
     mcan/v0 \
+    mcan/v0/soc/am64x_am243x \
+    mcan/v0/dma/udma \
     mcspi/v0 \
     mcspi/v0/lld \
     mcspi/v0/lld/dma \
     mcspi/v0/lld/dma/udma \
     mcspi/v0/lld/dma/dummy \
     mdio/v0 \
+    mmcsd \
     mmcsd/v0 \
+    mmcsd/v0/lld \
+    mmcsd/v0/lld/internal \
     ospi \
     ospi/v0 \
     ospi/v0/dma \
+    ospi/v0/dma/soc/am64x_am243x \
     ospi/v0/dma/udma \
+    ospi/v0/soc/am64x_am243x \
     pcie \
     pcie/v0 \
     pcie/v0/soc/am64x_am243x \
@@ -119,16 +134,19 @@ FILES_PATH_common = \
     uart/v0/lld/dma \
     uart/v0/lld/dma/udma \
     uart/v0/lld/dma/dummy \
-    udma \
+    uart/v0/lld/dma/soc/am64x_am243x \
+    udma/v0 \
     udma/hw_include \
     udma/soc \
     udma/soc/am64x_am243x \
     watchdog/v1 \
     watchdog/v1/soc/am64x_am243x \
+    gp_timer/v0 \
 
 INCLUDES_common := \
     -I${CG_TOOL_ROOT}/include/c \
     -I${MCU_PLUS_SDK_PATH}/source \
+    -I${MCU_PLUS_SDK_PATH}/source/security \
 
 DEFINES_common := \
     -DSOC_AM243X \

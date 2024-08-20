@@ -25,13 +25,13 @@
 
     \imageStyle{setup_type.png,width:50%}
     \image html setup_type.png "CCS Setup Type"
-\cond SOC_AM243X || SOC_AM263X || SOC_AM263PX || SOC_AM273X
+\cond SOC_AM243X || SOC_AM263X || SOC_AM263PX || SOC_AM273X || SOC_AM261X
 - Follow the steps and at below screen, select the component as "Sitara AM2x MCUs" to install @VAR_SOC_NAME related emulation and GELs
 
     \imageStyle{select_components_sitara.png,width:50%}
     \image html select_components_sitara.png "CCS Select Components"
 \endcond
-\cond SOC_AM64X
+\cond SOC_AM64X || SOC_AM65X
 - Follow the steps and at below screen, select the component as "Sitara AM3x, AM4x, AM5x and AM6x MPUs" to install @VAR_SOC_NAME related emulation and GELs
 
     \imageStyle{select_components_sitara_am6x.png,width:50%}
@@ -79,7 +79,7 @@
     \imageStyle{ccs_setup_02.png,width:50%}
     \image html ccs_setup_02.png "CCS Compilers"
 
-\cond SOC_AM263PX
+\cond SOC_AM263PX || SOC_AM261X
 ## Update CSP {#CSP_UPDATE}
 \note AM263Px now supports one-click XIP .out application debugging with CSP 1.2.7. Refer to the guide below to update CSP and check for its availability.
 
@@ -209,6 +209,51 @@
 - Now you can move on to \ref EVM_SETUP_PAGE to prepare your EVM for running programs.
 \endcond
 
+\cond SOC_AM65X
+## Create Target Configuration {#CCS_NEW_TARGET_CONFIG}
+### AM65X-IDK
+- Goto "View > Target Configuration"
+
+    \imageStyle{new_target_config_00.png,width:20%}
+    \image html new_target_config_00.png "Target Configuration Menu"
+
+- Create a new target configuration
+
+    \imageStyle{new_target_config_01.png,width:25%}
+    \image html new_target_config_01.png "New Target Configuration"
+
+- Give a nice name to the new target configuration, typically {soc name}_{JTAG type}
+
+    \imageStyle{target_config_name.png,width:50%}
+    \image html target_config_name.png "Target Configuration Name"
+
+- Select connection as XDS110 USB Debug Probe
+
+    \imageStyle{target_config_xds.png,width:50%}
+    \image html target_config_xds.png "Select JTAG Connection"
+
+- In "Board or Device" type "@VAR_SOC_NAME" and select "IDK_AM65x"
+
+    \imageStyle{ccs_target_config_00.png,width:50%}
+    \image html ccs_target_config_00.png "Select @VAR_SOC_NAME IDK"
+
+- Bypass not used CPUs: Go to "Advanced" tab and enable the "Bypass" option as shown in the below image. typically, ICSS_Gx are not used by most developers, so these can be bypassed. Note, you can always
+  undo this change later, by editing the target configuration, should you need these CPUs.
+
+    \imageStyle{ccs_target_config_01.png,width:50%}
+    \image html ccs_target_config_01.png "Bypass unused targets"
+
+- Click "Save" to save the newly created target configuration.
+
+- The AM65x target configuration is just barebone, no GELs associated with PSC/PLL/DDR are loaded.
+  IDK_AM65X target configuration loads up and executes the appropriate GELs for the board.
+
+- For SBL, you can use either, but for CCS load, you need to use IDK_AM65X.
+
+- Now you can move on to \ref IDK_SETUP_PAGE to prepare your IDK for running programs.
+
+\endcond
+
 \cond SOC_AM243X
 ## Create Target Configuration {#CCS_NEW_TARGET_CONFIG}
 ### AM243X-LP
@@ -335,12 +380,12 @@
 
 \endcond
 
-\cond SOC_AM263X || SOC_AM263PX
+\cond SOC_AM263X || SOC_AM263PX || SOC_AM261X
 ## Create Target Configuration {#CCS_NEW_TARGET_CONFIG}
 \cond SOC_AM263X
 ### AM263X-CC / AM263X-LP
 \endcond
-\cond SOC_AM263PX
+\cond SOC_AM263PX || SOC_AM261X
 ### AM263PX-CC
 \endcond
 
@@ -367,7 +412,7 @@
 \cond SOC_AM263X
 - In "Board or Device" type "@VAR_SOC_NAME" and select "AM263x"
 \endcond
-\cond SOC_AM263PX
+\cond SOC_AM263PX || SOC_AM261X
 - In "Board or Device" type "@VAR_SOC_NAME" and select "AM263Px"
 \endcond
     \imageStyle{ccs_target_config_00.png,width:50%}
@@ -437,5 +482,8 @@ CS_DAP_0: Error initializing emulator: (Error -260 @ 0x0) An attempt to connect 
 invalid firmware update, invalid XDS110 serial number, or faulty USB cable. The firmware and serial number may be updated using the xdsdfu utility found in the
 .../ccs_base/common/uscif/xds110 directory of your installation. View the XDS110SupportReadMe.pdf file there for instructions. (Emulation package 9.4.0.00129)
 \endcode
-
+\if SOC_AM65X
+- There might be IDK specific issues in which the debugger maybe needs to be connected after the power is turned ON, or other similar issues. For this refer the IDK specific setup page at \ref IDK_SETUP_PAGE
+\else
 - There might be EVM specific issues in which the debugger maybe needs to be connected after the power is turned ON, or other similar issues. For this refer the evm specific setup page at \ref EVM_SETUP_PAGE
+\endif

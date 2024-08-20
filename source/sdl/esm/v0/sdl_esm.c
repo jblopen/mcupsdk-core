@@ -575,13 +575,15 @@ int32_t SDL_ESM_registerECCCallback(SDL_ESM_Inst esmInstType,uint32_t eventBitma
     {
         result = SDL_EFAIL;
     }
-
-    for(i=INIT_VAL;i<SDL_ESM_MAX_EVENT_MAP_NUM_WORDS;i++)
+    else
     {
-        SDL_ESM_Instance->eccenableBitmap[i] = eventBitmap[i];
+        for(i=INIT_VAL;i<SDL_ESM_MAX_EVENT_MAP_NUM_WORDS;i++)
+        {
+            SDL_ESM_Instance->eccenableBitmap[i] = eventBitmap[i];
+        }
+        SDL_ESM_Instance->eccCallBackFunction = callBack;
+        SDL_ESM_Instance->eccCallBackFunctionArg = callbackArg;
     }
-    SDL_ESM_Instance->eccCallBackFunction = callBack;
-    SDL_ESM_Instance->eccCallBackFunctionArg = callbackArg;
 
     return result;
 }
@@ -644,7 +646,7 @@ int32_t SDL_ESM_registerCCMCallback(SDL_ESM_Inst esmInstType,uint32_t eventBitma
 		}
 	}
 #endif
-#if defined (SOC_AM263X) || defined (SOC_AM263PX)
+#if defined (SOC_AM263X) || defined (SOC_AM263PX) || defined (SOC_AM261X)
         retval = Esmhandlerinit(instance);
     }
 #endif
@@ -696,6 +698,11 @@ int32_t SDL_ESM_setPinOutMode(SDL_ESM_Inst instance, esmErrOutMode_t pinOutMode)
                     retVal = SDL_PASS;
                 }
             }
+            else
+            {
+                /* For MISRA C Compliance */
+            }
+
             /* global interrupt are disabled, enable again global interrupt */
             sdlRet = SDL_ESM_enableGlobalIntr(baseAddr);
 

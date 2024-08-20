@@ -53,6 +53,8 @@ help:
 	@echo  $(MAKE) -s -C examples/drivers/epwm/epwm_xcmp_multiple_edges/am263x-lp/r5fss0-0_nortos/ti-arm-clang [all clean syscfg-gui syscfg]
 	@echo  $(MAKE) -s -C examples/drivers/epwm/epwm_diode_emulation/am263x-cc/r5fss0-0_nortos/ti-arm-clang [all clean syscfg-gui syscfg]
 	@echo  $(MAKE) -s -C examples/drivers/epwm/epwm_diode_emulation/am263x-lp/r5fss0-0_nortos/ti-arm-clang [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C examples/drivers/ecap/ecap_signal_monitoring/am263x-cc/r5fss0-0_nortos/ti-arm-clang [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C examples/drivers/ecap/ecap_signal_monitoring/am263x-lp/r5fss0-0_nortos/ti-arm-clang [all clean syscfg-gui syscfg]
 	@echo  $(MAKE) -s -C sdl/pbist/sdl_pbist_test/am263x-cc/r5fss0-0_nortos/ti-arm-clang [all clean syscfg-gui syscfg]
 	@echo  $(MAKE) -s -C sdl/pbist/sdl_pbist_test/am263x-cc/r5fss1-0_nortos/ti-arm-clang [all clean syscfg-gui syscfg]
 	@echo  $(MAKE) -s -C sdl/pbist/ip_pbist_test/am263x-cc/r5fss0-0_nortos/ti-arm-clang [all clean syscfg-gui syscfg]
@@ -124,6 +126,8 @@ help:
 	@echo  $(MAKE) -s -C drivers/mcspi/mcspi/am263x-cc/r5fss0-0_freertos/ti-arm-clang [all clean syscfg-gui syscfg]
 	@echo  $(MAKE) -s -C drivers/mcspi/mcspi/am263x-lp/r5fss0-0_freertos/ti-arm-clang [all clean syscfg-gui syscfg]
 	@echo  $(MAKE) -s -C drivers/mpu_firewall/mpu_firewall_test_am263x/am263x-cc/r5fss0-0_nortos/ti-arm-clang [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C drivers/rti/am263x-cc/r5fss0-0_freertos/ti-arm-clang [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C drivers/rti/am263x-lp/r5fss0-0_freertos/ti-arm-clang [all clean syscfg-gui syscfg]
 	@echo  $(MAKE) -s -C drivers/sdfm/am263x-cc/r5fss0-0_nortos/ti-arm-clang [all clean syscfg-gui syscfg]
 	@echo  $(MAKE) -s -C drivers/sdfm/am263x-lp/r5fss0-0_nortos/ti-arm-clang [all clean syscfg-gui syscfg]
 	@echo  $(MAKE) -s -C drivers/tester/am263x-cc/r5fss0-0_freertos/ti-arm-clang [all clean syscfg-gui syscfg]
@@ -196,10 +200,10 @@ help:
 	@echo  $(MAKE) -s -C kernel/dpl/dpl_ut/nortos/r5/HwiP_armv7r_handlers_nortos/am263x-lp/r5fss0-0_nortos/ti-arm-clang [all clean syscfg-gui syscfg]
 	@echo  $(MAKE) -s -C kernel/freertos/am263x-cc/r5fss0-0_freertos/ti-arm-clang [all clean syscfg-gui syscfg]
 	@echo  $(MAKE) -s -C kernel/freertos/am263x-lp/r5fss0-0_freertos/ti-arm-clang [all clean syscfg-gui syscfg]
-	@echo  $(MAKE) -s -C ../source/networking/icss_emac/firmware/icss_dual_emac/mii/am263x-cc/icssm-pru0_fw/ti-pru-cgt [all clean syscfg-gui syscfg]
-	@echo  $(MAKE) -s -C ../source/networking/icss_emac/firmware/icss_dual_emac/mii/am263x-cc/icssm-pru1_fw/ti-pru-cgt [all clean syscfg-gui syscfg]
-	@echo  $(MAKE) -s -C ../source/networking/icss_emac/firmware/icss_switch/mii/am263x-cc/icssm-pru0_fw/ti-pru-cgt [all clean syscfg-gui syscfg]
-	@echo  $(MAKE) -s -C ../source/networking/icss_emac/firmware/icss_switch/mii/am263x-cc/icssm-pru1_fw/ti-pru-cgt [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C ../source/networking/icss_emac/firmware/icss_dual_emac/mii/am263x-cc/icss_m0_pru0_fw/ti-pru-cgt [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C ../source/networking/icss_emac/firmware/icss_dual_emac/mii/am263x-cc/icss_m0_pru1_fw/ti-pru-cgt [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C ../source/networking/icss_emac/firmware/icss_switch/mii/am263x-cc/icss_m0_pru0_fw/ti-pru-cgt [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C ../source/networking/icss_emac/firmware/icss_switch/mii/am263x-cc/icss_m0_pru1_fw/ti-pru-cgt [all clean syscfg-gui syscfg]
 	@echo  $(MAKE) -s -C networking/enet_unittest/testcase_singlepkt/am263x-cc/r5fss0-0_freertos/ti-arm-clang [all clean syscfg-gui syscfg]
 	@echo  $(MAKE) -s -C networking/enet_unittest/testcase_singlepkt/am263x-lp/r5fss0-0_freertos/ti-arm-clang [all clean syscfg-gui syscfg]
 	@echo  $(MAKE) -s -C networking/cpsw_intervlan/am263x-cc/r5fss0-0_freertos/ti-arm-clang [all clean syscfg-gui syscfg]
@@ -251,6 +255,28 @@ help:
 	@echo  $(MAKE) -s -C drivers/mcspi/mcspi_controller_peripheral_dma/am263x-lp/system_freertos_nortos [all clean syscfg-gui syscfg]
 	@echo  $(MAKE) -s -C drivers/soc/soc_r5f/am263x-cc/system_freertos [all clean syscfg-gui syscfg]
 	@echo  $(MAKE) -s -C drivers/soc/soc_r5f/am263x-lp/system_freertos [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C mcal_ut/ipc_notify/ipc_notify_OnetoOne/am263x-cc/system_freertos_nortos [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C mcal_ut/ipc_notify/ipc_notify_OnetoOne/am263x-lp/system_freertos_nortos [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C mcal_ut/ipc_notify/ipc_notify_OnetoOne_BacktoBack/am263x-cc/system_freertos_nortos [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C mcal_ut/ipc_notify/ipc_notify_OnetoOne_BacktoBack/am263x-lp/system_freertos_nortos [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C mcal_ut/ipc_notify/ipc_notify_threeCores/am263x-cc/system_freertos_nortos [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C mcal_ut/ipc_notify/ipc_notify_threeCores/am263x-lp/system_freertos_nortos [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C mcal_ut/ipc_notify/ipc_notify_twoCores/am263x-cc/system_freertos_nortos [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C mcal_ut/ipc_notify/ipc_notify_twoCores/am263x-lp/system_freertos_nortos [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne/am263x-cc/system_freertos_nortos [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne/am263x-lp/system_freertos_nortos [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne_BacktoBack/am263x-cc/system_freertos_nortos [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne_BacktoBack/am263x-lp/system_freertos_nortos [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne_lessSize/am263x-cc/system_freertos_nortos [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne_lessSize/am263x-lp/system_freertos_nortos [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne_lowBuffer/am263x-cc/system_freertos_nortos [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne_lowBuffer/am263x-lp/system_freertos_nortos [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C mcal_ut/ipc_rpmsg/ipc_rpmsg_threeCores/am263x-cc/system_freertos_nortos [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C mcal_ut/ipc_rpmsg/ipc_rpmsg_threeCores/am263x-lp/system_freertos_nortos [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C mcal_ut/ipc_rpmsg/ipc_rpmsg_twoCores/am263x-cc/system_freertos_nortos [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C mcal_ut/ipc_rpmsg/ipc_rpmsg_twoCores/am263x-lp/system_freertos_nortos [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C mcal_ut/ipc_safeipc_echo/am263x-cc/system_freertos_nortos [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C mcal_ut/ipc_safeipc_echo/am263x-lp/system_freertos_nortos [all clean syscfg-gui syscfg]
 	@echo  $(MAKE) -s -C syscfg/syscfg_combo_1/am263x-cc/system_freertos_nortos [all clean syscfg-gui syscfg]
 	@echo  $(MAKE) -s -C syscfg/syscfg_combo_1/am263x-lp/system_freertos_nortos [all clean syscfg-gui syscfg]
 	@echo  .
@@ -345,6 +371,8 @@ BUILD_COMBO_EXAMPLE_ALL += epwm_xcmp_multiple_edges_am263x-cc_r5fss0-0_nortos_ti
 BUILD_COMBO_EXAMPLE_ALL += epwm_xcmp_multiple_edges_am263x-lp_r5fss0-0_nortos_ti-arm-clang
 BUILD_COMBO_EXAMPLE_ALL += epwm_diode_emulation_am263x-cc_r5fss0-0_nortos_ti-arm-clang
 BUILD_COMBO_EXAMPLE_ALL += epwm_diode_emulation_am263x-lp_r5fss0-0_nortos_ti-arm-clang
+BUILD_COMBO_EXAMPLE_ALL += ecap_signal_monitoring_am263x-cc_r5fss0-0_nortos_ti-arm-clang
+BUILD_COMBO_EXAMPLE_ALL += ecap_signal_monitoring_am263x-lp_r5fss0-0_nortos_ti-arm-clang
 BUILD_COMBO_EXAMPLE_ALL += sdl_pbist_test_app_am263x-cc_r5fss0-0_nortos_ti-arm-clang
 BUILD_COMBO_EXAMPLE_ALL += sdl_pbist_test_app_am263x-cc_r5fss1-0_nortos_ti-arm-clang
 BUILD_COMBO_EXAMPLE_ALL += pbist_test_app_am263x-cc_r5fss0-0_nortos_ti-arm-clang
@@ -416,6 +444,8 @@ BUILD_COMBO_EXAMPLE_ALL += test_mcan_am263x-lp_r5fss0-0_freertos_ti-arm-clang
 BUILD_COMBO_EXAMPLE_ALL += test_mcspi_am263x-cc_r5fss0-0_freertos_ti-arm-clang
 BUILD_COMBO_EXAMPLE_ALL += test_mcspi_am263x-lp_r5fss0-0_freertos_ti-arm-clang
 BUILD_COMBO_EXAMPLE_ALL += test_mpu_firewall_am263x-cc_r5fss0-0_nortos_ti-arm-clang
+BUILD_COMBO_EXAMPLE_ALL += test_rti_am263x-cc_r5fss0-0_freertos_ti-arm-clang
+BUILD_COMBO_EXAMPLE_ALL += test_rti_am263x-lp_r5fss0-0_freertos_ti-arm-clang
 BUILD_COMBO_EXAMPLE_ALL += test_sdfm_am263x-cc_r5fss0-0_nortos_ti-arm-clang
 BUILD_COMBO_EXAMPLE_ALL += test_sdfm_am263x-lp_r5fss0-0_nortos_ti-arm-clang
 BUILD_COMBO_EXAMPLE_ALL += tester_am263x-cc_r5fss0-0_freertos_ti-arm-clang
@@ -502,8 +532,8 @@ BUILD_COMBO_EXAMPLE_ALL += test_mbedtls_am263x-cc_r5fss0-0_freertos_ti-arm-clang
 BUILD_COMBO_EXAMPLE_ALL += test_mbedtls_am263x-lp_r5fss0-0_freertos_ti-arm-clang
 BUILD_COMBO_EXAMPLE_ALL += mbedtls_benchmark_am263x-cc_r5fss0-0_freertos_ti-arm-clang
 BUILD_COMBO_EXAMPLE_ALL += mbedtls_benchmark_am263x-lp_r5fss0-0_freertos_ti-arm-clang
-BUILD_COMBO_EXAMPLE_ALL += enet_cpsw_loopback_am263x-cc_r5fss0-0_freertos_ti-arm-clang
-BUILD_COMBO_EXAMPLE_ALL += enet_cpsw_loopback_am263x-lp_r5fss0-0_freertos_ti-arm-clang
+BUILD_COMBO_EXAMPLE_ALL += enet_test_cpsw_layer2_performance_am263x-cc_r5fss0-0_freertos_ti-arm-clang
+BUILD_COMBO_EXAMPLE_ALL += enet_test_cpsw_layer2_performance_am263x-lp_r5fss0-0_freertos_ti-arm-clang
 BUILD_COMBO_EXAMPLE_ALL += test_dthe_aes_cbc_am263x-cc_r5fss0-0_nortos_ti-arm-clang
 BUILD_COMBO_EXAMPLE_ALL += test_dthe_aes_cbc_stream_am263x-cc_r5fss0-0_nortos_ti-arm-clang
 BUILD_COMBO_EXAMPLE_ALL += test_dthe_aes_cfb_am263x-cc_r5fss0-0_nortos_ti-arm-clang
@@ -536,6 +566,28 @@ BUILD_COMBO_EXAMPLE_ALL += test_mcspi_controller_peripheral_dma_am263x-cc_system
 BUILD_COMBO_EXAMPLE_ALL += test_mcspi_controller_peripheral_dma_am263x-lp_system_freertos_nortos
 BUILD_COMBO_EXAMPLE_ALL += test_soc_r5f_am263x-cc_system_freertos
 BUILD_COMBO_EXAMPLE_ALL += test_soc_r5f_am263x-lp_system_freertos
+BUILD_COMBO_EXAMPLE_ALL += ipc_notify_OnetoOne_am263x-cc_system_freertos_nortos
+BUILD_COMBO_EXAMPLE_ALL += ipc_notify_OnetoOne_am263x-lp_system_freertos_nortos
+BUILD_COMBO_EXAMPLE_ALL += ipc_notify_OnetoOne_BacktoBack_am263x-cc_system_freertos_nortos
+BUILD_COMBO_EXAMPLE_ALL += ipc_notify_OnetoOne_BacktoBack_am263x-lp_system_freertos_nortos
+BUILD_COMBO_EXAMPLE_ALL += ipc_notify_threeCores_am263x-cc_system_freertos_nortos
+BUILD_COMBO_EXAMPLE_ALL += ipc_notify_threeCores_am263x-lp_system_freertos_nortos
+BUILD_COMBO_EXAMPLE_ALL += ipc_notify_twoCores_am263x-cc_system_freertos_nortos
+BUILD_COMBO_EXAMPLE_ALL += ipc_notify_twoCores_am263x-lp_system_freertos_nortos
+BUILD_COMBO_EXAMPLE_ALL += ipc_rpmsg_OnetoOne_am263x-cc_system_freertos_nortos
+BUILD_COMBO_EXAMPLE_ALL += ipc_rpmsg_OnetoOne_am263x-lp_system_freertos_nortos
+BUILD_COMBO_EXAMPLE_ALL += ipc_rpmsg_OnetoOne_BacktoBack_am263x-cc_system_freertos_nortos
+BUILD_COMBO_EXAMPLE_ALL += ipc_rpmsg_OnetoOne_BacktoBack_am263x-lp_system_freertos_nortos
+BUILD_COMBO_EXAMPLE_ALL += ipc_rpmsg_OnetoOne_lessSize_am263x-cc_system_freertos_nortos
+BUILD_COMBO_EXAMPLE_ALL += ipc_rpmsg_OnetoOne_lessSize_am263x-lp_system_freertos_nortos
+BUILD_COMBO_EXAMPLE_ALL += ipc_rpmsg_OnetoOne_lowBuffer_am263x-cc_system_freertos_nortos
+BUILD_COMBO_EXAMPLE_ALL += ipc_rpmsg_OnetoOne_lowBuffer_am263x-lp_system_freertos_nortos
+BUILD_COMBO_EXAMPLE_ALL += ipc_rpmsg_threeCores_am263x-cc_system_freertos_nortos
+BUILD_COMBO_EXAMPLE_ALL += ipc_rpmsg_threeCores_am263x-lp_system_freertos_nortos
+BUILD_COMBO_EXAMPLE_ALL += ipc_rpmsg_twoCores_am263x-cc_system_freertos_nortos
+BUILD_COMBO_EXAMPLE_ALL += ipc_rpmsg_twoCores_am263x-lp_system_freertos_nortos
+BUILD_COMBO_EXAMPLE_ALL += ipc_safeipc_echo_am263x-cc_system_freertos_nortos
+BUILD_COMBO_EXAMPLE_ALL += ipc_safeipc_echo_am263x-lp_system_freertos_nortos
 BUILD_COMBO_EXAMPLE_ALL += test_syscfg_combo_1_am263x-cc_system_freertos_nortos
 BUILD_COMBO_EXAMPLE_ALL += test_syscfg_combo_1_am263x-lp_system_freertos_nortos
 
@@ -543,10 +595,10 @@ BUILD_COMBO_EXAMPLE_ALL += test_syscfg_combo_1_am263x-lp_system_freertos_nortos
 
 BUILD_COMBO_EXAMPLE_PRIVATE_ALL =
 # Various Private Example Targets
-BUILD_COMBO_EXAMPLE_PRIVATE_ALL += dual_emac_am263x-cc_icssm-pru0_fw_ti-pru-cgt
-BUILD_COMBO_EXAMPLE_PRIVATE_ALL += dual_emac_am263x-cc_icssm-pru1_fw_ti-pru-cgt
-BUILD_COMBO_EXAMPLE_PRIVATE_ALL += switch_am263x-cc_icssm-pru0_fw_ti-pru-cgt
-BUILD_COMBO_EXAMPLE_PRIVATE_ALL += switch_am263x-cc_icssm-pru1_fw_ti-pru-cgt
+BUILD_COMBO_EXAMPLE_PRIVATE_ALL += dual_emac_am263x-cc_icss_m0_pru0_fw_ti-pru-cgt
+BUILD_COMBO_EXAMPLE_PRIVATE_ALL += dual_emac_am263x-cc_icss_m0_pru1_fw_ti-pru-cgt
+BUILD_COMBO_EXAMPLE_PRIVATE_ALL += switch_am263x-cc_icss_m0_pru0_fw_ti-pru-cgt
+BUILD_COMBO_EXAMPLE_PRIVATE_ALL += switch_am263x-cc_icss_m0_pru1_fw_ti-pru-cgt
 # Various Private System Example Targets
 
 
@@ -582,6 +634,12 @@ examples-private: $(BUILD_COMBO_EXAMPLE_PRIVATE_ALL)
 
  epwm_diode_emulation_am263x-lp_r5fss0-0_nortos_ti-arm-clang:
 	$(MAKE) -C examples/drivers/epwm/epwm_diode_emulation/am263x-lp/r5fss0-0_nortos/ti-arm-clang -f makefile all
+
+ ecap_signal_monitoring_am263x-cc_r5fss0-0_nortos_ti-arm-clang:
+	$(MAKE) -C examples/drivers/ecap/ecap_signal_monitoring/am263x-cc/r5fss0-0_nortos/ti-arm-clang -f makefile all
+
+ ecap_signal_monitoring_am263x-lp_r5fss0-0_nortos_ti-arm-clang:
+	$(MAKE) -C examples/drivers/ecap/ecap_signal_monitoring/am263x-lp/r5fss0-0_nortos/ti-arm-clang -f makefile all
 
  sdl_pbist_test_app_am263x-cc_r5fss0-0_nortos_ti-arm-clang:
 	$(MAKE) -C sdl/pbist/sdl_pbist_test/am263x-cc/r5fss0-0_nortos/ti-arm-clang -f makefile all
@@ -795,6 +853,12 @@ examples-private: $(BUILD_COMBO_EXAMPLE_PRIVATE_ALL)
 
  test_mpu_firewall_am263x-cc_r5fss0-0_nortos_ti-arm-clang:
 	$(MAKE) -C drivers/mpu_firewall/mpu_firewall_test_am263x/am263x-cc/r5fss0-0_nortos/ti-arm-clang -f makefile all
+
+ test_rti_am263x-cc_r5fss0-0_freertos_ti-arm-clang:
+	$(MAKE) -C drivers/rti/am263x-cc/r5fss0-0_freertos/ti-arm-clang -f makefile all
+
+ test_rti_am263x-lp_r5fss0-0_freertos_ti-arm-clang:
+	$(MAKE) -C drivers/rti/am263x-lp/r5fss0-0_freertos/ti-arm-clang -f makefile all
 
  test_sdfm_am263x-cc_r5fss0-0_nortos_ti-arm-clang:
 	$(MAKE) -C drivers/sdfm/am263x-cc/r5fss0-0_nortos/ti-arm-clang -f makefile all
@@ -1012,17 +1076,17 @@ examples-private: $(BUILD_COMBO_EXAMPLE_PRIVATE_ALL)
  test_freertos_am263x-lp_r5fss0-0_freertos_ti-arm-clang:
 	$(MAKE) -C kernel/freertos/am263x-lp/r5fss0-0_freertos/ti-arm-clang -f makefile all
 
- dual_emac_am263x-cc_icssm-pru0_fw_ti-pru-cgt:
-	$(MAKE) -C ../source/networking/icss_emac/firmware/icss_dual_emac/mii/am263x-cc/icssm-pru0_fw/ti-pru-cgt -f makefile all
+ dual_emac_am263x-cc_icss_m0_pru0_fw_ti-pru-cgt:
+	$(MAKE) -C ../source/networking/icss_emac/firmware/icss_dual_emac/mii/am263x-cc/icss_m0_pru0_fw/ti-pru-cgt -f makefile all
 
- dual_emac_am263x-cc_icssm-pru1_fw_ti-pru-cgt:
-	$(MAKE) -C ../source/networking/icss_emac/firmware/icss_dual_emac/mii/am263x-cc/icssm-pru1_fw/ti-pru-cgt -f makefile all
+ dual_emac_am263x-cc_icss_m0_pru1_fw_ti-pru-cgt:
+	$(MAKE) -C ../source/networking/icss_emac/firmware/icss_dual_emac/mii/am263x-cc/icss_m0_pru1_fw/ti-pru-cgt -f makefile all
 
- switch_am263x-cc_icssm-pru0_fw_ti-pru-cgt:
-	$(MAKE) -C ../source/networking/icss_emac/firmware/icss_switch/mii/am263x-cc/icssm-pru0_fw/ti-pru-cgt -f makefile all
+ switch_am263x-cc_icss_m0_pru0_fw_ti-pru-cgt:
+	$(MAKE) -C ../source/networking/icss_emac/firmware/icss_switch/mii/am263x-cc/icss_m0_pru0_fw/ti-pru-cgt -f makefile all
 
- switch_am263x-cc_icssm-pru1_fw_ti-pru-cgt:
-	$(MAKE) -C ../source/networking/icss_emac/firmware/icss_switch/mii/am263x-cc/icssm-pru1_fw/ti-pru-cgt -f makefile all
+ switch_am263x-cc_icss_m0_pru1_fw_ti-pru-cgt:
+	$(MAKE) -C ../source/networking/icss_emac/firmware/icss_switch/mii/am263x-cc/icss_m0_pru1_fw/ti-pru-cgt -f makefile all
 
  testcase_singlepkt_am263x-cc_r5fss0-0_freertos_ti-arm-clang:
 	$(MAKE) -C networking/enet_unittest/testcase_singlepkt/am263x-cc/r5fss0-0_freertos/ti-arm-clang -f makefile all
@@ -1066,10 +1130,10 @@ examples-private: $(BUILD_COMBO_EXAMPLE_PRIVATE_ALL)
  mbedtls_benchmark_am263x-lp_r5fss0-0_freertos_ti-arm-clang:
 	$(MAKE) -C networking/mbedtls_benchmark/am263x-lp/r5fss0-0_freertos/ti-arm-clang -f makefile all
 
- enet_cpsw_loopback_am263x-cc_r5fss0-0_freertos_ti-arm-clang:
+ enet_test_cpsw_layer2_performance_am263x-cc_r5fss0-0_freertos_ti-arm-clang:
 	$(MAKE) -C networking/performance_benchmarks/ethernet_cpsw/layer2_performance/am263x-cc/r5fss0-0_freertos/ti-arm-clang -f makefile all
 
- enet_cpsw_loopback_am263x-lp_r5fss0-0_freertos_ti-arm-clang:
+ enet_test_cpsw_layer2_performance_am263x-lp_r5fss0-0_freertos_ti-arm-clang:
 	$(MAKE) -C networking/performance_benchmarks/ethernet_cpsw/layer2_performance/am263x-lp/r5fss0-0_freertos/ti-arm-clang -f makefile all
 
  test_dthe_aes_cbc_am263x-cc_r5fss0-0_nortos_ti-arm-clang:
@@ -1168,6 +1232,72 @@ examples-private: $(BUILD_COMBO_EXAMPLE_PRIVATE_ALL)
  test_soc_r5f_am263x-lp_system_freertos:
 	$(MAKE) -C drivers/soc/soc_r5f/am263x-lp/system_freertos -f makefile all
 
+ ipc_notify_OnetoOne_am263x-cc_system_freertos_nortos:
+	$(MAKE) -C mcal_ut/ipc_notify/ipc_notify_OnetoOne/am263x-cc/system_freertos_nortos -f makefile all
+
+ ipc_notify_OnetoOne_am263x-lp_system_freertos_nortos:
+	$(MAKE) -C mcal_ut/ipc_notify/ipc_notify_OnetoOne/am263x-lp/system_freertos_nortos -f makefile all
+
+ ipc_notify_OnetoOne_BacktoBack_am263x-cc_system_freertos_nortos:
+	$(MAKE) -C mcal_ut/ipc_notify/ipc_notify_OnetoOne_BacktoBack/am263x-cc/system_freertos_nortos -f makefile all
+
+ ipc_notify_OnetoOne_BacktoBack_am263x-lp_system_freertos_nortos:
+	$(MAKE) -C mcal_ut/ipc_notify/ipc_notify_OnetoOne_BacktoBack/am263x-lp/system_freertos_nortos -f makefile all
+
+ ipc_notify_threeCores_am263x-cc_system_freertos_nortos:
+	$(MAKE) -C mcal_ut/ipc_notify/ipc_notify_threeCores/am263x-cc/system_freertos_nortos -f makefile all
+
+ ipc_notify_threeCores_am263x-lp_system_freertos_nortos:
+	$(MAKE) -C mcal_ut/ipc_notify/ipc_notify_threeCores/am263x-lp/system_freertos_nortos -f makefile all
+
+ ipc_notify_twoCores_am263x-cc_system_freertos_nortos:
+	$(MAKE) -C mcal_ut/ipc_notify/ipc_notify_twoCores/am263x-cc/system_freertos_nortos -f makefile all
+
+ ipc_notify_twoCores_am263x-lp_system_freertos_nortos:
+	$(MAKE) -C mcal_ut/ipc_notify/ipc_notify_twoCores/am263x-lp/system_freertos_nortos -f makefile all
+
+ ipc_rpmsg_OnetoOne_am263x-cc_system_freertos_nortos:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne/am263x-cc/system_freertos_nortos -f makefile all
+
+ ipc_rpmsg_OnetoOne_am263x-lp_system_freertos_nortos:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne/am263x-lp/system_freertos_nortos -f makefile all
+
+ ipc_rpmsg_OnetoOne_BacktoBack_am263x-cc_system_freertos_nortos:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne_BacktoBack/am263x-cc/system_freertos_nortos -f makefile all
+
+ ipc_rpmsg_OnetoOne_BacktoBack_am263x-lp_system_freertos_nortos:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne_BacktoBack/am263x-lp/system_freertos_nortos -f makefile all
+
+ ipc_rpmsg_OnetoOne_lessSize_am263x-cc_system_freertos_nortos:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne_lessSize/am263x-cc/system_freertos_nortos -f makefile all
+
+ ipc_rpmsg_OnetoOne_lessSize_am263x-lp_system_freertos_nortos:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne_lessSize/am263x-lp/system_freertos_nortos -f makefile all
+
+ ipc_rpmsg_OnetoOne_lowBuffer_am263x-cc_system_freertos_nortos:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne_lowBuffer/am263x-cc/system_freertos_nortos -f makefile all
+
+ ipc_rpmsg_OnetoOne_lowBuffer_am263x-lp_system_freertos_nortos:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne_lowBuffer/am263x-lp/system_freertos_nortos -f makefile all
+
+ ipc_rpmsg_threeCores_am263x-cc_system_freertos_nortos:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_threeCores/am263x-cc/system_freertos_nortos -f makefile all
+
+ ipc_rpmsg_threeCores_am263x-lp_system_freertos_nortos:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_threeCores/am263x-lp/system_freertos_nortos -f makefile all
+
+ ipc_rpmsg_twoCores_am263x-cc_system_freertos_nortos:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_twoCores/am263x-cc/system_freertos_nortos -f makefile all
+
+ ipc_rpmsg_twoCores_am263x-lp_system_freertos_nortos:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_twoCores/am263x-lp/system_freertos_nortos -f makefile all
+
+ ipc_safeipc_echo_am263x-cc_system_freertos_nortos:
+	$(MAKE) -C mcal_ut/ipc_safeipc_echo/am263x-cc/system_freertos_nortos -f makefile all
+
+ ipc_safeipc_echo_am263x-lp_system_freertos_nortos:
+	$(MAKE) -C mcal_ut/ipc_safeipc_echo/am263x-lp/system_freertos_nortos -f makefile all
+
  test_syscfg_combo_1_am263x-cc_system_freertos_nortos:
 	$(MAKE) -C syscfg/syscfg_combo_1/am263x-cc/system_freertos_nortos -f makefile all
 
@@ -1186,6 +1316,8 @@ BUILD_COMBO_EXAMPLE_CLEAN_ALL += epwm_xcmp_multiple_edges_am263x-cc_r5fss0-0_nor
 BUILD_COMBO_EXAMPLE_CLEAN_ALL += epwm_xcmp_multiple_edges_am263x-lp_r5fss0-0_nortos_ti-arm-clang_clean
 BUILD_COMBO_EXAMPLE_CLEAN_ALL += epwm_diode_emulation_am263x-cc_r5fss0-0_nortos_ti-arm-clang_clean
 BUILD_COMBO_EXAMPLE_CLEAN_ALL += epwm_diode_emulation_am263x-lp_r5fss0-0_nortos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += ecap_signal_monitoring_am263x-cc_r5fss0-0_nortos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += ecap_signal_monitoring_am263x-lp_r5fss0-0_nortos_ti-arm-clang_clean
 BUILD_COMBO_EXAMPLE_CLEAN_ALL += sdl_pbist_test_app_am263x-cc_r5fss0-0_nortos_ti-arm-clang_clean
 BUILD_COMBO_EXAMPLE_CLEAN_ALL += sdl_pbist_test_app_am263x-cc_r5fss1-0_nortos_ti-arm-clang_clean
 BUILD_COMBO_EXAMPLE_CLEAN_ALL += pbist_test_app_am263x-cc_r5fss0-0_nortos_ti-arm-clang_clean
@@ -1257,6 +1389,8 @@ BUILD_COMBO_EXAMPLE_CLEAN_ALL += test_mcan_am263x-lp_r5fss0-0_freertos_ti-arm-cl
 BUILD_COMBO_EXAMPLE_CLEAN_ALL += test_mcspi_am263x-cc_r5fss0-0_freertos_ti-arm-clang_clean
 BUILD_COMBO_EXAMPLE_CLEAN_ALL += test_mcspi_am263x-lp_r5fss0-0_freertos_ti-arm-clang_clean
 BUILD_COMBO_EXAMPLE_CLEAN_ALL += test_mpu_firewall_am263x-cc_r5fss0-0_nortos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += test_rti_am263x-cc_r5fss0-0_freertos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += test_rti_am263x-lp_r5fss0-0_freertos_ti-arm-clang_clean
 BUILD_COMBO_EXAMPLE_CLEAN_ALL += test_sdfm_am263x-cc_r5fss0-0_nortos_ti-arm-clang_clean
 BUILD_COMBO_EXAMPLE_CLEAN_ALL += test_sdfm_am263x-lp_r5fss0-0_nortos_ti-arm-clang_clean
 BUILD_COMBO_EXAMPLE_CLEAN_ALL += tester_am263x-cc_r5fss0-0_freertos_ti-arm-clang_clean
@@ -1343,8 +1477,8 @@ BUILD_COMBO_EXAMPLE_CLEAN_ALL += test_mbedtls_am263x-cc_r5fss0-0_freertos_ti-arm
 BUILD_COMBO_EXAMPLE_CLEAN_ALL += test_mbedtls_am263x-lp_r5fss0-0_freertos_ti-arm-clang_clean
 BUILD_COMBO_EXAMPLE_CLEAN_ALL += mbedtls_benchmark_am263x-cc_r5fss0-0_freertos_ti-arm-clang_clean
 BUILD_COMBO_EXAMPLE_CLEAN_ALL += mbedtls_benchmark_am263x-lp_r5fss0-0_freertos_ti-arm-clang_clean
-BUILD_COMBO_EXAMPLE_CLEAN_ALL += enet_cpsw_loopback_am263x-cc_r5fss0-0_freertos_ti-arm-clang_clean
-BUILD_COMBO_EXAMPLE_CLEAN_ALL += enet_cpsw_loopback_am263x-lp_r5fss0-0_freertos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += enet_test_cpsw_layer2_performance_am263x-cc_r5fss0-0_freertos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += enet_test_cpsw_layer2_performance_am263x-lp_r5fss0-0_freertos_ti-arm-clang_clean
 BUILD_COMBO_EXAMPLE_CLEAN_ALL += test_dthe_aes_cbc_am263x-cc_r5fss0-0_nortos_ti-arm-clang_clean
 BUILD_COMBO_EXAMPLE_CLEAN_ALL += test_dthe_aes_cbc_stream_am263x-cc_r5fss0-0_nortos_ti-arm-clang_clean
 BUILD_COMBO_EXAMPLE_CLEAN_ALL += test_dthe_aes_cfb_am263x-cc_r5fss0-0_nortos_ti-arm-clang_clean
@@ -1376,16 +1510,38 @@ BUILD_COMBO_EXAMPLE_CLEAN_ALL += test_mcspi_controller_peripheral_dma_am263x-cc_
 BUILD_COMBO_EXAMPLE_CLEAN_ALL += test_mcspi_controller_peripheral_dma_am263x-lp_system_freertos_nortos_clean
 BUILD_COMBO_EXAMPLE_CLEAN_ALL += test_soc_r5f_am263x-cc_system_freertos_clean
 BUILD_COMBO_EXAMPLE_CLEAN_ALL += test_soc_r5f_am263x-lp_system_freertos_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += ipc_notify_OnetoOne_am263x-cc_system_freertos_nortos_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += ipc_notify_OnetoOne_am263x-lp_system_freertos_nortos_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += ipc_notify_OnetoOne_BacktoBack_am263x-cc_system_freertos_nortos_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += ipc_notify_OnetoOne_BacktoBack_am263x-lp_system_freertos_nortos_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += ipc_notify_threeCores_am263x-cc_system_freertos_nortos_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += ipc_notify_threeCores_am263x-lp_system_freertos_nortos_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += ipc_notify_twoCores_am263x-cc_system_freertos_nortos_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += ipc_notify_twoCores_am263x-lp_system_freertos_nortos_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += ipc_rpmsg_OnetoOne_am263x-cc_system_freertos_nortos_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += ipc_rpmsg_OnetoOne_am263x-lp_system_freertos_nortos_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += ipc_rpmsg_OnetoOne_BacktoBack_am263x-cc_system_freertos_nortos_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += ipc_rpmsg_OnetoOne_BacktoBack_am263x-lp_system_freertos_nortos_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += ipc_rpmsg_OnetoOne_lessSize_am263x-cc_system_freertos_nortos_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += ipc_rpmsg_OnetoOne_lessSize_am263x-lp_system_freertos_nortos_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += ipc_rpmsg_OnetoOne_lowBuffer_am263x-cc_system_freertos_nortos_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += ipc_rpmsg_OnetoOne_lowBuffer_am263x-lp_system_freertos_nortos_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += ipc_rpmsg_threeCores_am263x-cc_system_freertos_nortos_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += ipc_rpmsg_threeCores_am263x-lp_system_freertos_nortos_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += ipc_rpmsg_twoCores_am263x-cc_system_freertos_nortos_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += ipc_rpmsg_twoCores_am263x-lp_system_freertos_nortos_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += ipc_safeipc_echo_am263x-cc_system_freertos_nortos_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += ipc_safeipc_echo_am263x-lp_system_freertos_nortos_clean
 BUILD_COMBO_EXAMPLE_CLEAN_ALL += test_syscfg_combo_1_am263x-cc_system_freertos_nortos_clean
 BUILD_COMBO_EXAMPLE_CLEAN_ALL += test_syscfg_combo_1_am263x-lp_system_freertos_nortos_clean
 
 
 BUILD_COMBO_EXAMPLE_PRIVATE_CLEAN_ALL =
 # Various Private Example Targets
-BUILD_COMBO_EXAMPLE_PRIVATE_CLEAN_ALL += dual_emac_am263x-cc_icssm-pru0_fw_ti-pru-cgt_clean
-BUILD_COMBO_EXAMPLE_PRIVATE_CLEAN_ALL += dual_emac_am263x-cc_icssm-pru1_fw_ti-pru-cgt_clean
-BUILD_COMBO_EXAMPLE_PRIVATE_CLEAN_ALL += switch_am263x-cc_icssm-pru0_fw_ti-pru-cgt_clean
-BUILD_COMBO_EXAMPLE_PRIVATE_CLEAN_ALL += switch_am263x-cc_icssm-pru1_fw_ti-pru-cgt_clean
+BUILD_COMBO_EXAMPLE_PRIVATE_CLEAN_ALL += dual_emac_am263x-cc_icss_m0_pru0_fw_ti-pru-cgt_clean
+BUILD_COMBO_EXAMPLE_PRIVATE_CLEAN_ALL += dual_emac_am263x-cc_icss_m0_pru1_fw_ti-pru-cgt_clean
+BUILD_COMBO_EXAMPLE_PRIVATE_CLEAN_ALL += switch_am263x-cc_icss_m0_pru0_fw_ti-pru-cgt_clean
+BUILD_COMBO_EXAMPLE_PRIVATE_CLEAN_ALL += switch_am263x-cc_icss_m0_pru1_fw_ti-pru-cgt_clean
 # Various Private System Example Targets
 
 examples-clean: $(BUILD_COMBO_EXAMPLE_CLEAN_ALL)
@@ -1418,6 +1574,12 @@ examples-private-clean: $(BUILD_COMBO_EXAMPLE_PRIVATE_CLEAN_ALL)
 
  epwm_diode_emulation_am263x-lp_r5fss0-0_nortos_ti-arm-clang_clean:
 	$(MAKE) -C examples/drivers/epwm/epwm_diode_emulation/am263x-lp/r5fss0-0_nortos/ti-arm-clang -f makefile clean
+
+ ecap_signal_monitoring_am263x-cc_r5fss0-0_nortos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/ecap/ecap_signal_monitoring/am263x-cc/r5fss0-0_nortos/ti-arm-clang -f makefile clean
+
+ ecap_signal_monitoring_am263x-lp_r5fss0-0_nortos_ti-arm-clang_clean:
+	$(MAKE) -C examples/drivers/ecap/ecap_signal_monitoring/am263x-lp/r5fss0-0_nortos/ti-arm-clang -f makefile clean
 
  sdl_pbist_test_app_am263x-cc_r5fss0-0_nortos_ti-arm-clang_clean:
 	$(MAKE) -C sdl/pbist/sdl_pbist_test/am263x-cc/r5fss0-0_nortos/ti-arm-clang -f makefile clean
@@ -1631,6 +1793,12 @@ examples-private-clean: $(BUILD_COMBO_EXAMPLE_PRIVATE_CLEAN_ALL)
 
  test_mpu_firewall_am263x-cc_r5fss0-0_nortos_ti-arm-clang_clean:
 	$(MAKE) -C drivers/mpu_firewall/mpu_firewall_test_am263x/am263x-cc/r5fss0-0_nortos/ti-arm-clang -f makefile clean
+
+ test_rti_am263x-cc_r5fss0-0_freertos_ti-arm-clang_clean:
+	$(MAKE) -C drivers/rti/am263x-cc/r5fss0-0_freertos/ti-arm-clang -f makefile clean
+
+ test_rti_am263x-lp_r5fss0-0_freertos_ti-arm-clang_clean:
+	$(MAKE) -C drivers/rti/am263x-lp/r5fss0-0_freertos/ti-arm-clang -f makefile clean
 
  test_sdfm_am263x-cc_r5fss0-0_nortos_ti-arm-clang_clean:
 	$(MAKE) -C drivers/sdfm/am263x-cc/r5fss0-0_nortos/ti-arm-clang -f makefile clean
@@ -1848,17 +2016,17 @@ examples-private-clean: $(BUILD_COMBO_EXAMPLE_PRIVATE_CLEAN_ALL)
  test_freertos_am263x-lp_r5fss0-0_freertos_ti-arm-clang_clean:
 	$(MAKE) -C kernel/freertos/am263x-lp/r5fss0-0_freertos/ti-arm-clang -f makefile clean
 
- dual_emac_am263x-cc_icssm-pru0_fw_ti-pru-cgt_clean:
-	$(MAKE) -C ../source/networking/icss_emac/firmware/icss_dual_emac/mii/am263x-cc/icssm-pru0_fw/ti-pru-cgt -f makefile clean
+ dual_emac_am263x-cc_icss_m0_pru0_fw_ti-pru-cgt_clean:
+	$(MAKE) -C ../source/networking/icss_emac/firmware/icss_dual_emac/mii/am263x-cc/icss_m0_pru0_fw/ti-pru-cgt -f makefile clean
 
- dual_emac_am263x-cc_icssm-pru1_fw_ti-pru-cgt_clean:
-	$(MAKE) -C ../source/networking/icss_emac/firmware/icss_dual_emac/mii/am263x-cc/icssm-pru1_fw/ti-pru-cgt -f makefile clean
+ dual_emac_am263x-cc_icss_m0_pru1_fw_ti-pru-cgt_clean:
+	$(MAKE) -C ../source/networking/icss_emac/firmware/icss_dual_emac/mii/am263x-cc/icss_m0_pru1_fw/ti-pru-cgt -f makefile clean
 
- switch_am263x-cc_icssm-pru0_fw_ti-pru-cgt_clean:
-	$(MAKE) -C ../source/networking/icss_emac/firmware/icss_switch/mii/am263x-cc/icssm-pru0_fw/ti-pru-cgt -f makefile clean
+ switch_am263x-cc_icss_m0_pru0_fw_ti-pru-cgt_clean:
+	$(MAKE) -C ../source/networking/icss_emac/firmware/icss_switch/mii/am263x-cc/icss_m0_pru0_fw/ti-pru-cgt -f makefile clean
 
- switch_am263x-cc_icssm-pru1_fw_ti-pru-cgt_clean:
-	$(MAKE) -C ../source/networking/icss_emac/firmware/icss_switch/mii/am263x-cc/icssm-pru1_fw/ti-pru-cgt -f makefile clean
+ switch_am263x-cc_icss_m0_pru1_fw_ti-pru-cgt_clean:
+	$(MAKE) -C ../source/networking/icss_emac/firmware/icss_switch/mii/am263x-cc/icss_m0_pru1_fw/ti-pru-cgt -f makefile clean
 
  testcase_singlepkt_am263x-cc_r5fss0-0_freertos_ti-arm-clang_clean:
 	$(MAKE) -C networking/enet_unittest/testcase_singlepkt/am263x-cc/r5fss0-0_freertos/ti-arm-clang -f makefile clean
@@ -1902,10 +2070,10 @@ examples-private-clean: $(BUILD_COMBO_EXAMPLE_PRIVATE_CLEAN_ALL)
  mbedtls_benchmark_am263x-lp_r5fss0-0_freertos_ti-arm-clang_clean:
 	$(MAKE) -C networking/mbedtls_benchmark/am263x-lp/r5fss0-0_freertos/ti-arm-clang -f makefile clean
 
- enet_cpsw_loopback_am263x-cc_r5fss0-0_freertos_ti-arm-clang_clean:
+ enet_test_cpsw_layer2_performance_am263x-cc_r5fss0-0_freertos_ti-arm-clang_clean:
 	$(MAKE) -C networking/performance_benchmarks/ethernet_cpsw/layer2_performance/am263x-cc/r5fss0-0_freertos/ti-arm-clang -f makefile clean
 
- enet_cpsw_loopback_am263x-lp_r5fss0-0_freertos_ti-arm-clang_clean:
+ enet_test_cpsw_layer2_performance_am263x-lp_r5fss0-0_freertos_ti-arm-clang_clean:
 	$(MAKE) -C networking/performance_benchmarks/ethernet_cpsw/layer2_performance/am263x-lp/r5fss0-0_freertos/ti-arm-clang -f makefile clean
 
  test_dthe_aes_cbc_am263x-cc_r5fss0-0_nortos_ti-arm-clang_clean:
@@ -2004,6 +2172,72 @@ examples-private-clean: $(BUILD_COMBO_EXAMPLE_PRIVATE_CLEAN_ALL)
  test_soc_r5f_am263x-lp_system_freertos_clean:
 	$(MAKE) -C drivers/soc/soc_r5f/am263x-lp/system_freertos -f makefile clean
 
+ ipc_notify_OnetoOne_am263x-cc_system_freertos_nortos_clean:
+	$(MAKE) -C mcal_ut/ipc_notify/ipc_notify_OnetoOne/am263x-cc/system_freertos_nortos -f makefile clean
+
+ ipc_notify_OnetoOne_am263x-lp_system_freertos_nortos_clean:
+	$(MAKE) -C mcal_ut/ipc_notify/ipc_notify_OnetoOne/am263x-lp/system_freertos_nortos -f makefile clean
+
+ ipc_notify_OnetoOne_BacktoBack_am263x-cc_system_freertos_nortos_clean:
+	$(MAKE) -C mcal_ut/ipc_notify/ipc_notify_OnetoOne_BacktoBack/am263x-cc/system_freertos_nortos -f makefile clean
+
+ ipc_notify_OnetoOne_BacktoBack_am263x-lp_system_freertos_nortos_clean:
+	$(MAKE) -C mcal_ut/ipc_notify/ipc_notify_OnetoOne_BacktoBack/am263x-lp/system_freertos_nortos -f makefile clean
+
+ ipc_notify_threeCores_am263x-cc_system_freertos_nortos_clean:
+	$(MAKE) -C mcal_ut/ipc_notify/ipc_notify_threeCores/am263x-cc/system_freertos_nortos -f makefile clean
+
+ ipc_notify_threeCores_am263x-lp_system_freertos_nortos_clean:
+	$(MAKE) -C mcal_ut/ipc_notify/ipc_notify_threeCores/am263x-lp/system_freertos_nortos -f makefile clean
+
+ ipc_notify_twoCores_am263x-cc_system_freertos_nortos_clean:
+	$(MAKE) -C mcal_ut/ipc_notify/ipc_notify_twoCores/am263x-cc/system_freertos_nortos -f makefile clean
+
+ ipc_notify_twoCores_am263x-lp_system_freertos_nortos_clean:
+	$(MAKE) -C mcal_ut/ipc_notify/ipc_notify_twoCores/am263x-lp/system_freertos_nortos -f makefile clean
+
+ ipc_rpmsg_OnetoOne_am263x-cc_system_freertos_nortos_clean:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne/am263x-cc/system_freertos_nortos -f makefile clean
+
+ ipc_rpmsg_OnetoOne_am263x-lp_system_freertos_nortos_clean:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne/am263x-lp/system_freertos_nortos -f makefile clean
+
+ ipc_rpmsg_OnetoOne_BacktoBack_am263x-cc_system_freertos_nortos_clean:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne_BacktoBack/am263x-cc/system_freertos_nortos -f makefile clean
+
+ ipc_rpmsg_OnetoOne_BacktoBack_am263x-lp_system_freertos_nortos_clean:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne_BacktoBack/am263x-lp/system_freertos_nortos -f makefile clean
+
+ ipc_rpmsg_OnetoOne_lessSize_am263x-cc_system_freertos_nortos_clean:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne_lessSize/am263x-cc/system_freertos_nortos -f makefile clean
+
+ ipc_rpmsg_OnetoOne_lessSize_am263x-lp_system_freertos_nortos_clean:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne_lessSize/am263x-lp/system_freertos_nortos -f makefile clean
+
+ ipc_rpmsg_OnetoOne_lowBuffer_am263x-cc_system_freertos_nortos_clean:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne_lowBuffer/am263x-cc/system_freertos_nortos -f makefile clean
+
+ ipc_rpmsg_OnetoOne_lowBuffer_am263x-lp_system_freertos_nortos_clean:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne_lowBuffer/am263x-lp/system_freertos_nortos -f makefile clean
+
+ ipc_rpmsg_threeCores_am263x-cc_system_freertos_nortos_clean:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_threeCores/am263x-cc/system_freertos_nortos -f makefile clean
+
+ ipc_rpmsg_threeCores_am263x-lp_system_freertos_nortos_clean:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_threeCores/am263x-lp/system_freertos_nortos -f makefile clean
+
+ ipc_rpmsg_twoCores_am263x-cc_system_freertos_nortos_clean:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_twoCores/am263x-cc/system_freertos_nortos -f makefile clean
+
+ ipc_rpmsg_twoCores_am263x-lp_system_freertos_nortos_clean:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_twoCores/am263x-lp/system_freertos_nortos -f makefile clean
+
+ ipc_safeipc_echo_am263x-cc_system_freertos_nortos_clean:
+	$(MAKE) -C mcal_ut/ipc_safeipc_echo/am263x-cc/system_freertos_nortos -f makefile clean
+
+ ipc_safeipc_echo_am263x-lp_system_freertos_nortos_clean:
+	$(MAKE) -C mcal_ut/ipc_safeipc_echo/am263x-lp/system_freertos_nortos -f makefile clean
+
  test_syscfg_combo_1_am263x-cc_system_freertos_nortos_clean:
 	$(MAKE) -C syscfg/syscfg_combo_1/am263x-cc/system_freertos_nortos -f makefile clean
 
@@ -2022,6 +2256,8 @@ BUILD_COMBO_EXAMPLE_SCRUB_ALL += epwm_xcmp_multiple_edges_am263x-cc_r5fss0-0_nor
 BUILD_COMBO_EXAMPLE_SCRUB_ALL += epwm_xcmp_multiple_edges_am263x-lp_r5fss0-0_nortos_ti-arm-clang_scrub
 BUILD_COMBO_EXAMPLE_SCRUB_ALL += epwm_diode_emulation_am263x-cc_r5fss0-0_nortos_ti-arm-clang_scrub
 BUILD_COMBO_EXAMPLE_SCRUB_ALL += epwm_diode_emulation_am263x-lp_r5fss0-0_nortos_ti-arm-clang_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += ecap_signal_monitoring_am263x-cc_r5fss0-0_nortos_ti-arm-clang_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += ecap_signal_monitoring_am263x-lp_r5fss0-0_nortos_ti-arm-clang_scrub
 BUILD_COMBO_EXAMPLE_SCRUB_ALL += sdl_pbist_test_app_am263x-cc_r5fss0-0_nortos_ti-arm-clang_scrub
 BUILD_COMBO_EXAMPLE_SCRUB_ALL += sdl_pbist_test_app_am263x-cc_r5fss1-0_nortos_ti-arm-clang_scrub
 BUILD_COMBO_EXAMPLE_SCRUB_ALL += pbist_test_app_am263x-cc_r5fss0-0_nortos_ti-arm-clang_scrub
@@ -2093,6 +2329,8 @@ BUILD_COMBO_EXAMPLE_SCRUB_ALL += test_mcan_am263x-lp_r5fss0-0_freertos_ti-arm-cl
 BUILD_COMBO_EXAMPLE_SCRUB_ALL += test_mcspi_am263x-cc_r5fss0-0_freertos_ti-arm-clang_scrub
 BUILD_COMBO_EXAMPLE_SCRUB_ALL += test_mcspi_am263x-lp_r5fss0-0_freertos_ti-arm-clang_scrub
 BUILD_COMBO_EXAMPLE_SCRUB_ALL += test_mpu_firewall_am263x-cc_r5fss0-0_nortos_ti-arm-clang_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += test_rti_am263x-cc_r5fss0-0_freertos_ti-arm-clang_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += test_rti_am263x-lp_r5fss0-0_freertos_ti-arm-clang_scrub
 BUILD_COMBO_EXAMPLE_SCRUB_ALL += test_sdfm_am263x-cc_r5fss0-0_nortos_ti-arm-clang_scrub
 BUILD_COMBO_EXAMPLE_SCRUB_ALL += test_sdfm_am263x-lp_r5fss0-0_nortos_ti-arm-clang_scrub
 BUILD_COMBO_EXAMPLE_SCRUB_ALL += tester_am263x-cc_r5fss0-0_freertos_ti-arm-clang_scrub
@@ -2179,8 +2417,8 @@ BUILD_COMBO_EXAMPLE_SCRUB_ALL += test_mbedtls_am263x-cc_r5fss0-0_freertos_ti-arm
 BUILD_COMBO_EXAMPLE_SCRUB_ALL += test_mbedtls_am263x-lp_r5fss0-0_freertos_ti-arm-clang_scrub
 BUILD_COMBO_EXAMPLE_SCRUB_ALL += mbedtls_benchmark_am263x-cc_r5fss0-0_freertos_ti-arm-clang_scrub
 BUILD_COMBO_EXAMPLE_SCRUB_ALL += mbedtls_benchmark_am263x-lp_r5fss0-0_freertos_ti-arm-clang_scrub
-BUILD_COMBO_EXAMPLE_SCRUB_ALL += enet_cpsw_loopback_am263x-cc_r5fss0-0_freertos_ti-arm-clang_scrub
-BUILD_COMBO_EXAMPLE_SCRUB_ALL += enet_cpsw_loopback_am263x-lp_r5fss0-0_freertos_ti-arm-clang_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += enet_test_cpsw_layer2_performance_am263x-cc_r5fss0-0_freertos_ti-arm-clang_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += enet_test_cpsw_layer2_performance_am263x-lp_r5fss0-0_freertos_ti-arm-clang_scrub
 BUILD_COMBO_EXAMPLE_SCRUB_ALL += test_dthe_aes_cbc_am263x-cc_r5fss0-0_nortos_ti-arm-clang_scrub
 BUILD_COMBO_EXAMPLE_SCRUB_ALL += test_dthe_aes_cbc_stream_am263x-cc_r5fss0-0_nortos_ti-arm-clang_scrub
 BUILD_COMBO_EXAMPLE_SCRUB_ALL += test_dthe_aes_cfb_am263x-cc_r5fss0-0_nortos_ti-arm-clang_scrub
@@ -2212,16 +2450,38 @@ BUILD_COMBO_EXAMPLE_SCRUB_ALL += test_mcspi_controller_peripheral_dma_am263x-cc_
 BUILD_COMBO_EXAMPLE_SCRUB_ALL += test_mcspi_controller_peripheral_dma_am263x-lp_system_freertos_nortos_scrub
 BUILD_COMBO_EXAMPLE_SCRUB_ALL += test_soc_r5f_am263x-cc_system_freertos_scrub
 BUILD_COMBO_EXAMPLE_SCRUB_ALL += test_soc_r5f_am263x-lp_system_freertos_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += ipc_notify_OnetoOne_am263x-cc_system_freertos_nortos_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += ipc_notify_OnetoOne_am263x-lp_system_freertos_nortos_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += ipc_notify_OnetoOne_BacktoBack_am263x-cc_system_freertos_nortos_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += ipc_notify_OnetoOne_BacktoBack_am263x-lp_system_freertos_nortos_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += ipc_notify_threeCores_am263x-cc_system_freertos_nortos_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += ipc_notify_threeCores_am263x-lp_system_freertos_nortos_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += ipc_notify_twoCores_am263x-cc_system_freertos_nortos_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += ipc_notify_twoCores_am263x-lp_system_freertos_nortos_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += ipc_rpmsg_OnetoOne_am263x-cc_system_freertos_nortos_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += ipc_rpmsg_OnetoOne_am263x-lp_system_freertos_nortos_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += ipc_rpmsg_OnetoOne_BacktoBack_am263x-cc_system_freertos_nortos_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += ipc_rpmsg_OnetoOne_BacktoBack_am263x-lp_system_freertos_nortos_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += ipc_rpmsg_OnetoOne_lessSize_am263x-cc_system_freertos_nortos_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += ipc_rpmsg_OnetoOne_lessSize_am263x-lp_system_freertos_nortos_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += ipc_rpmsg_OnetoOne_lowBuffer_am263x-cc_system_freertos_nortos_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += ipc_rpmsg_OnetoOne_lowBuffer_am263x-lp_system_freertos_nortos_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += ipc_rpmsg_threeCores_am263x-cc_system_freertos_nortos_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += ipc_rpmsg_threeCores_am263x-lp_system_freertos_nortos_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += ipc_rpmsg_twoCores_am263x-cc_system_freertos_nortos_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += ipc_rpmsg_twoCores_am263x-lp_system_freertos_nortos_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += ipc_safeipc_echo_am263x-cc_system_freertos_nortos_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += ipc_safeipc_echo_am263x-lp_system_freertos_nortos_scrub
 BUILD_COMBO_EXAMPLE_SCRUB_ALL += test_syscfg_combo_1_am263x-cc_system_freertos_nortos_scrub
 BUILD_COMBO_EXAMPLE_SCRUB_ALL += test_syscfg_combo_1_am263x-lp_system_freertos_nortos_scrub
 
 
 BUILD_COMBO_EXAMPLE_PRIVATE_SCRUB_ALL =
 # Various Private Example Targets
-BUILD_COMBO_EXAMPLE_PRIVATE_SCRUB_ALL += dual_emac_am263x-cc_icssm-pru0_fw_ti-pru-cgt_scrub
-BUILD_COMBO_EXAMPLE_PRIVATE_SCRUB_ALL += dual_emac_am263x-cc_icssm-pru1_fw_ti-pru-cgt_scrub
-BUILD_COMBO_EXAMPLE_PRIVATE_SCRUB_ALL += switch_am263x-cc_icssm-pru0_fw_ti-pru-cgt_scrub
-BUILD_COMBO_EXAMPLE_PRIVATE_SCRUB_ALL += switch_am263x-cc_icssm-pru1_fw_ti-pru-cgt_scrub
+BUILD_COMBO_EXAMPLE_PRIVATE_SCRUB_ALL += dual_emac_am263x-cc_icss_m0_pru0_fw_ti-pru-cgt_scrub
+BUILD_COMBO_EXAMPLE_PRIVATE_SCRUB_ALL += dual_emac_am263x-cc_icss_m0_pru1_fw_ti-pru-cgt_scrub
+BUILD_COMBO_EXAMPLE_PRIVATE_SCRUB_ALL += switch_am263x-cc_icss_m0_pru0_fw_ti-pru-cgt_scrub
+BUILD_COMBO_EXAMPLE_PRIVATE_SCRUB_ALL += switch_am263x-cc_icss_m0_pru1_fw_ti-pru-cgt_scrub
 # Various Private System Example Targets
 
 examples-scrub: $(BUILD_COMBO_EXAMPLE_SCRUB_ALL)
@@ -2254,6 +2514,12 @@ examples-scrub-private: $(BUILD_COMBO_EXAMPLE_PRIVATE_SCRUB_ALL)
 
  epwm_diode_emulation_am263x-lp_r5fss0-0_nortos_ti-arm-clang_scrub:
 	$(MAKE) -C examples/drivers/epwm/epwm_diode_emulation/am263x-lp/r5fss0-0_nortos/ti-arm-clang -f makefile scrub
+
+ ecap_signal_monitoring_am263x-cc_r5fss0-0_nortos_ti-arm-clang_scrub:
+	$(MAKE) -C examples/drivers/ecap/ecap_signal_monitoring/am263x-cc/r5fss0-0_nortos/ti-arm-clang -f makefile scrub
+
+ ecap_signal_monitoring_am263x-lp_r5fss0-0_nortos_ti-arm-clang_scrub:
+	$(MAKE) -C examples/drivers/ecap/ecap_signal_monitoring/am263x-lp/r5fss0-0_nortos/ti-arm-clang -f makefile scrub
 
  sdl_pbist_test_app_am263x-cc_r5fss0-0_nortos_ti-arm-clang_scrub:
 	$(MAKE) -C sdl/pbist/sdl_pbist_test/am263x-cc/r5fss0-0_nortos/ti-arm-clang -f makefile scrub
@@ -2467,6 +2733,12 @@ examples-scrub-private: $(BUILD_COMBO_EXAMPLE_PRIVATE_SCRUB_ALL)
 
  test_mpu_firewall_am263x-cc_r5fss0-0_nortos_ti-arm-clang_scrub:
 	$(MAKE) -C drivers/mpu_firewall/mpu_firewall_test_am263x/am263x-cc/r5fss0-0_nortos/ti-arm-clang -f makefile scrub
+
+ test_rti_am263x-cc_r5fss0-0_freertos_ti-arm-clang_scrub:
+	$(MAKE) -C drivers/rti/am263x-cc/r5fss0-0_freertos/ti-arm-clang -f makefile scrub
+
+ test_rti_am263x-lp_r5fss0-0_freertos_ti-arm-clang_scrub:
+	$(MAKE) -C drivers/rti/am263x-lp/r5fss0-0_freertos/ti-arm-clang -f makefile scrub
 
  test_sdfm_am263x-cc_r5fss0-0_nortos_ti-arm-clang_scrub:
 	$(MAKE) -C drivers/sdfm/am263x-cc/r5fss0-0_nortos/ti-arm-clang -f makefile scrub
@@ -2684,17 +2956,17 @@ examples-scrub-private: $(BUILD_COMBO_EXAMPLE_PRIVATE_SCRUB_ALL)
  test_freertos_am263x-lp_r5fss0-0_freertos_ti-arm-clang_scrub:
 	$(MAKE) -C kernel/freertos/am263x-lp/r5fss0-0_freertos/ti-arm-clang -f makefile scrub
 
- dual_emac_am263x-cc_icssm-pru0_fw_ti-pru-cgt_scrub:
-	$(MAKE) -C ../source/networking/icss_emac/firmware/icss_dual_emac/mii/am263x-cc/icssm-pru0_fw/ti-pru-cgt -f makefile scrub
+ dual_emac_am263x-cc_icss_m0_pru0_fw_ti-pru-cgt_scrub:
+	$(MAKE) -C ../source/networking/icss_emac/firmware/icss_dual_emac/mii/am263x-cc/icss_m0_pru0_fw/ti-pru-cgt -f makefile scrub
 
- dual_emac_am263x-cc_icssm-pru1_fw_ti-pru-cgt_scrub:
-	$(MAKE) -C ../source/networking/icss_emac/firmware/icss_dual_emac/mii/am263x-cc/icssm-pru1_fw/ti-pru-cgt -f makefile scrub
+ dual_emac_am263x-cc_icss_m0_pru1_fw_ti-pru-cgt_scrub:
+	$(MAKE) -C ../source/networking/icss_emac/firmware/icss_dual_emac/mii/am263x-cc/icss_m0_pru1_fw/ti-pru-cgt -f makefile scrub
 
- switch_am263x-cc_icssm-pru0_fw_ti-pru-cgt_scrub:
-	$(MAKE) -C ../source/networking/icss_emac/firmware/icss_switch/mii/am263x-cc/icssm-pru0_fw/ti-pru-cgt -f makefile scrub
+ switch_am263x-cc_icss_m0_pru0_fw_ti-pru-cgt_scrub:
+	$(MAKE) -C ../source/networking/icss_emac/firmware/icss_switch/mii/am263x-cc/icss_m0_pru0_fw/ti-pru-cgt -f makefile scrub
 
- switch_am263x-cc_icssm-pru1_fw_ti-pru-cgt_scrub:
-	$(MAKE) -C ../source/networking/icss_emac/firmware/icss_switch/mii/am263x-cc/icssm-pru1_fw/ti-pru-cgt -f makefile scrub
+ switch_am263x-cc_icss_m0_pru1_fw_ti-pru-cgt_scrub:
+	$(MAKE) -C ../source/networking/icss_emac/firmware/icss_switch/mii/am263x-cc/icss_m0_pru1_fw/ti-pru-cgt -f makefile scrub
 
  testcase_singlepkt_am263x-cc_r5fss0-0_freertos_ti-arm-clang_scrub:
 	$(MAKE) -C networking/enet_unittest/testcase_singlepkt/am263x-cc/r5fss0-0_freertos/ti-arm-clang -f makefile scrub
@@ -2738,10 +3010,10 @@ examples-scrub-private: $(BUILD_COMBO_EXAMPLE_PRIVATE_SCRUB_ALL)
  mbedtls_benchmark_am263x-lp_r5fss0-0_freertos_ti-arm-clang_scrub:
 	$(MAKE) -C networking/mbedtls_benchmark/am263x-lp/r5fss0-0_freertos/ti-arm-clang -f makefile scrub
 
- enet_cpsw_loopback_am263x-cc_r5fss0-0_freertos_ti-arm-clang_scrub:
+ enet_test_cpsw_layer2_performance_am263x-cc_r5fss0-0_freertos_ti-arm-clang_scrub:
 	$(MAKE) -C networking/performance_benchmarks/ethernet_cpsw/layer2_performance/am263x-cc/r5fss0-0_freertos/ti-arm-clang -f makefile scrub
 
- enet_cpsw_loopback_am263x-lp_r5fss0-0_freertos_ti-arm-clang_scrub:
+ enet_test_cpsw_layer2_performance_am263x-lp_r5fss0-0_freertos_ti-arm-clang_scrub:
 	$(MAKE) -C networking/performance_benchmarks/ethernet_cpsw/layer2_performance/am263x-lp/r5fss0-0_freertos/ti-arm-clang -f makefile scrub
 
  test_dthe_aes_cbc_am263x-cc_r5fss0-0_nortos_ti-arm-clang_scrub:
@@ -2839,6 +3111,72 @@ examples-scrub-private: $(BUILD_COMBO_EXAMPLE_PRIVATE_SCRUB_ALL)
 
  test_soc_r5f_am263x-lp_system_freertos_scrub:
 	$(MAKE) -C drivers/soc/soc_r5f/am263x-lp/system_freertos -f makefile scrub
+
+ ipc_notify_OnetoOne_am263x-cc_system_freertos_nortos_scrub:
+	$(MAKE) -C mcal_ut/ipc_notify/ipc_notify_OnetoOne/am263x-cc/system_freertos_nortos -f makefile scrub
+
+ ipc_notify_OnetoOne_am263x-lp_system_freertos_nortos_scrub:
+	$(MAKE) -C mcal_ut/ipc_notify/ipc_notify_OnetoOne/am263x-lp/system_freertos_nortos -f makefile scrub
+
+ ipc_notify_OnetoOne_BacktoBack_am263x-cc_system_freertos_nortos_scrub:
+	$(MAKE) -C mcal_ut/ipc_notify/ipc_notify_OnetoOne_BacktoBack/am263x-cc/system_freertos_nortos -f makefile scrub
+
+ ipc_notify_OnetoOne_BacktoBack_am263x-lp_system_freertos_nortos_scrub:
+	$(MAKE) -C mcal_ut/ipc_notify/ipc_notify_OnetoOne_BacktoBack/am263x-lp/system_freertos_nortos -f makefile scrub
+
+ ipc_notify_threeCores_am263x-cc_system_freertos_nortos_scrub:
+	$(MAKE) -C mcal_ut/ipc_notify/ipc_notify_threeCores/am263x-cc/system_freertos_nortos -f makefile scrub
+
+ ipc_notify_threeCores_am263x-lp_system_freertos_nortos_scrub:
+	$(MAKE) -C mcal_ut/ipc_notify/ipc_notify_threeCores/am263x-lp/system_freertos_nortos -f makefile scrub
+
+ ipc_notify_twoCores_am263x-cc_system_freertos_nortos_scrub:
+	$(MAKE) -C mcal_ut/ipc_notify/ipc_notify_twoCores/am263x-cc/system_freertos_nortos -f makefile scrub
+
+ ipc_notify_twoCores_am263x-lp_system_freertos_nortos_scrub:
+	$(MAKE) -C mcal_ut/ipc_notify/ipc_notify_twoCores/am263x-lp/system_freertos_nortos -f makefile scrub
+
+ ipc_rpmsg_OnetoOne_am263x-cc_system_freertos_nortos_scrub:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne/am263x-cc/system_freertos_nortos -f makefile scrub
+
+ ipc_rpmsg_OnetoOne_am263x-lp_system_freertos_nortos_scrub:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne/am263x-lp/system_freertos_nortos -f makefile scrub
+
+ ipc_rpmsg_OnetoOne_BacktoBack_am263x-cc_system_freertos_nortos_scrub:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne_BacktoBack/am263x-cc/system_freertos_nortos -f makefile scrub
+
+ ipc_rpmsg_OnetoOne_BacktoBack_am263x-lp_system_freertos_nortos_scrub:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne_BacktoBack/am263x-lp/system_freertos_nortos -f makefile scrub
+
+ ipc_rpmsg_OnetoOne_lessSize_am263x-cc_system_freertos_nortos_scrub:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne_lessSize/am263x-cc/system_freertos_nortos -f makefile scrub
+
+ ipc_rpmsg_OnetoOne_lessSize_am263x-lp_system_freertos_nortos_scrub:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne_lessSize/am263x-lp/system_freertos_nortos -f makefile scrub
+
+ ipc_rpmsg_OnetoOne_lowBuffer_am263x-cc_system_freertos_nortos_scrub:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne_lowBuffer/am263x-cc/system_freertos_nortos -f makefile scrub
+
+ ipc_rpmsg_OnetoOne_lowBuffer_am263x-lp_system_freertos_nortos_scrub:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_OnetoOne_lowBuffer/am263x-lp/system_freertos_nortos -f makefile scrub
+
+ ipc_rpmsg_threeCores_am263x-cc_system_freertos_nortos_scrub:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_threeCores/am263x-cc/system_freertos_nortos -f makefile scrub
+
+ ipc_rpmsg_threeCores_am263x-lp_system_freertos_nortos_scrub:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_threeCores/am263x-lp/system_freertos_nortos -f makefile scrub
+
+ ipc_rpmsg_twoCores_am263x-cc_system_freertos_nortos_scrub:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_twoCores/am263x-cc/system_freertos_nortos -f makefile scrub
+
+ ipc_rpmsg_twoCores_am263x-lp_system_freertos_nortos_scrub:
+	$(MAKE) -C mcal_ut/ipc_rpmsg/ipc_rpmsg_twoCores/am263x-lp/system_freertos_nortos -f makefile scrub
+
+ ipc_safeipc_echo_am263x-cc_system_freertos_nortos_scrub:
+	$(MAKE) -C mcal_ut/ipc_safeipc_echo/am263x-cc/system_freertos_nortos -f makefile scrub
+
+ ipc_safeipc_echo_am263x-lp_system_freertos_nortos_scrub:
+	$(MAKE) -C mcal_ut/ipc_safeipc_echo/am263x-lp/system_freertos_nortos -f makefile scrub
 
  test_syscfg_combo_1_am263x-cc_system_freertos_nortos_scrub:
 	$(MAKE) -C syscfg/syscfg_combo_1/am263x-cc/system_freertos_nortos -f makefile scrub

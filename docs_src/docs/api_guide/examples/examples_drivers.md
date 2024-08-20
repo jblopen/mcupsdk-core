@@ -7,6 +7,10 @@ This page lists all the examples related to usage of SOC and board peripheral dr
    -# \subpage EXAMPLES_DRIVERS_ADC_SINGLESHOT
 -# CRC
    -# \subpage EXAMPLES_DRIVERS_CRC_FULL_CPU
+-# CANFD
+   -# \subpage EXAMPLES_DRIVERS_CANFD_LOOPBACK_DMA
+   -# \subpage EXAMPLES_DRIVERS_CANFD_LOOPBACK_POLLING
+   -# \subpage EXAMPLES_DRIVERS_CANFD_LOOPBACK_INTERRUPT
 -# DDR
    -# \subpage EXAMPLES_DRIVERS_DDR_ECC_TEST_MAIN_ESM
 \cond SOC_AM64X
@@ -29,6 +33,7 @@ This page lists all the examples related to usage of SOC and board peripheral dr
    -# \subpage EXAMPLES_DRIVERS_GPIO_LED_BLINK
 -# GPMC
    -# \subpage EXAMPLES_DRIVERS_GPMC_FLASH_NAND_IO
+   -# \subpage EXAMPLES_DRIVERS_GPMC_PSRAM_IO
 -# WATCHDOG
    -# \subpage EXAMPLES_DRIVERS_WATCHDOG_INTERRUPT_MODE
 \cond SOC_AM243X
@@ -56,6 +61,9 @@ This page lists all the examples related to usage of SOC and board peripheral dr
    -# \subpage EXAMPLES_DRIVERS_IPC_SPINLOCK_SHAREDMEM
 -# MCAN
    -# \subpage EXAMPLES_DRIVERS_MCAN_EXTERNAL_LOOPBACK_INTERRUPT
+\cond SOC_AM64X
+   -# \subpage EXAMPLES_DRIVERS_MCAN_EXTERNAL_LOOPBACK_INTERRUPT2
+\endcond
 \cond SOC_AM64X || SOC_AM243X
    -# \subpage EXAMPLES_DRIVERS_MCAN_LOOPBACK_DMA
 \endcond
@@ -74,7 +82,10 @@ This page lists all the examples related to usage of SOC and board peripheral dr
 -# MMCSD
    -# \subpage EXAMPLES_DRIVERS_MMCSD_RAW_IO
    -# \subpage EXAMPLES_DRIVERS_MMCSD_FILE_IO
+   -# \subpage EXAMPLES_DRIVERS_MMCSD_RAW_IO_EMMC_INTR_LLD
+   -# \subpage EXAMPLES_DRIVERS_MMCSD_RAW_IO_EMMC_LLD
 -# OSPI
+   -# \subpage EXAMPLES_DRIVERS_OSPI_FLASH_FILE_IO
    -# \subpage EXAMPLES_DRIVERS_OSPI_FLASH_IO
    -# \subpage EXAMPLES_DRIVERS_OSPI_FLASH_DMA
    -# \subpage EXAMPLES_DRIVERS_OSPI_FLASH_DIAG
@@ -84,6 +95,7 @@ This page lists all the examples related to usage of SOC and board peripheral dr
    -# \subpage EXAMPLES_DRIVERS_PCIE_BENCHMARK_EP
    -# \subpage EXAMPLES_DRIVERS_PCIE_BUF_TRANSFER_RC
    -# \subpage EXAMPLES_DRIVERS_PCIE_BUF_TRANSFER_EP
+   -# \subpage EXAMPLES_DRIVERS_PCIE_ENUMERATE_EP
    -# \subpage EXAMPLES_DRIVERS_PCIE_LEGACY_IRQ_RC
    -# \subpage EXAMPLES_DRIVERS_PCIE_LEGACY_IRQ_EP
    -# \subpage EXAMPLES_DRIVERS_PCIE_MSI_IRQ_RC
@@ -115,6 +127,14 @@ This page lists all the examples related to usage of SOC and board peripheral dr
    -# \subpage EXAMPLES_DRIVERS_UDMA_MEMCPY_INTERRUPT
    -# \subpage EXAMPLES_DRIVERS_UDMA_MEMCPY_POLLING
    -# \subpage EXAMPLES_DRIVERS_UDMA_SW_TRIGGER
+-# GPTIMER
+   -# \subpage EXAMPLES_DRIVERS_GP_TIMER_COMPARE_MATCH_CALLBACK
+   -# \subpage EXAMPLES_DRIVERS_GP_TIMER_FREE_RUN
+   -# \subpage EXAMPLES_DRIVERS_GP_TIMER_OVERFLOW_CALLBACK
+\cond SOC_AM243X
+   -# \subpage EXAMPLES_DRIVERS_GP_TIMER_PWM_CAPTURE
+\endcond
+
 \endcond
 
 \cond SOC_AM273X || SOC_AWR294X
@@ -222,6 +242,10 @@ This page lists all the examples related to usage of SOC and board peripheral dr
    -# \subpage EXAMPLES_DRIVERS_ADC_SOC_SOFTWARE
    -# \subpage EXAMPLES_DRIVERS_ADC_SOC_SOFTWARE_SYNC
    -# \subpage EXAMPLES_DRIVERS_ADC_SOFTWARE_INTERLEAVED_AVERAGING
+-# CANFD
+   -# \subpage EXAMPLES_DRIVERS_CANFD_LOOPBACK_DMA
+   -# \subpage EXAMPLES_DRIVERS_CANFD_LOOPBACK_POLLING
+   -# \subpage EXAMPLES_DRIVERS_CANFD_LOOPBACK_INTERRUPT
 \cond SOC_AM263PX
    -# \subpage EXAMPLES_DRIVERS_ADC_GLOBAL_FORCE
    -# \subpage EXAMPLES_DRIVERS_ADC_DAC_LOOPBACK
@@ -246,6 +270,9 @@ This page lists all the examples related to usage of SOC and board peripheral dr
    -# \subpage EXAMPLES_DRIVERS_ECAP_APWM_MODE
    -# \subpage EXAMPLES_DRIVERS_ECAP_CAPTURE_PWM
    -# \subpage EXAMPLES_DRIVERS_ECAP_EDMA
+\cond SOC_AM263PX
+   -# \subpage EXAMPLES_DRIVERS_ECAP_SIGNAL_MONITORING
+\endcond
 -# EDMA
    -# \subpage EXAMPLES_DRIVERS_EDMA_CHAIN_TRANSFER
    -# \subpage EXAMPLES_DRIVERS_EDMA_INTERRUPT_TRANSFER
@@ -268,6 +295,7 @@ This page lists all the examples related to usage of SOC and board peripheral dr
    -# \subpage EXAMPLES_DRIVERS_HRPWM_DEADBAND_SFO
    -# \subpage EXAMPLES_DRIVERS_HRPWM_PHASE_SHIFT_SFO
    -# \subpage EXAMPLES_DRIVERS_HRPWM_DUTY_CYCLE_SFO
+   -# \subpage EXAMPLES_DRIVERS_EPWM_UP_AQ
 \cond SOC_AM263PX
    -# \subpage EXAMPLES_DRIVERS_EPWM_DCCAP
    -# \subpage EXAMPLES_DRIVERS_EPWM_DIODE_EMULATION
@@ -277,11 +305,18 @@ This page lists all the examples related to usage of SOC and board peripheral dr
 -# EQEP
    -# \subpage EXAMPLES_DRIVERS_EQEP_FREQUENCY_MEASUREMENT
    -# \subpage EXAMPLES_DRIVERS_EQEP_POSITION_SPEED
+\cond SOC_AM263PX
+-# FOTA
+   -# \subpage EXAMPLES_DRIVERS_FOTA_OVER_CAN
+\endcond
 -# FSI
    -# \subpage EXAMPLES_DRIVERS_FSI_LOOPBACK_DMA
    -# \subpage EXAMPLES_DRIVERS_FSI_LOOPBACK_INTERRUPT
    -# \subpage EXAMPLES_DRIVERS_FSI_LOOPBACK_POLLING
 -# GPIO
+\cond SOC_AM263X
+   -# \subpage EXAMPLES_DRIVERS_GPIO_CONTROLLER_MCSPI_PERIPHERAL
+\endcond
    -# \subpage EXAMPLES_DRIVERS_GPIO_INPUT_INTERRUPT
    -# \subpage EXAMPLES_DRIVERS_GPIO_LED_BLINK
    -# \subpage EXAMPLES_DRIVERS_GPIO_MULTI_LED_BLINK
@@ -304,7 +339,7 @@ This page lists all the examples related to usage of SOC and board peripheral dr
    -# \subpage EXAMPLES_DRIVERS_I2C_MEMORY_READ_POLLING_LLD
    -# \subpage EXAMPLES_DRIVERS_I2C_TEMPERATURE_INTERRUPT_LLD
    -# \subpage EXAMPLES_DRIVERS_I2C_TEMPERATURE_POLLING_LLD
-
+   -# \subpage EXAMPLES_DRIVERS_I2C_PERIPHERAL_TRANSFER
 -# IPC
    -# \subpage EXAMPLES_DRIVERS_IPC_NOTIFY_ECHO
    -# \subpage EXAMPLES_DRIVERS_IPC_RPMESSAGE_ECHO
@@ -335,6 +370,8 @@ This page lists all the examples related to usage of SOC and board peripheral dr
 -# MMCSD
     -# \subpage EXAMPLES_DRIVERS_MMCSD_RAW_IO
     -# \subpage EXAMPLES_DRIVERS_MMCSD_FILE_IO
+    -# \subpage EXAMPLES_DRIVERS_MMCSD_RAW_IO_SD_INTR_LLD
+    -# \subpage EXAMPLES_DRIVERS_MMCSD_RAW_IO_SD_LLD
 \cond SOC_AM263X
 -# QSPI
    -# \subpage EXAMPLES_DRIVERS_QSPI_FLASH_DIAG
@@ -348,12 +385,14 @@ This page lists all the examples related to usage of SOC and board peripheral dr
 \cond SOC_AM263PX
 -# OSPI
    -# \subpage EXAMPLES_DRIVERS_OSPI_FLASH_IO
+   -# \subpage EXAMPLES_DRIVERS_OSPI_FLASH_FILE_IO
    -# \subpage EXAMPLES_DRIVERS_OSPI_FLASH_DMA
    -# \subpage EXAMPLES_DRIVERS_OSPI_FLASH_DIAG
    -# \subpage EXAMPLES_DRIVERS_OSPI_NAND_FLASH_IO
    -# \subpage EXAMPLES_RL2
    -# \subpage EXAMPLES_FLC
    -# \subpage EXAMPLES_RAT
+   -# \subpage EXAMPLES_DRIVERS_SWAP_TO_B
 \endcond
 -# PMU
    -# \subpage EXAMPLES_DRIVERS_PMU_MULTIEVENT
@@ -379,7 +418,7 @@ This page lists all the examples related to usage of SOC and board peripheral dr
    -# \subpage EXAMPLES_DRIVERS_TMU_OPERATIONS
    -# \subpage EXAMPLES_DRIVERS_TMU_CORES_SUPPORT
    -# \subpage EXAMPLES_DRIVERS_TMU_CONTEXTSAVE
-   -# \subpage EXAMPLES_DRIVERS_TMU_PARK_TRANSFORM_SUPPORT
+   -# \subpage EXAMPLES_DRIVERS_SDFM_FILTER_SYNC_CPUREAD_SINGLE_CHANNEL
 \endcond
 -# UART
    -# \subpage EXAMPLES_DRIVERS_UART_ECHO
@@ -396,4 +435,36 @@ This page lists all the examples related to usage of SOC and board peripheral dr
 -# WATCHDOG
    -# \subpage EXAMPLES_DRIVERS_WATCHDOG_INTERRUPT_MODE
    -# \subpage EXAMPLES_DRIVERS_WATCHDOG_RESET_MODE
+\endcond
+
+\cond SOC_AM65X
+-# GPIO
+   -# \subpage EXAMPLES_DRIVERS_GPIO_INPUT_INTERRUPT
+   -# \subpage EXAMPLES_DRIVERS_GPIO_LED_BLINK
+-# I2C
+   -# \subpage EXAMPLES_DRIVERS_I2C_LED_BLINK
+   -# \subpage EXAMPLES_DRIVERS_I2C_READ
+   -# \subpage EXAMPLES_DRIVERS_I2C_TEMPERATURE
+-# IPC
+   -# \subpage EXAMPLES_DRIVERS_IPC_RPMESSAGE_LINUX_ECHO
+-# MMCSD
+   -# \subpage EXAMPLES_DRIVERS_MMCSD_RAW_IO
+   -# \subpage EXAMPLES_DRIVERS_MMCSD_FILE_IO
+-# PCIE
+   -# \subpage EXAMPLES_DRIVERS_PCIE_BUF_TRANSFER_RC
+   -# \subpage EXAMPLES_DRIVERS_PCIE_BUF_TRANSFER_EP
+-# SCICLIENT
+   -# \subpage EXAMPLES_DRIVERS_SCICLIENT_GET_VERSION
+   -# \subpage EXAMPLES_DRIVERS_SCICLIENT_SET_BOARDCFG
+-# UART
+   -# \subpage EXAMPLES_DRIVERS_UART_ECHO
+   -# \subpage EXAMPLES_DRIVERS_UART_ECHO_DMA
+   -# \subpage EXAMPLES_DRIVERS_UART_ECHO_CALLBACK
+   -# \subpage EXAMPLES_DRIVERS_UART_ECHO_LOW_LATENCY_INTERRUPT
+   -# \subpage EXAMPLES_DRIVERS_UART_ECHO_LOW_LATENCY_POLLING
+-# UDMA
+   -# \subpage EXAMPLES_DRIVERS_UDMA_CHAINING
+   -# \subpage EXAMPLES_DRIVERS_UDMA_MEMCPY_INTERRUPT
+   -# \subpage EXAMPLES_DRIVERS_UDMA_MEMCPY_POLLING
+   -# \subpage EXAMPLES_DRIVERS_UDMA_SW_TRIGGER
 \endcond

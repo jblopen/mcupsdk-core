@@ -2,7 +2,7 @@
  * These arguments were used when this file was generated. They will be automatically applied on subsequent loads
  * via the GUI or CLI. Run CLI with '--help' for additional information on how to override these arguments.
  * @cliArgs --device "AM273x" --package "ZCE" --part "Default" --context "r5fss0-0" --product "MCU_PLUS_SDK@07.03.01"
- * @versions {"tool":"1.19.0+3426"}
+ * @versions {"tool":"1.20.0+3587"}
  */
 
 /**
@@ -16,6 +16,7 @@ const hsmclient   = scripting.addModule("/drivers/hsmclient/hsmclient", {}, fals
 const hsmclient1  = hsmclient.addInstance();
 const clock       = scripting.addModule("/kernel/dpl/clock");
 const debug_log   = scripting.addModule("/kernel/dpl/debug_log");
+const dpl_cfg = scripting.addModule("/kernel/dpl/dpl_cfg");
 const mpu_armv7   = scripting.addModule("/kernel/dpl/mpu_armv7", {}, false);
 const mpu_armv71  = mpu_armv7.addInstance();
 const mpu_armv72  = mpu_armv7.addInstance();
@@ -61,6 +62,8 @@ debug_log.uartLog.MSS_UART.TX.$assign = "PAD_DB";
 
 debug_log.uartLog.edmaConfig       = edma1;
 edma1.$name                        = "CONFIG_EDMA0";
+edma1.instance                     = "EDMA_MSS_A";
+edma1.edmaRmDmaCh[0].resourceType  = scripting.forceWrite("ownDmaCh");
 edma1.edmaRmDmaCh[0].$name         = "CONFIG_EDMA_RM0";
 edma1.edmaRmQdmaCh[0].$name        = "CONFIG_EDMA_RM1";
 edma1.edmaRmTcc[0].$name           = "CONFIG_EDMA_RM2";
@@ -259,7 +262,7 @@ section10.type                        = "NOLOAD";
 section10.load_memory                 = "MAILBOX_R5F";
 section10.group                       = false;
 section10.output_section.create(1);
-section10.output_section[0].$name     = ".bss.sipc_r5f_queue_mem";
+section10.output_section[0].$name     = ".bss.sipc_secure_host_queue_mem";
 section10.output_section[0].alignment = 0;
 
 section11.$name                       = "BSS DSS L3";

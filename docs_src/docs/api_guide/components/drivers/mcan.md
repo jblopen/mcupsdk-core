@@ -307,3 +307,5 @@ MCAN Interrupt De-Registration
 ## API
 
 \ref DRV_MCAN_MODULE
+
+

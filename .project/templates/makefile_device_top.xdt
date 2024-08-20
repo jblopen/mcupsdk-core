@@ -23,7 +23,7 @@
 			component_target_prebuilt_clean_list_string +=` \$(BUILD_COMBO_CLEAN_${component.name})`
 			component_target_prebuilt_scrub_list_string +=` \$(BUILD_COMBO_SCRUB_${component.name})`
 
-			if (!["sdl","pru_ipc","tsn_gptp-freertos-freertos","tsn_combase-freertos","tsn_uniconf-freertos","tsn_unibase-freertos","tsn_lldp-freertos", "tsn_l2-freertos","tsn_icssg_combase-freertos","cmsis"].includes(component.name)){
+			if (!["sdl","pru_ipc","icss_timesync","enet_cli_freertos","tsn_gptp-freertos","tsn_combase-freertos","tsn_uniconf-freertos","tsn_unibase-freertos","tsn_lldp-freertos", "tsn_l2-freertos","tsn_icssg_combase-freertos","cmsis"].includes(component.name)){
 				component_target_prebuilt_list_string_gcc +=` \$(BUILD_COMBO_GCC_${component.name})`
 				component_target_prebuilt_clean_list_string_gcc +=` \$(BUILD_COMBO_CLEAN_GCC_${component.name})`
 				component_target_prebuilt_scrub_list_string_gcc +=` \$(BUILD_COMBO_SCRUB_GCC_${component.name})`
@@ -35,7 +35,7 @@
 			component_target_scrub_list_string +=` \$(BUILD_COMBO_SCRUB_${component.name})`
 
 			if((device == "am64x") || (device == "am243x")){
-			if (!["sdl","pru_ipc","tsn_gptp-freertos-freertos","tsn_combase-freertos","tsn_uniconf-freertos","tsn_unibase-freertos","tsn_lldp-freertos", "tsn_l2-freertos","tsn_icssg_combase-freertos","cmsis"].includes(component.name)) {
+			if (!["sdl","pru_ipc","icss_timesync","enet_cli_freertos","tsn_gptp-freertos","tsn_combase-freertos","tsn_uniconf-freertos","tsn_unibase-freertos","tsn_lldp-freertos", "tsn_l2-freertos","tsn_icssg_combase-freertos","cmsis"].includes(component.name)) {
 			component_target_list_string_gcc +=` \$(BUILD_COMBO_GCC_${component.name})`
 			component_target_clean_list_string_gcc +=` \$(BUILD_COMBO_CLEAN_GCC_${component.name})`
 			component_target_scrub_list_string_gcc +=` \$(BUILD_COMBO_SCRUB_GCC_${component.name})`
@@ -127,7 +127,7 @@ help:
 % for (example of args.system_example_list) {
 %     const relpathParts = example.relpath.split('/');
 %     const end = relpathParts[relpathParts.length - 1];
-%     if(!["system_freertos_nortos_gcc","system_freertos_gcc","system_nortos_gcc"].includes(end)) {
+%     if(!["system_freertos_nortos_gcc-armv7","system_freertos_gcc-armv7","system_nortos_gcc-armv7"].includes(end)) {
 	@echo  $(MAKE) -s -C `example.relpath` [all clean syscfg-gui syscfg]
 %  }
 % }
@@ -138,7 +138,7 @@ help:
 % for (example of args.system_example_list) {
 %     const relpathParts = example.relpath.split('/');
 %     const end = relpathParts[relpathParts.length - 1];
-%     if(["system_freertos_nortos_gcc","system_freertos_gcc","system_nortos_gcc"].includes(end)) {
+%     if(["system_freertos_nortos_gcc-armv7","system_freertos_gcc-armv7","system_nortos_gcc-armv7"].includes(end)) {
 	@echo  $(MAKE) -s -C `example.relpath` [all clean syscfg-gui syscfg]
 %   }
 %  }
@@ -153,7 +153,7 @@ BUILD_COMBO_`component.name` =`component.buildTarget`
 % if (((device == "am64x") || (device == "am243x")) && args.isGccBuildEnabled == 1) {
 # Various GCC Component Targets
 % for (component of args.component_list) {
-%     if (!["sdl","pru_ipc","tsn_gptp-freertos","tsn_combase-freertos","tsn_uniconf-freertos","tsn_unibase-freertos","tsn_lldp-freertos","tsn_l2-freertos","tsn_icssg_combase-freertos","cmsis"].includes(component.name)) {
+%     if (!["sdl","pru_ipc","icss_timesync","enet_cli_freertos","tsn_gptp-freertos","tsn_combase-freertos","tsn_uniconf-freertos","tsn_unibase-freertos","tsn_lldp-freertos","tsn_l2-freertos","tsn_icssg_combase-freertos","cmsis"].includes(component.name)) {
 BUILD_COMBO_GCC_`component.name` =`component.buildTarget_gcc`
 %  }
 % }
@@ -199,7 +199,7 @@ $(BUILD_COMBO_`component.name`):
 
 % if (((device == "am64x") || (device == "am243x")) && args.isGccBuildEnabled == 1) {
 % for (component of args.component_list) {
-%     if (!["sdl","pru_ipc","tsn_gptp-freertos","tsn_combase-freertos","tsn_uniconf-freertos","tsn_unibase-freertos","tsn_lldp-freertos","tsn_l2-freertos","tsn_icssg_combase-freertos","cmsis"].includes(component.name)) {
+%     if (!["sdl","pru_ipc","icss_timesync","enet_cli_freertos","tsn_gptp-freertos","tsn_combase-freertos","tsn_uniconf-freertos","tsn_unibase-freertos","tsn_lldp-freertos","tsn_l2-freertos","tsn_icssg_combase-freertos","cmsis"].includes(component.name)) {
 $(BUILD_COMBO_GCC_`component.name`):
 	$(MAKE) -C `component.relpath` -f makefile`component.tag`.`args.device`.$(subst `component.name`_,,$@) all
 
@@ -215,7 +215,7 @@ BUILD_COMBO_CLEAN_`component.name` =`component.buildTargetClean`
 % if (((device == "am64x") || (device == "am243x")) && args.isGccBuildEnabled == 1) {
 # Various GCC Component Clean Targets
 % for (component of args.component_list) {
-%     if (!["sdl","pru_ipc","tsn_gptp-freertos","tsn_combase-freertos","tsn_uniconf-freertos","tsn_unibase-freertos","tsn_lldp-freertos","tsn_l2-freertos","tsn_icssg_combase-freertos","cmsis"].includes(component.name)) {
+%     if (!["sdl","pru_ipc","icss_timesync","enet_cli_freertos","tsn_gptp-freertos","tsn_combase-freertos","tsn_uniconf-freertos","tsn_unibase-freertos","tsn_lldp-freertos","tsn_l2-freertos","tsn_icssg_combase-freertos","cmsis"].includes(component.name)) {
 BUILD_COMBO_CLEAN_GCC_`component.name` =`component.buildTargetClean_gcc`
 %  }
 % }
@@ -254,7 +254,7 @@ $(BUILD_COMBO_CLEAN_`component.name`):
 
 % if (((device == "am64x") || (device == "am243x")) && args.isGccBuildEnabled == 1) {
 % for (component of args.component_list) {
-%     if (!["sdl","pru_ipc","tsn_gptp-freertos","tsn_combase-freertos","tsn_uniconf-freertos","tsn_unibase-freertos","tsn_lldp-freertos","tsn_l2-freertos","tsn_icssg_combase-freertos","cmsis"].includes(component.name)) {
+%     if (!["sdl","pru_ipc","icss_timesync","enet_cli_freertos","tsn_gptp-freertos","tsn_combase-freertos","tsn_uniconf-freertos","tsn_unibase-freertos","tsn_lldp-freertos","tsn_l2-freertos","tsn_icssg_combase-freertos","cmsis"].includes(component.name)) {
 $(BUILD_COMBO_CLEAN_GCC_`component.name`):
 	$(MAKE) -C `component.relpath` -f makefile`component.tag`.`args.device`.$(subst `component.name`_,,$(subst _clean,,$@)) clean
 
@@ -270,7 +270,7 @@ BUILD_COMBO_SCRUB_`component.name` =`component.buildTargetScrub`_scrub
 % if (((device == "am64x") || (device == "am243x")) && args.isGccBuildEnabled == 1) {
 # Various GCC Component Scrub Targets
 % for (component of args.component_list) {
-%     if ((device == "am243x") && !["sdl","pru_ipc","tsn_gptp-freertos","tsn_combase-freertos","tsn_uniconf-freertos","tsn_unibase-freertos","tsn_lldp-freertos","tsn_l2-freertos","tsn_icssg_combase-freertos","cmsis","unity","doxy_samples"].includes(component.name)) {
+%     if ((device == "am243x") && !["sdl","pru_ipc","icss_timesync","enet_cli_freertos","tsn_gptp-freertos","tsn_combase-freertos","tsn_uniconf-freertos","tsn_unibase-freertos","tsn_lldp-freertos","tsn_l2-freertos","tsn_icssg_combase-freertos","cmsis","unity","doxy_samples"].includes(component.name)) {
 BUILD_COMBO_SCRUB_GCC_`component.name` =`component.buildTargetScrub_gcc`_scrub
 %  }
 %     else if ((device == "am64x") && ["board","drivers","freertos","nortos"].includes(component.name)) {
@@ -310,7 +310,7 @@ $(BUILD_COMBO_SCRUB_`component.name`):
 % }
 % if (((device == "am64x") || (device == "am243x")) && args.isGccBuildEnabled == 1) {
 % for (component of args.component_list) {
-%     if (!["sdl","pru_ipc","tsn_gptp-freertos","tsn_combase-freertos","tsn_uniconf-freertos","tsn_unibase-freertos","tsn_lldp-freertos","tsn_l2-freertos","tsn_icssg_combase-freertos","cmsis"].includes(component.name)) {
+%     if (!["sdl","pru_ipc","icss_timesync","enet_cli_freertos","tsn_gptp-freertos","tsn_combase-freertos","tsn_uniconf-freertos","tsn_unibase-freertos","tsn_lldp-freertos","tsn_l2-freertos","tsn_icssg_combase-freertos","cmsis"].includes(component.name)) {
 $(BUILD_COMBO_SCRUB_GCC_`component.name`):
 	$(MAKE) -C `component.relpath` -f makefile`component.tag`.`args.device`.$(subst `component.name`_,,$(subst _scrub,,$@)) scrub
 
@@ -335,7 +335,7 @@ BUILD_COMBO_EXAMPLE_ALL +=`example.buildTarget`
 %   if(!example.isSkipTopLevelBuild) {
 %     const relpathParts = example.relpath.split('/');
 %     const end = relpathParts[relpathParts.length - 1];
-%     if(!["system_freertos_nortos_gcc","system_freertos_gcc","system_nortos_gcc"].includes(end)) {
+%     if(!["system_freertos_nortos_gcc-armv7","system_freertos_gcc-armv7","system_nortos_gcc-armv7"].includes(end)) {
 BUILD_COMBO_EXAMPLE_ALL +=`example.buildTarget`
 %     }
 %   }
@@ -361,7 +361,7 @@ BUILD_COMBO_EXAMPLE_ALL_GCC +=`example.buildTarget`
 %   if(!example.isSkipTopLevelBuild) {
 %     const relpathParts = example.relpath.split('/');
 %     const end = relpathParts[relpathParts.length - 1];
-%     if(["system_freertos_nortos_gcc","system_freertos_gcc","system_nortos_gcc"].includes(end)) {
+%     if(["system_freertos_nortos_gcc-armv7","system_freertos_gcc-armv7","system_nortos_gcc-armv7"].includes(end)) {
 BUILD_COMBO_EXAMPLE_ALL_GCC +=`example.buildTarget`
 %     }
 %   }
@@ -414,7 +414,7 @@ examples-private: $(BUILD_COMBO_EXAMPLE_PRIVATE_ALL)
 % for (example of args.system_example_list) {
 %     const relpathParts = example.relpath.split('/');
 %     const end = relpathParts[relpathParts.length - 1];
-%     if(!["system_freertos_nortos_gcc","system_freertos_gcc","system_nortos_gcc"].includes(end)) {
+%     if(!["system_freertos_nortos_gcc-armv7","system_freertos_gcc-armv7","system_nortos_gcc-armv7"].includes(end)) {
 `example.buildTarget`:
 	$(MAKE) -C `example.relpath` -f makefile all
 
@@ -425,7 +425,7 @@ examples-private: $(BUILD_COMBO_EXAMPLE_PRIVATE_ALL)
 % for (example of args.system_example_list) {
 %     const relpathParts = example.relpath.split('/');
 %     const end = relpathParts[relpathParts.length - 1];
-%     if(["system_freertos_nortos_gcc","system_freertos_gcc","system_nortos_gcc"].includes(end)) {
+%     if(["system_freertos_nortos_gcc-armv7","system_freertos_gcc-armv7","system_nortos_gcc-armv7"].includes(end)) {
 `example.buildTarget`:
 	$(MAKE) -C `example.relpath` -f makefile all
 
@@ -448,7 +448,7 @@ BUILD_COMBO_EXAMPLE_CLEAN_ALL +=`example.buildTargetClean`
 %   if(!example.isSkipTopLevelBuild) {
 %     const relpathParts = example.relpath.split('/');
 %     const end = relpathParts[relpathParts.length - 1];
-%     if(!["system_freertos_nortos_gcc","system_freertos_gcc","system_nortos_gcc"].includes(end)) {
+%     if(!["system_freertos_nortos_gcc-armv7","system_freertos_gcc-armv7","system_nortos_gcc-armv7"].includes(end)) {
 BUILD_COMBO_EXAMPLE_CLEAN_ALL +=`example.buildTargetClean`
 %     }
 %   }
@@ -460,7 +460,7 @@ BUILD_COMBO_EXAMPLE_CLEAN_ALL +=`example.buildTargetClean`
 %   if(!example.isSkipTopLevelBuild) {
 %     const relpathParts = example.relpath.split('/');
 %     const end = relpathParts[relpathParts.length - 1];
-%     if(["system_freertos_nortos_gcc","system_freertos_gcc","system_nortos_gcc"].includes(end)) {
+%     if(["system_freertos_nortos_gcc-armv7","system_freertos_gcc-armv7","system_nortos_gcc-armv7"].includes(end)) {
 BUILD_COMBO_EXAMPLE_CLEAN_ALL_GCC +=`example.buildTargetClean`
 %     }
 %   }
@@ -524,7 +524,7 @@ examples-private-clean: $(BUILD_COMBO_EXAMPLE_PRIVATE_CLEAN_ALL)
 % for (example of args.system_example_list) {
 %     const relpathParts = example.relpath.split('/');
 %     const end = relpathParts[relpathParts.length - 1];
-%     if(!["system_freertos_nortos_gcc","system_freertos_gcc","system_nortos_gcc"].includes(end)) {
+%     if(!["system_freertos_nortos_gcc-armv7","system_freertos_gcc-armv7","system_nortos_gcc-armv7"].includes(end)) {
 `example.buildTargetClean`:
 	$(MAKE) -C `example.relpath` -f makefile clean
 
@@ -534,7 +534,7 @@ examples-private-clean: $(BUILD_COMBO_EXAMPLE_PRIVATE_CLEAN_ALL)
 % for (example of args.example_list) {
 %     const relpathParts = example.relpath.split('/');
 %     const end = relpathParts[relpathParts.length - 1];
-%     if(["system_freertos_nortos_gcc","system_freertos_gcc","system_nortos_gcc"].includes(end)) {
+%     if(["system_freertos_nortos_gcc-armv7","system_freertos_gcc-armv7","system_nortos_gcc-armv7"].includes(end)) {
 `example.buildTargetClean`:
 	$(MAKE) -C `example.relpath` -f makefile clean
 
@@ -558,7 +558,7 @@ BUILD_COMBO_EXAMPLE_SCRUB_ALL +=`example.buildTargetScrub`
 %   if(!example.isSkipTopLevelBuild) {
 %     const relpathParts = example.relpath.split('/');
 %     const end = relpathParts[relpathParts.length - 1];
-%     if(!["system_freertos_nortos_gcc","system_freertos_gcc","system_nortos_gcc"].includes(end)) {
+%     if(!["system_freertos_nortos_gcc-armv7","system_freertos_gcc-armv7","system_nortos_gcc-armv7"].includes(end)) {
 BUILD_COMBO_EXAMPLE_SCRUB_ALL +=`example.buildTargetScrub`
 %     }
 %   }
@@ -570,7 +570,7 @@ BUILD_COMBO_EXAMPLE_SCRUB_ALL +=`example.buildTargetScrub`
 %   if(!example.isSkipTopLevelBuild) {
 %     const relpathParts = example.relpath.split('/');
 %     const end = relpathParts[relpathParts.length - 1];
-%     if(["system_freertos_nortos_gcc","system_freertos_gcc","system_nortos_gcc"].includes(end)) {
+%     if(["system_freertos_nortos_gcc-armv7","system_freertos_gcc-armv7","system_nortos_gcc-armv7"].includes(end)) {
 BUILD_COMBO_EXAMPLE_SCRUB_ALL_GCC +=`example.buildTargetScrub`
 %     }
 %   }
@@ -634,7 +634,7 @@ examples-scrub-private: $(BUILD_COMBO_EXAMPLE_PRIVATE_SCRUB_ALL)
 % for (example of args.system_example_list) {
 %     const relpathParts = example.relpath.split('/');
 %     const end = relpathParts[relpathParts.length - 1];
-%     if(!["system_freertos_nortos_gcc","system_freertos_gcc","system_nortos_gcc"].includes(end)) {
+%     if(!["system_freertos_nortos_gcc-armv7","system_freertos_gcc-armv7","system_nortos_gcc-armv7"].includes(end)) {
 `example.buildTargetScrub`:
 	$(MAKE) -C `example.relpath` -f makefile scrub
 
@@ -644,7 +644,7 @@ examples-scrub-private: $(BUILD_COMBO_EXAMPLE_PRIVATE_SCRUB_ALL)
 % for (example of args.system_example_list) {
 %     const relpathParts = example.relpath.split('/');
 %     const end = relpathParts[relpathParts.length - 1];
-%     if(["system_freertos_nortos_gcc","system_freertos_gcc","system_nortos_gcc"].includes(end)) {
+%     if(["system_freertos_nortos_gcc-armv7","system_freertos_gcc-armv7","system_nortos_gcc-armv7"].includes(end)) {
 `example.buildTargetScrub`:
 	$(MAKE) -C `example.relpath` -f makefile scrub
 

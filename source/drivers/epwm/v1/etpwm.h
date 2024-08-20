@@ -3803,11 +3803,12 @@ EPWM_setActionQualifierShadowLoadMode(uint32_t base,
     // Set the appropriate sync and load mode bits and also enable shadow
     // load mode. Shadow to active load can also be frozen.
     //
+
     HW_WR_REG16((base + CSL_EPWM_AQCTL),
         ((HW_RD_REG16(base + CSL_EPWM_AQCTL) &
-        ((~((CSL_EPWM_AQCTL_LDAQAMODE_MASK << (uint16_t)aqModule) |
+        (~((CSL_EPWM_AQCTL_LDAQAMODE_MASK << (uint16_t)aqModule) |
         (CSL_EPWM_AQCTL_LDAQASYNC_MAX << (uint16_t)syncModeOffset))) |
-        (CSL_EPWM_AQCTL_SHDWAQAMODE_MAX << shadowModeOffset))) |
+        (CSL_EPWM_AQCTL_SHDWAQAMODE_MAX << shadowModeOffset)) |
         ((((uint16_t)loadMode >> 2U) << syncModeOffset) |
         (((uint16_t)loadMode & CSL_EPWM_AQCTL_LDAQAMODE_MASK) <<
         (uint16_t)aqModule))));
@@ -9808,7 +9809,7 @@ HRPWM_setHiResCounterCompareValue(uint32_t base,
     //
     // Check the arguments
     //
-    DebugP_assert(hrCompCount <= CSL_EPWM_CMPA_CMPAHR_MAX);
+    DebugP_assert((hrCompCount << 8U) <= CSL_EPWM_CMPA_CMPAHR_MAX);
 
     //
     // Write to the high resolution counter compare registers
@@ -9819,7 +9820,7 @@ HRPWM_setHiResCounterCompareValue(uint32_t base,
         // Write to CMPAHR
         //
         HW_WR_REG32(base + CSL_EPWM_CMPA,
-            HW_RD_REG32(base + CSL_EPWM_CMPA) | (((uint32_t)hrCompCount & CSL_EPWM_CMPA_CMPAHR_MASK) << 8U));
+            (HW_RD_REG32(base + CSL_EPWM_CMPA) & ~CSL_EPWM_CMPA_CMPAHR_MASK) | (((uint32_t)hrCompCount << (uint32_t)8U) & CSL_EPWM_CMPA_CMPAHR_MASK));
     }
     else
     {
@@ -9827,7 +9828,7 @@ HRPWM_setHiResCounterCompareValue(uint32_t base,
         // Write to CMPBHR
         //
         HW_WR_REG32(base + CSL_EPWM_CMPB,
-            HW_RD_REG32(base + CSL_EPWM_CMPB) | (((uint32_t)hrCompCount & CSL_EPWM_CMPB_CMPBHR_MASK) << (uint32_t)8U));
+            (HW_RD_REG32(base + CSL_EPWM_CMPB) & ~CSL_EPWM_CMPA_CMPAHR_MASK) | (((uint32_t)hrCompCount << (uint32_t)8U) & CSL_EPWM_CMPA_CMPAHR_MASK));
     }
 }
 

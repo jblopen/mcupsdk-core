@@ -36,6 +36,7 @@ help:
 	@echo  ======================
 	@echo  $(MAKE) -s -f makefile.awr294x board_r5f.ti-arm-clang board_c66.ti-c6000
 	@echo  $(MAKE) -s -f makefile.awr294x drivers_r5f.ti-arm-clang drivers_c66.ti-c6000
+	@echo  $(MAKE) -s -f makefile.awr294x middleware_r5f.ti-arm-clang
 	@echo  $(MAKE) -s -f makefile.awr294x freertos_r5f.ti-arm-clang freertos_c66.ti-c6000
 	@echo  $(MAKE) -s -f makefile.awr294x nortos_r5f.ti-arm-clang nortos_c66.ti-c6000
 	@echo  $(MAKE) -s -f makefile.awr294x safertos_c66.ti-c6000
@@ -53,6 +54,7 @@ help:
 	@echo  ======================
 	@echo  $(MAKE) -s -f makefile.awr294x board_r5f.ti-arm-clang_clean board_c66.ti-c6000_clean
 	@echo  $(MAKE) -s -f makefile.awr294x drivers_r5f.ti-arm-clang_clean drivers_c66.ti-c6000_clean
+	@echo  $(MAKE) -s -f makefile.awr294x middleware_r5f.ti-arm-clang_clean
 	@echo  $(MAKE) -s -f makefile.awr294x freertos_r5f.ti-arm-clang_clean freertos_c66.ti-c6000_clean
 	@echo  $(MAKE) -s -f makefile.awr294x nortos_r5f.ti-arm-clang_clean nortos_c66.ti-c6000_clean
 	@echo  $(MAKE) -s -f makefile.awr294x safertos_c66.ti-c6000_clean
@@ -167,7 +169,8 @@ help:
 	@echo  $(MAKE) -s -C examples/kernel/freertos/interrupt_profiling/awr294x-evm/r5fss0-0_freertos/ti-arm-clang [all clean syscfg-gui syscfg]
 	@echo  $(MAKE) -s -C examples/kernel/freertos/task_switch/awr294x-evm/r5fss0-0_freertos/ti-arm-clang [all clean syscfg-gui syscfg]
 	@echo  $(MAKE) -s -C examples/kernel/freertos/task_switch/awr294x-evm/c66ss0_freertos/ti-c6000 [all clean syscfg-gui syscfg]
-	@echo  $(MAKE) -s -C examples/networking/enet_loopback/enet_cpsw_loopback/awr294x-evm/r5fss0-0_freertos/ti-arm-clang [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C examples/networking/enet_loopback/enet_cpsw_loopback/loopback_mac_end/awr294x-evm/r5fss0-0_freertos/ti-arm-clang [all clean syscfg-gui syscfg]
+	@echo  $(MAKE) -s -C examples/networking/enet_loopback/enet_cpsw_loopback/loopback_phy_end/awr294x-evm/r5fss0-0_freertos/ti-arm-clang [all clean syscfg-gui syscfg]
 	@echo  $(MAKE) -s -C examples/networking/lwip/enet_lwip_cpsw/awr294x-evm/r5fss0-0_freertos/ti-arm-clang [all clean syscfg-gui syscfg]
 	@echo  $(MAKE) -s -C examples/networking/lwip/enet_lwip_cpsw/awr294x-evm/r5fss0-1_freertos/ti-arm-clang [all clean syscfg-gui syscfg]
 	@echo  $(MAKE) -s -C examples/networking/lwip/enet_cpsw_tcpserver/awr294x-evm/r5fss0-0_freertos/ti-arm-clang [all clean syscfg-gui syscfg]
@@ -244,6 +247,7 @@ help:
 # Various Component Targets
 BUILD_COMBO_board = board_r5f.ti-arm-clang board_c66.ti-c6000
 BUILD_COMBO_drivers = drivers_r5f.ti-arm-clang drivers_c66.ti-c6000
+BUILD_COMBO_middleware = middleware_r5f.ti-arm-clang
 BUILD_COMBO_freertos = freertos_r5f.ti-arm-clang freertos_c66.ti-c6000
 BUILD_COMBO_nortos = nortos_r5f.ti-arm-clang nortos_c66.ti-c6000
 BUILD_COMBO_safertos = safertos_c66.ti-c6000
@@ -259,7 +263,7 @@ BUILD_COMBO_security = security_r5f.ti-arm-clang security_c66.ti-c6000
 
 
 # Combine all Components
-BUILD_COMBO_ALL = $(BUILD_COMBO_board) $(BUILD_COMBO_drivers) $(BUILD_COMBO_freertos) $(BUILD_COMBO_nortos) $(BUILD_COMBO_enet-cpsw) $(BUILD_COMBO_lwipif-cpsw-freertos) $(BUILD_COMBO_lwipif-cpsw-nortos) $(BUILD_COMBO_lwip-freertos) $(BUILD_COMBO_lwip-nortos) $(BUILD_COMBO_lwip-contrib-freertos) $(BUILD_COMBO_lwip-contrib-nortos) $(BUILD_COMBO_sdl) $(BUILD_COMBO_security)
+BUILD_COMBO_ALL = $(BUILD_COMBO_board) $(BUILD_COMBO_drivers) $(BUILD_COMBO_middleware) $(BUILD_COMBO_freertos) $(BUILD_COMBO_nortos) $(BUILD_COMBO_enet-cpsw) $(BUILD_COMBO_lwipif-cpsw-freertos) $(BUILD_COMBO_lwipif-cpsw-nortos) $(BUILD_COMBO_lwip-freertos) $(BUILD_COMBO_lwip-nortos) $(BUILD_COMBO_lwip-contrib-freertos) $(BUILD_COMBO_lwip-contrib-nortos) $(BUILD_COMBO_sdl) $(BUILD_COMBO_security)
 
 
 # Combine all Pre-built Components
@@ -281,6 +285,9 @@ $(BUILD_COMBO_board):
 
 $(BUILD_COMBO_drivers):
 	$(MAKE) -C source/drivers -f makefile.awr294x.$(subst drivers_,,$@) all
+
+$(BUILD_COMBO_middleware):
+	$(MAKE) -C source/middleware -f makefile.awr294x.$(subst middleware_,,$@) all
 
 $(BUILD_COMBO_freertos):
 	$(MAKE) -C source/kernel/freertos -f makefile.awr294x.$(subst freertos_,,$@) all
@@ -323,6 +330,7 @@ $(BUILD_COMBO_security):
 # Various Component Clean Targets
 BUILD_COMBO_CLEAN_board = board_r5f.ti-arm-clang_clean board_c66.ti-c6000_clean
 BUILD_COMBO_CLEAN_drivers = drivers_r5f.ti-arm-clang_clean drivers_c66.ti-c6000_clean
+BUILD_COMBO_CLEAN_middleware = middleware_r5f.ti-arm-clang_clean
 BUILD_COMBO_CLEAN_freertos = freertos_r5f.ti-arm-clang_clean freertos_c66.ti-c6000_clean
 BUILD_COMBO_CLEAN_nortos = nortos_r5f.ti-arm-clang_clean nortos_c66.ti-c6000_clean
 BUILD_COMBO_CLEAN_safertos = safertos_c66.ti-c6000_clean
@@ -338,7 +346,7 @@ BUILD_COMBO_CLEAN_security = security_r5f.ti-arm-clang_clean security_c66.ti-c60
 
 
 # Combine all Components Clean
-BUILD_COMBO_CLEAN_ALL = $(BUILD_COMBO_CLEAN_board) $(BUILD_COMBO_CLEAN_drivers) $(BUILD_COMBO_CLEAN_freertos) $(BUILD_COMBO_CLEAN_nortos) $(BUILD_COMBO_CLEAN_safertos) $(BUILD_COMBO_CLEAN_enet-cpsw) $(BUILD_COMBO_CLEAN_lwipif-cpsw-freertos) $(BUILD_COMBO_CLEAN_lwipif-cpsw-nortos) $(BUILD_COMBO_CLEAN_lwip-freertos) $(BUILD_COMBO_CLEAN_lwip-nortos) $(BUILD_COMBO_CLEAN_lwip-contrib-freertos) $(BUILD_COMBO_CLEAN_lwip-contrib-nortos) $(BUILD_COMBO_CLEAN_sdl) $(BUILD_COMBO_CLEAN_security)
+BUILD_COMBO_CLEAN_ALL = $(BUILD_COMBO_CLEAN_board) $(BUILD_COMBO_CLEAN_drivers) $(BUILD_COMBO_CLEAN_middleware) $(BUILD_COMBO_CLEAN_freertos) $(BUILD_COMBO_CLEAN_nortos) $(BUILD_COMBO_CLEAN_safertos) $(BUILD_COMBO_CLEAN_enet-cpsw) $(BUILD_COMBO_CLEAN_lwipif-cpsw-freertos) $(BUILD_COMBO_CLEAN_lwipif-cpsw-nortos) $(BUILD_COMBO_CLEAN_lwip-freertos) $(BUILD_COMBO_CLEAN_lwip-nortos) $(BUILD_COMBO_CLEAN_lwip-contrib-freertos) $(BUILD_COMBO_CLEAN_lwip-contrib-nortos) $(BUILD_COMBO_CLEAN_sdl) $(BUILD_COMBO_CLEAN_security)
 
 
 # Combine all Pre-built Components Clean
@@ -354,6 +362,9 @@ $(BUILD_COMBO_CLEAN_board):
 
 $(BUILD_COMBO_CLEAN_drivers):
 	$(MAKE) -C source/drivers -f makefile.awr294x.$(subst drivers_,,$(subst _clean,,$@)) clean
+
+$(BUILD_COMBO_CLEAN_middleware):
+	$(MAKE) -C source/middleware -f makefile.awr294x.$(subst middleware_,,$(subst _clean,,$@)) clean
 
 $(BUILD_COMBO_CLEAN_freertos):
 	$(MAKE) -C source/kernel/freertos -f makefile.awr294x.$(subst freertos_,,$(subst _clean,,$@)) clean
@@ -396,6 +407,7 @@ $(BUILD_COMBO_CLEAN_security):
 # Various Component Scrub Targets
 BUILD_COMBO_SCRUB_board = board_r5f.ti-arm-clang_scrub board_c66.ti-c6000_scrub_scrub
 BUILD_COMBO_SCRUB_drivers = drivers_r5f.ti-arm-clang_scrub drivers_c66.ti-c6000_scrub_scrub
+BUILD_COMBO_SCRUB_middleware = middleware_r5f.ti-arm-clang_scrub_scrub
 BUILD_COMBO_SCRUB_freertos = freertos_r5f.ti-arm-clang_scrub freertos_c66.ti-c6000_scrub_scrub
 BUILD_COMBO_SCRUB_nortos = nortos_r5f.ti-arm-clang_scrub nortos_c66.ti-c6000_scrub_scrub
 BUILD_COMBO_SCRUB_safertos = safertos_c66.ti-c6000_scrub_scrub
@@ -411,7 +423,7 @@ BUILD_COMBO_SCRUB_security = security_r5f.ti-arm-clang_scrub security_c66.ti-c60
 
 
 # Combine all Components Scrub Targets
-BUILD_COMBO_SCRUB_ALL = $(BUILD_COMBO_SCRUB_board) $(BUILD_COMBO_SCRUB_drivers) $(BUILD_COMBO_SCRUB_freertos) $(BUILD_COMBO_SCRUB_nortos) $(BUILD_COMBO_SCRUB_safertos) $(BUILD_COMBO_SCRUB_enet-cpsw) $(BUILD_COMBO_SCRUB_lwipif-cpsw-freertos) $(BUILD_COMBO_SCRUB_lwipif-cpsw-nortos) $(BUILD_COMBO_SCRUB_lwip-freertos) $(BUILD_COMBO_SCRUB_lwip-nortos) $(BUILD_COMBO_SCRUB_lwip-contrib-freertos) $(BUILD_COMBO_SCRUB_lwip-contrib-nortos) $(BUILD_COMBO_SCRUB_sdl) $(BUILD_COMBO_SCRUB_security)
+BUILD_COMBO_SCRUB_ALL = $(BUILD_COMBO_SCRUB_board) $(BUILD_COMBO_SCRUB_drivers) $(BUILD_COMBO_SCRUB_middleware) $(BUILD_COMBO_SCRUB_freertos) $(BUILD_COMBO_SCRUB_nortos) $(BUILD_COMBO_SCRUB_safertos) $(BUILD_COMBO_SCRUB_enet-cpsw) $(BUILD_COMBO_SCRUB_lwipif-cpsw-freertos) $(BUILD_COMBO_SCRUB_lwipif-cpsw-nortos) $(BUILD_COMBO_SCRUB_lwip-freertos) $(BUILD_COMBO_SCRUB_lwip-nortos) $(BUILD_COMBO_SCRUB_lwip-contrib-freertos) $(BUILD_COMBO_SCRUB_lwip-contrib-nortos) $(BUILD_COMBO_SCRUB_sdl) $(BUILD_COMBO_SCRUB_security)
 
 # Combine all Pre-built Components Scrub Targets
 BUILD_COMBO_PREBUILT_SCRUB_ALL =
@@ -426,6 +438,9 @@ $(BUILD_COMBO_SCRUB_board):
 
 $(BUILD_COMBO_SCRUB_drivers):
 	$(MAKE) -C source/drivers -f makefile.awr294x.$(subst drivers_,,$(subst _scrub,,$@)) scrub
+
+$(BUILD_COMBO_SCRUB_middleware):
+	$(MAKE) -C source/middleware -f makefile.awr294x.$(subst middleware_,,$(subst _scrub,,$@)) scrub
 
 $(BUILD_COMBO_SCRUB_freertos):
 	$(MAKE) -C source/kernel/freertos -f makefile.awr294x.$(subst freertos_,,$(subst _scrub,,$@)) scrub
@@ -559,7 +574,8 @@ BUILD_COMBO_EXAMPLE_ALL += posix_demo_awr294x-evm_c66ss0_freertos_ti-c6000
 BUILD_COMBO_EXAMPLE_ALL += interrupt_profiling_awr294x-evm_r5fss0-0_freertos_ti-arm-clang
 BUILD_COMBO_EXAMPLE_ALL += task_switch_awr294x-evm_r5fss0-0_freertos_ti-arm-clang
 BUILD_COMBO_EXAMPLE_ALL += task_switch_awr294x-evm_c66ss0_freertos_ti-c6000
-BUILD_COMBO_EXAMPLE_ALL += enet_cpsw_loopback_awr294x-evm_r5fss0-0_freertos_ti-arm-clang
+BUILD_COMBO_EXAMPLE_ALL += enet_cpsw_loopback_mac_end_awr294x-evm_r5fss0-0_freertos_ti-arm-clang
+BUILD_COMBO_EXAMPLE_ALL += enet_cpsw_loopback_phy_end_awr294x-evm_r5fss0-0_freertos_ti-arm-clang
 BUILD_COMBO_EXAMPLE_ALL += enet_lwip_cpsw_awr294x-evm_r5fss0-0_freertos_ti-arm-clang
 BUILD_COMBO_EXAMPLE_ALL += enet_lwip_cpsw_awr294x-evm_r5fss0-1_freertos_ti-arm-clang
 BUILD_COMBO_EXAMPLE_ALL += enet_cpsw_tcpserver_awr294x-evm_r5fss0-0_freertos_ti-arm-clang
@@ -942,8 +958,11 @@ examples-private: $(BUILD_COMBO_EXAMPLE_PRIVATE_ALL)
  task_switch_awr294x-evm_c66ss0_freertos_ti-c6000:
 	$(MAKE) -C examples/kernel/freertos/task_switch/awr294x-evm/c66ss0_freertos/ti-c6000 -f makefile all
 
- enet_cpsw_loopback_awr294x-evm_r5fss0-0_freertos_ti-arm-clang:
-	$(MAKE) -C examples/networking/enet_loopback/enet_cpsw_loopback/awr294x-evm/r5fss0-0_freertos/ti-arm-clang -f makefile all
+ enet_cpsw_loopback_mac_end_awr294x-evm_r5fss0-0_freertos_ti-arm-clang:
+	$(MAKE) -C examples/networking/enet_loopback/enet_cpsw_loopback/loopback_mac_end/awr294x-evm/r5fss0-0_freertos/ti-arm-clang -f makefile all
+
+ enet_cpsw_loopback_phy_end_awr294x-evm_r5fss0-0_freertos_ti-arm-clang:
+	$(MAKE) -C examples/networking/enet_loopback/enet_cpsw_loopback/loopback_phy_end/awr294x-evm/r5fss0-0_freertos/ti-arm-clang -f makefile all
 
  enet_lwip_cpsw_awr294x-evm_r5fss0-0_freertos_ti-arm-clang:
 	$(MAKE) -C examples/networking/lwip/enet_lwip_cpsw/awr294x-evm/r5fss0-0_freertos/ti-arm-clang -f makefile all
@@ -1245,7 +1264,8 @@ BUILD_COMBO_EXAMPLE_CLEAN_ALL += posix_demo_awr294x-evm_c66ss0_freertos_ti-c6000
 BUILD_COMBO_EXAMPLE_CLEAN_ALL += interrupt_profiling_awr294x-evm_r5fss0-0_freertos_ti-arm-clang_clean
 BUILD_COMBO_EXAMPLE_CLEAN_ALL += task_switch_awr294x-evm_r5fss0-0_freertos_ti-arm-clang_clean
 BUILD_COMBO_EXAMPLE_CLEAN_ALL += task_switch_awr294x-evm_c66ss0_freertos_ti-c6000_clean
-BUILD_COMBO_EXAMPLE_CLEAN_ALL += enet_cpsw_loopback_awr294x-evm_r5fss0-0_freertos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += enet_cpsw_loopback_mac_end_awr294x-evm_r5fss0-0_freertos_ti-arm-clang_clean
+BUILD_COMBO_EXAMPLE_CLEAN_ALL += enet_cpsw_loopback_phy_end_awr294x-evm_r5fss0-0_freertos_ti-arm-clang_clean
 BUILD_COMBO_EXAMPLE_CLEAN_ALL += enet_lwip_cpsw_awr294x-evm_r5fss0-0_freertos_ti-arm-clang_clean
 BUILD_COMBO_EXAMPLE_CLEAN_ALL += enet_lwip_cpsw_awr294x-evm_r5fss0-1_freertos_ti-arm-clang_clean
 BUILD_COMBO_EXAMPLE_CLEAN_ALL += enet_cpsw_tcpserver_awr294x-evm_r5fss0-0_freertos_ti-arm-clang_clean
@@ -1623,8 +1643,11 @@ examples-private-clean: $(BUILD_COMBO_EXAMPLE_PRIVATE_CLEAN_ALL)
  task_switch_awr294x-evm_c66ss0_freertos_ti-c6000_clean:
 	$(MAKE) -C examples/kernel/freertos/task_switch/awr294x-evm/c66ss0_freertos/ti-c6000 -f makefile clean
 
- enet_cpsw_loopback_awr294x-evm_r5fss0-0_freertos_ti-arm-clang_clean:
-	$(MAKE) -C examples/networking/enet_loopback/enet_cpsw_loopback/awr294x-evm/r5fss0-0_freertos/ti-arm-clang -f makefile clean
+ enet_cpsw_loopback_mac_end_awr294x-evm_r5fss0-0_freertos_ti-arm-clang_clean:
+	$(MAKE) -C examples/networking/enet_loopback/enet_cpsw_loopback/loopback_mac_end/awr294x-evm/r5fss0-0_freertos/ti-arm-clang -f makefile clean
+
+ enet_cpsw_loopback_phy_end_awr294x-evm_r5fss0-0_freertos_ti-arm-clang_clean:
+	$(MAKE) -C examples/networking/enet_loopback/enet_cpsw_loopback/loopback_phy_end/awr294x-evm/r5fss0-0_freertos/ti-arm-clang -f makefile clean
 
  enet_lwip_cpsw_awr294x-evm_r5fss0-0_freertos_ti-arm-clang_clean:
 	$(MAKE) -C examples/networking/lwip/enet_lwip_cpsw/awr294x-evm/r5fss0-0_freertos/ti-arm-clang -f makefile clean
@@ -1926,7 +1949,8 @@ BUILD_COMBO_EXAMPLE_SCRUB_ALL += posix_demo_awr294x-evm_c66ss0_freertos_ti-c6000
 BUILD_COMBO_EXAMPLE_SCRUB_ALL += interrupt_profiling_awr294x-evm_r5fss0-0_freertos_ti-arm-clang_scrub
 BUILD_COMBO_EXAMPLE_SCRUB_ALL += task_switch_awr294x-evm_r5fss0-0_freertos_ti-arm-clang_scrub
 BUILD_COMBO_EXAMPLE_SCRUB_ALL += task_switch_awr294x-evm_c66ss0_freertos_ti-c6000_scrub
-BUILD_COMBO_EXAMPLE_SCRUB_ALL += enet_cpsw_loopback_awr294x-evm_r5fss0-0_freertos_ti-arm-clang_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += enet_cpsw_loopback_mac_end_awr294x-evm_r5fss0-0_freertos_ti-arm-clang_scrub
+BUILD_COMBO_EXAMPLE_SCRUB_ALL += enet_cpsw_loopback_phy_end_awr294x-evm_r5fss0-0_freertos_ti-arm-clang_scrub
 BUILD_COMBO_EXAMPLE_SCRUB_ALL += enet_lwip_cpsw_awr294x-evm_r5fss0-0_freertos_ti-arm-clang_scrub
 BUILD_COMBO_EXAMPLE_SCRUB_ALL += enet_lwip_cpsw_awr294x-evm_r5fss0-1_freertos_ti-arm-clang_scrub
 BUILD_COMBO_EXAMPLE_SCRUB_ALL += enet_cpsw_tcpserver_awr294x-evm_r5fss0-0_freertos_ti-arm-clang_scrub
@@ -2304,8 +2328,11 @@ examples-scrub-private: $(BUILD_COMBO_EXAMPLE_PRIVATE_SCRUB_ALL)
  task_switch_awr294x-evm_c66ss0_freertos_ti-c6000_scrub:
 	$(MAKE) -C examples/kernel/freertos/task_switch/awr294x-evm/c66ss0_freertos/ti-c6000 -f makefile scrub
 
- enet_cpsw_loopback_awr294x-evm_r5fss0-0_freertos_ti-arm-clang_scrub:
-	$(MAKE) -C examples/networking/enet_loopback/enet_cpsw_loopback/awr294x-evm/r5fss0-0_freertos/ti-arm-clang -f makefile scrub
+ enet_cpsw_loopback_mac_end_awr294x-evm_r5fss0-0_freertos_ti-arm-clang_scrub:
+	$(MAKE) -C examples/networking/enet_loopback/enet_cpsw_loopback/loopback_mac_end/awr294x-evm/r5fss0-0_freertos/ti-arm-clang -f makefile scrub
+
+ enet_cpsw_loopback_phy_end_awr294x-evm_r5fss0-0_freertos_ti-arm-clang_scrub:
+	$(MAKE) -C examples/networking/enet_loopback/enet_cpsw_loopback/loopback_phy_end/awr294x-evm/r5fss0-0_freertos/ti-arm-clang -f makefile scrub
 
  enet_lwip_cpsw_awr294x-evm_r5fss0-0_freertos_ti-arm-clang_scrub:
 	$(MAKE) -C examples/networking/lwip/enet_lwip_cpsw/awr294x-evm/r5fss0-0_freertos/ti-arm-clang -f makefile scrub

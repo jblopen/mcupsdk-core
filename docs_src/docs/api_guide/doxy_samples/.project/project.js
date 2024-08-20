@@ -6,6 +6,7 @@ const files = {
         "AddrTranslateP_sample.c",
         "Bootloader_sample.c",
         "CacheP_sample.c",
+        "Canfd_sample.c",
         "CpuIdP_sample.c",
         "ClockP_sample.c",
         "Crc_sample.c",
@@ -50,6 +51,7 @@ const files = {
         "Uart_lld_sample.c",
         "Udma_sample.c",
         "Pru_ipc_sample.c",
+        "Gp_timer_sample.c"
     ],
 };
 
@@ -91,6 +93,7 @@ const files_am263x = {
         "AddrTranslateP_sample.c",
         "Bootloader_sample_v2.c",
         "CacheP_sample.c",
+        "Canfd_sample.c",
         "CpuIdP_sample.c",
         "ClockP_sample.c",
         "Cmpss_sample.c",
@@ -127,6 +130,42 @@ const files_am263px = {
         "AddrTranslateP_sample.c",
         "Resolver_sample.c",
         "Bootloader_sample_v2.c",
+        "CacheP_sample.c",
+        "Canfd_sample.c",
+        "CpuIdP_sample.c",
+        "ClockP_sample.c",
+        "Cmpss_sample.c",
+        "Dac_sample.c",
+        "DebugP_sample.c",
+        "Edma_sample.c",
+        "Ethphy_sample.c",
+        "EventP_sample.c",
+        "HeapP_sample.c",
+        "HwiP_sample.c",
+        "IpcNotify_sample.c",
+        "IpcRPMessage_sample.c",
+        "Mcspi_sample.c",
+        "Mcspi_lld_sample.c",
+        "Mdio_sample.c",
+        "MpuP_arm_v7_sample.c",
+		"Pmu_sample.c",
+        "Pruicss_sample_m_v0.c",
+        "QueueP_sample.c",
+        "Sdfm_sample.c",
+        "SemaphoreP_sample.c",
+        "TaskP_sample.c",
+        "TimerP_sample.c",
+        "Uart_sample.c",
+        "Uart_lld_sample.c",
+        "Watchdog_sample.c",
+    ],
+};
+
+const files_am261x = {
+    common: [
+        "AddrTranslateP_sample.c",
+        "Resolver_sample.c",
+        "Bootloader_sample_v3.c",
         "CacheP_sample.c",
         "CpuIdP_sample.c",
         "ClockP_sample.c",
@@ -173,6 +212,12 @@ const files_am62x = {
     ],
 };
 
+const files_am65x = {
+    common: [
+        "IpcRPMessage_linux_sample.c",
+    ],
+};
+
 
 const filedirs = {
     common: [
@@ -182,6 +227,12 @@ const filedirs = {
         "networking",
         "pru_io",
         "security/crypto/sa2ul",
+    ],
+};
+
+const includes = {
+    common: [
+        "${MCU_PLUS_SDK_PATH}/source/security",
     ],
 };
 
@@ -216,24 +267,35 @@ function getComponentBuildProperty(buildOption) {
     {
         build_property.files = files_am263x;
         build_property.files.common.push("I2c_lld_sample_v1.c");
+        build_property.includes = includes;
     }
     if(buildOption.device=="am263px")
     {
         build_property.files = files_am263px;
         build_property.files.common.push("I2c_lld_sample_v1.c");
+        build_property.includes = includes;
+    }
+    if(buildOption.device=="am261x")
+    {
+        build_property.files = files_am261x;
+        build_property.files.common.push("I2c_lld_sample_v1.c");
+        build_property.includes = includes;
     }
     if(buildOption.device=="am64x" || buildOption.device=="am243x")
     {
         build_property.files = files;
         build_property.files.common.push("Soc_am64x_sample.c");
         build_property.files.common.push("I2c_lld_sample_v0.c");
-
+        build_property.files.common.push("Mmcsd_sample.c");
+        build_property.files.common.push("Mmcsd_lld_v0_sample.c");
+        build_property.includes = includes;
     }
     if(buildOption.device=="am273x" || buildOption.device=="awr294x")
     {
         build_property.files = files_am273x;
         build_property.files.common.push("CacheP_c6x_sample.c");
         build_property.files.common.push("I2c_lld_sample_v1.c");
+        build_property.includes = includes;
         if(buildOption.device=="awr294x")
         {
             build_property.files.common.push("Adcbuf_sample.c");
@@ -248,6 +310,10 @@ function getComponentBuildProperty(buildOption) {
     {
         build_property.files = files_am62x;
         build_property.files.common.push("I2c_lld_sample_v0.c");
+    }
+    if(buildOption.device=="am65x")
+    {
+        build_property.files = files_am65x;
     }
     build_property.filedirs = filedirs;
 

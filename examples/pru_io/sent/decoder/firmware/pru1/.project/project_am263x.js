@@ -35,7 +35,7 @@ const lnkfiles = {
 const readmeDoxygenPageTag = "EXAMPLES_PRU_EMPTY";
 
 const buildOptionCombos = [
-    { device: device, cpu: "icssm-pru1", cgt: "ti-pru-cgt", board: "am263x-cc", os: "fw"},
+    { device: device, cpu: "icss_m0_pru1", cgt: "ti-pru-cgt", board: "am263x-cc", os: "fw"},
 ];
 
 const templates_pru =
@@ -49,6 +49,7 @@ const templates_pru =
 const lflags = {
     common: [
         "--entry_point=main",
+        "--diag_suppress=10063-D", /* Added to suppress entry_point related warning */
     ],
 };
 
@@ -58,15 +59,15 @@ function getmakefilePruPostBuildSteps(cpu, board)
 
     switch(cpu)
     {
-        case "icssm-pru1":
+        case "icss_m0_pru1":
             core = "pru1"
             break;
-        case "icssm-pru0":
+        case "icss_m0_pru0":
             core = "pru0"
     }
 
     return  [
-        "$(CG_TOOL_ROOT)/bin/hexpru.exe --diag_wrap=off --array --array:name_prefix=SentDecoderFirmwarePru"+core[3]+" -o sent_decoder_"+core+"_bin.h sent_decoder_"+core+"_fw_" + board + "_" + cpu + "_fw_ti-pru-cgt.out; $(SED) -i '0r ${MCU_PLUS_SDK_PATH}/source/pru_io/firmware/pru_load_bin_copyright.h' sent_decoder_"+core+"_bin.h ; $(MOVE) sent_decoder_"+core+"_bin.h ${MCU_PLUS_SDK_PATH}/examples/pru_io/sent/decoder/example/firmware/sent_decoder_"+core+"_bin.h"
+        "$(CG_TOOL_ROOT)/bin/hexpru --diag_wrap=off --array --array:name_prefix=SentDecoderFirmwarePru"+core[3]+" -o sent_decoder_"+core+"_bin.h sent_decoder_"+core+"_fw_" + board + "_" + cpu + "_fw_ti-pru-cgt.out; $(SED) -i '0r ${MCU_PLUS_SDK_PATH}/source/pru_io/firmware/pru_load_bin_copyright.h' sent_decoder_"+core+"_bin.h ; $(MOVE) sent_decoder_"+core+"_bin.h ${MCU_PLUS_SDK_PATH}/examples/pru_io/sent/decoder/example/firmware/sent_decoder_"+core+"_bin.h"
     ];
 }
 
@@ -76,15 +77,15 @@ function getccsPruPostBuildSteps(cpu, board)
 
     switch(cpu)
     {
-        case "icssm-pru1":
+        case "icss_m0_pru1":
             core = "pru1"
             break;
-        case "icssm-pru0":
+        case "icss_m0_pru0":
             core = "pru0"
     }
 
     return  [
-        "$(CG_TOOL_ROOT)/bin/hexpru.exe --diag_wrap=off --array --array:name_prefix=SentDecoderFirmwarePru"+core[3]+" -o sent_decoder_"+core+"_bin.h sent_decoder_"+core+"_fw_" + board + "_" + cpu + "_fw_ti-pru-cgt.out; if ${CCS_HOST_OS} == win32 $(CCS_INSTALL_DIR)/utils/cygwin/sed -i '0r ${MCU_PLUS_SDK_PATH}/source/pru_io/firmware/pru_load_bin_copyright.h' sent_decoder_"+core+"_bin.h ; if ${CCS_HOST_OS} == linux sed -i '0r ${MCU_PLUS_SDK_PATH}/source/pru_io/firmware/pru_load_bin_copyright.h' sent_decoder_"+core+"_bin.h; if ${CCS_HOST_OS} == win32 $(CCS_INSTALL_DIR)/utils/cygwin/mv sent_decoder_"+core+"_bin.h ${MCU_PLUS_SDK_PATH}/examples/pru_io/sent/decoder/example/firmware/sent_decoder_"+core+"_bin.h; if ${CCS_HOST_OS} == linux mv sent_decoder_"+core+"_bin.h ${MCU_PLUS_SDK_PATH}/examples/pru_io/sent/decoder/example/firmware/sent_decoder_"+core+"_bin.h"
+        "$(CG_TOOL_ROOT)/bin/hexpru --diag_wrap=off --array --array:name_prefix=SentDecoderFirmwarePru"+core[3]+" -o sent_decoder_"+core+"_bin.h sent_decoder_"+core+"_fw_" + board + "_" + cpu + "_fw_ti-pru-cgt.out; if ${CCS_HOST_OS} == win32 $(CCS_INSTALL_DIR)/utils/cygwin/sed -i '0r ${MCU_PLUS_SDK_PATH}/source/pru_io/firmware/pru_load_bin_copyright.h' sent_decoder_"+core+"_bin.h ; if ${CCS_HOST_OS} == linux sed -i '0r ${MCU_PLUS_SDK_PATH}/source/pru_io/firmware/pru_load_bin_copyright.h' sent_decoder_"+core+"_bin.h; if ${CCS_HOST_OS} == win32 $(CCS_INSTALL_DIR)/utils/cygwin/mv sent_decoder_"+core+"_bin.h ${MCU_PLUS_SDK_PATH}/examples/pru_io/sent/decoder/example/firmware/sent_decoder_"+core+"_bin.h; if ${CCS_HOST_OS} == linux mv sent_decoder_"+core+"_bin.h ${MCU_PLUS_SDK_PATH}/examples/pru_io/sent/decoder/example/firmware/sent_decoder_"+core+"_bin.h"
     ];
 }
 

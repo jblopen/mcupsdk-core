@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2021-2023 Texas Instruments Incorporated
+ *  Copyright (C) 2021-2024 Texas Instruments Incorporated
  *
  *  Redistribution and use in source and binary forms, with or without
  *  modification, are permitted provided that the following conditions
@@ -36,9 +36,16 @@
 #include <drivers/bootloader/soc/bootloader_soc.h>
 #include <kernel/dpl/CacheP.h>
 #include <kernel/dpl/HwiP.h>
+#include <security_common/drivers/hsmclient/hsmclient.h>
 
-#define BOOTLOADER_SOC_APP_CERT_SIZE (0x1000)
 #define BOOTLOADER_R5SS_FREQ_200MHz (1U)
+#define MAX_SECURE_BOOT_STREAM_LENGTH (1024U)
+
+extern HsmClient_t gHSMClient ;
+
+SecureBoot_Stream_t gSecureBootStreamArray[MAX_SECURE_BOOT_STREAM_LENGTH];
+uint32_t gStreamId = 0;
+
 
 Bootloader_resMemSections gResMemSection =
 {
@@ -519,4 +526,55 @@ void Bootloader_socSetAutoClock()
     {
         Bootloader_socCpuSetClock(CSL_CORE_ID_R5FSS0_0, (uint32_t)(400*1000000));
     }
+}
+
+int32_t Bootloader_socCpuSetAppEntryPoint(uint32_t cpuId, uintptr_t entryPoint)
+{
+   int32_t status = SystemP_SUCCESS;
+   /* dummy api call */
+
+    return status;
+}
+
+int32_t Bootloader_authStart(uintptr_t startAddr, uint32_t size)
+{
+    int32_t status = SystemP_FAILURE;
+
+    gSecureBootStreamArray[gStreamId].dataIn = (uint8_t *)SOC_virtToPhy((void *)startAddr);
+    gSecureBootStreamArray[gStreamId].dataLen = size;
+    gSecureBootStreamArray[gStreamId].canBeEncrypted = 0x0U;
+
+    status = HsmClient_procAuthBootStart(&gHSMClient, &gSecureBootStreamArray[gStreamId]);
+
+    gStreamId++;
+
+    return status;
+}
+
+int32_t Bootloader_authUpdate(uintptr_t startAddr, uint32_t size, uint8_t enc)
+{
+	int32_t status = SystemP_FAILURE;
+
+    gSecureBootStreamArray[gStreamId].dataIn = (uint8_t *)SOC_virtToPhy((void *)startAddr);
+    gSecureBootStreamArray[gStreamId].dataLen = size;
+    gSecureBootStreamArray[gStreamId].canBeEncrypted = enc;
+
+    status = HsmClient_procAuthBootUpdate(&gHSMClient, &gSecureBootStreamArray[gStreamId]);
+
+    gStreamId++;
+
+    return status;
+}
+
+int32_t Bootloader_authFinish()
+{
+    int32_t status = SystemP_FAILURE;
+
+    gSecureBootStreamArray[gStreamId].dataIn = 0x0U;
+    gSecureBootStreamArray[gStreamId].dataLen = 0x0U;
+    gSecureBootStreamArray[gStreamId].canBeEncrypted = 0x0U;
+
+    status = HsmClient_procAuthBootFinish(&gHSMClient, &gSecureBootStreamArray[gStreamId]);
+
+    return status;
 }

@@ -173,27 +173,30 @@ void Bootloader_profilePrintProfileLog(void)
         case BOOTLOADER_MEDIA_USB:
             bootMediaName = "USB DFU";
             break ;
+        case BOOTLOADER_MEDIA_PCIE:
+            bootMediaName = "PCIE";
+            break ;
         default:
             bootMediaName = "undefined";
             break;
     }
     uint32_t clk = gProfileObj.bootMediaClk;
 
-    DebugP_log("[BOOTLOADER_PROFILE] Boot Media       : %s \r\n", bootMediaName);
+    DebugP_log("KPI_DATA: [BOOTLOADER_PROFILE] Boot Media       : %s \r\n", bootMediaName);
     /* If boot media clock is not given don't print that information */
     if(clk != 0)
     {
         DebugP_log("KPI_DATA: [BOOTLOADER_PROFILE] Boot Media Clock : %.3f MHz \r\n", (float)clk/1000000.0);
     }
     DebugP_log("KPI_DATA: [BOOTLOADER_PROFILE] Boot Image Size  : %d KB \r\n", gProfileObj.appimageSize/1024);
-    DebugP_log("[BOOTLOADER_PROFILE] Cores present    : \r\n");
+    DebugP_log("KPI_DATA: [BOOTLOADER_PROFILE] Cores present    : \r\n");
 
     for(i = 0; i < gProfileObj.numCores; i++)
     {
         DebugP_log("%s\r\n", SOC_getCoreName(gProfileObj.coresPresent[i]));
     }
 
-    for(i = 1; i < gProfileObj.logIndex - 1; i++)
+    for(i = 1; i < gProfileObj.logIndex; i++)
     {
         uint32_t timeDiff = (gProfileObj.info[i].cycleCount - gProfileObj.info[i-1].cycleCount)/cpuMHz;
         DebugP_log("KPI_DATA: [BOOTLOADER PROFILE] %-32s : %10uus \r\n", gProfileObj.info[i].pName, timeDiff);

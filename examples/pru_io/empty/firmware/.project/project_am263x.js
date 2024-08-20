@@ -35,11 +35,12 @@ const lnkfiles = {
 const lflags = {
     common: [
         "--entry_point=main",
+        "--diag_suppress=10063-D", /* Added to suppress entry_point related warning */
     ],
 };
 
 const readmeDoxygenPageTag = "EXAMPLES_PRU_EMPTY";
-
+const syscfgfile = "../example.syscfg";
 const templates_pru =
 [
     {
@@ -49,11 +50,11 @@ const templates_pru =
 ];
 
 const buildOptionCombos = [
-    { device: device, cpu: "icssm-pru0", cgt: "ti-pru-cgt", board: "am263x-lp", os: "fw"},
-    { device: device, cpu: "icssm-pru0", cgt: "ti-pru-cgt", board: "am263x-cc", os: "fw"},
+    { device: device, cpu: "icss_m0_pru0", cgt: "ti-pru-cgt", board: "am263x-lp", os: "fw"},
+    { device: device, cpu: "icss_m0_pru0", cgt: "ti-pru-cgt", board: "am263x-cc", os: "fw"},
 
-    { device: device, cpu: "icssm-pru1", cgt: "ti-pru-cgt", board: "am263x-lp", os: "fw"},
-    { device: device, cpu: "icssm-pru1", cgt: "ti-pru-cgt", board: "am263x-cc", os: "fw"},
+    { device: device, cpu: "icss_m0_pru1", cgt: "ti-pru-cgt", board: "am263x-lp", os: "fw"},
+    { device: device, cpu: "icss_m0_pru1", cgt: "ti-pru-cgt", board: "am263x-cc", os: "fw"},
 ];
 
 function getmakefilePruPostBuildSteps(cpu, board)
@@ -62,15 +63,15 @@ function getmakefilePruPostBuildSteps(cpu, board)
 
     switch(cpu)
     {
-        case "icssm-pru1":
+        case "icss_m0_pru1":
             core = "PRU1"
             break;
-        case "icssm-pru0":
+        case "icss_m0_pru0":
             core = "PRU0"
     }
 
     return [
-        " $(CG_TOOL_ROOT)/bin/hexpru.exe --diag_wrap=off --array --array:name_prefix="+ core + "Firmware  -o "+ core.toLocaleLowerCase() + "_load_bin.h " + "empty_" + board + "_" + cpu + "_fw_ti-pru-cgt.out; $(SED) -i '0r ${MCU_PLUS_SDK_PATH}/source/pru_io/firmware/pru_load_bin_copyright.h' "+ core.toLocaleLowerCase() + "_load_bin.h ; $(MOVE) "+ core.toLocaleLowerCase() + "_load_bin.h " + "${MCU_PLUS_SDK_PATH}/examples/pru_io/empty/firmware/"+ board + "/" +core.toLocaleLowerCase() + "_load_bin.h "
+        " $(CG_TOOL_ROOT)/bin/hexpru --diag_wrap=off --array --array:name_prefix="+ core + "Firmware  -o "+ core.toLocaleLowerCase() + "_load_bin.h " + "empty_" + board + "_" + cpu + "_fw_ti-pru-cgt.out; $(SED) -i '0r ${MCU_PLUS_SDK_PATH}/source/pru_io/firmware/pru_load_bin_copyright.h' "+ core.toLocaleLowerCase() + "_load_bin.h ; $(MOVE) "+ core.toLocaleLowerCase() + "_load_bin.h " + "${MCU_PLUS_SDK_PATH}/examples/pru_io/empty/firmware/"+ board + "/" +core.toLocaleLowerCase() + "_load_bin.h "
     ];
 }
 
@@ -80,15 +81,15 @@ function getccsPruPostBuildSteps(cpu, board)
 
     switch(cpu)
     {
-        case "icssm-pru1":
+        case "icss_m0_pru1":
             core = "PRU1"
             break;
-        case "icssm-pru0":
+        case "icss_m0_pru0":
             core = "PRU0"
     }
 
     return [
-        " $(CG_TOOL_ROOT)/bin/hexpru.exe --diag_wrap=off --array --array:name_prefix="+ core + "Firmware  -o "+ core.toLocaleLowerCase() + "_load_bin.h " + "empty_" + board + "_" + cpu + "_fw_ti-pru-cgt.out; if ${CCS_HOST_OS} == win32 $(CCS_INSTALL_DIR)/utils/cygwin/sed -i '0r ${MCU_PLUS_SDK_PATH}/source/pru_io/firmware/pru_load_bin_copyright.h' "+ core.toLocaleLowerCase() + "_load_bin.h ; if ${CCS_HOST_OS} == linux sed -i '0r ${MCU_PLUS_SDK_PATH}/source/pru_io/firmware/pru_load_bin_copyright.h' "+ core.toLocaleLowerCase() + "_load_bin.h ;" + "if ${CCS_HOST_OS} == win32 move "+ core.toLocaleLowerCase() + "_load_bin.h " + "${MCU_PLUS_SDK_PATH}/examples/pru_io/empty/firmware/"+ board + "/" +core.toLocaleLowerCase() + "_load_bin.h; if ${CCS_HOST_OS} == linux mv "+ core.toLocaleLowerCase() + "_load_bin.h " + "${MCU_PLUS_SDK_PATH}/examples/pru_io/empty/firmware/"+ board + "/" +core.toLocaleLowerCase() + "_load_bin.h "
+        " $(CG_TOOL_ROOT)/bin/hexpru --diag_wrap=off --array --array:name_prefix="+ core + "Firmware  -o "+ core.toLocaleLowerCase() + "_load_bin.h " + "empty_" + board + "_" + cpu + "_fw_ti-pru-cgt.out; if ${CCS_HOST_OS} == win32 $(CCS_INSTALL_DIR)/utils/cygwin/sed -i '0r ${MCU_PLUS_SDK_PATH}/source/pru_io/firmware/pru_load_bin_copyright.h' "+ core.toLocaleLowerCase() + "_load_bin.h ; if ${CCS_HOST_OS} == linux sed -i '0r ${MCU_PLUS_SDK_PATH}/source/pru_io/firmware/pru_load_bin_copyright.h' "+ core.toLocaleLowerCase() + "_load_bin.h ;" + "if ${CCS_HOST_OS} == win32 move "+ core.toLocaleLowerCase() + "_load_bin.h " + "${MCU_PLUS_SDK_PATH}/examples/pru_io/empty/firmware/"+ board + "/" +core.toLocaleLowerCase() + "_load_bin.h; if ${CCS_HOST_OS} == linux mv "+ core.toLocaleLowerCase() + "_load_bin.h " + "${MCU_PLUS_SDK_PATH}/examples/pru_io/empty/firmware/"+ board + "/" +core.toLocaleLowerCase() + "_load_bin.h "
     ];
 }
 
@@ -117,6 +118,7 @@ function getComponentBuildProperty(buildOption) {
     build_property.filedirs = filedirs;
     build_property.lnkfiles = lnkfiles;
     build_property.lflags = lflags;
+    build_property.syscfgfile = syscfgfile;
     build_property.includes = includes;
     build_property.templates = templates_pru;
     build_property.readmeDoxygenPageTag = readmeDoxygenPageTag;
