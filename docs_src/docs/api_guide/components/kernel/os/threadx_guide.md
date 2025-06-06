@@ -1,4 +1,5 @@
-# FreeRTOS usage guidelines {#KERNEL_THREADX_GUIDE_PAGE}
+\cond THREADX
+# ThreadX usage guide {#KERNEL_THREADX_GUIDE_PAGE}
 
 [TOC]
 
@@ -92,3 +93,4 @@ Finally the raw trace buffer data can be visualized in the TraceX application. M
   \image html tracex_view.png Save Memory dialog.
   
 Additional information on the use of TraceX can be found in the official Eclipse ThreadX documentation : https://github.com/eclipse-threadx/rtos-docs/blob/main/rtos-docs/tracex/chapter1.md
+\endcond THREADX
