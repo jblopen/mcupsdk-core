@@ -240,8 +240,9 @@
    code size and overhead, but provides the ability to generate system trace information which
    is available for viewing in TraceX.  */
 
-
+/*
 #define TX_ENABLE_EVENT_TRACE
+*/
 
 /* Determine if block pool performance gathering is required by the application. When the following is
    defined, ThreadX gathers various block pool performance information. */
