@@ -274,6 +274,11 @@ const includes = {
     ],
 };
 
+const defines = {
+    common: [
+        "TX_INCLUDE_USER_DEFINE_FILE",
+    ],
+};
 
 const cflags = {
     common: [
@@ -306,6 +311,7 @@ function getComponentBuildProperty(buildOption) {
     build_property.filedirs = filedirs;
     build_property.files = files;
     build_property.asmfiles = asmfiles;
+    build_property.defines = defines;
     if(buildOption.cgt.match(/ti-arm-clang*/)) {
         build_property.cflags = cflags;
     }

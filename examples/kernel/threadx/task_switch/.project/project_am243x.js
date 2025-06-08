@@ -50,6 +50,12 @@ const libs_gcc = {
     ],
 };
 
+const defines_r5f = {
+    common: [
+        "TX_INCLUDE_USER_DEFINE_FILE",
+    ],
+};
+
 const lnkfiles = {
     common: [
         "linker.cmd",
@@ -124,6 +130,7 @@ function getComponentBuildProperty(buildOption) {
     } else {
         build_property.libs = libs;
     }
+    build_property.defines = defines_r5f;
 
     return build_property;
 }

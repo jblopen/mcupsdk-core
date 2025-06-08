@@ -47,6 +47,12 @@ const includes = {
     ],
 };
 
+const defines_threadx_r5f = {
+    common: [
+        "TX_INCLUDE_USER_DEFINE_FILE",
+    ],
+};
+
 const includes_threadx_r5f = {
     common: [
         "${MCU_PLUS_SDK_PATH}/test/unity/",
@@ -194,6 +200,7 @@ function getComponentBuildProperty(buildOption) {
         if (buildOption.os.match(/threadx*/)) 
         {
             build_property.includes = includes_threadx_r5f;
+            build_property.defines = defines_threadx_r5f;
             build_property.libdirs = libdirs_threadx; 
             build_property.libs = libs_threadx_r5f;
             build_property.templates = templates_threadx_r5f;

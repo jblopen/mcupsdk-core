@@ -61,6 +61,7 @@ INCLUDES_common := \
 
 DEFINES_common := \
 	-DSOC_AM243X \
+	-DTX_INCLUDE_USER_DEFINE_FILE \
 
 CFLAGS_common := \
 	-mcpu=cortex-r5 \
