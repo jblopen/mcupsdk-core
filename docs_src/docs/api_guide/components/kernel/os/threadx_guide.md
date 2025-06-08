@@ -95,4 +95,4 @@ Finally the raw trace buffer data can be visualized in the TraceX application. M
   
 Additional information on the use of TraceX can be found in the official Eclipse ThreadX documentation : https://github.com/eclipse-threadx/rtos-docs/blob/main/rtos-docs/tracex/chapter1.md
 
-\endcond THREADX
+\endcond

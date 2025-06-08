@@ -33,4 +33,4 @@ See \subpage KERNEL_THREADX_GUIDE_PAGE for ThreadX usage instructions specific t
 </tr>
 </table>
 
-\endcond THREADX
+\endcond
