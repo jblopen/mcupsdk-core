@@ -1,4 +1,5 @@
 \cond THREADX
+
 # ThreadX usage guide {#KERNEL_THREADX_GUIDE_PAGE}
 
 [TOC]
@@ -27,7 +28,7 @@ The following include paths must be added to the project.
     ${MCU_PLUS_SDK_PATH}/source/kernel/threadx/threadx_src/common/inc
     ${MCU_PLUS_SDK_PATH}/source/kernel/threadx/ports/ti_arm_gcc_clang_cortex_r5/inc
         
-The following preprocessor define must be added.
+The following preprocessor definition must be added.
 
     TX_INCLUDE_USER_DEFINE_FILE
     
@@ -93,4 +94,5 @@ Finally the raw trace buffer data can be visualized in the TraceX application. M
   \image html tracex_view.png Save Memory dialog.
   
 Additional information on the use of TraceX can be found in the official Eclipse ThreadX documentation : https://github.com/eclipse-threadx/rtos-docs/blob/main/rtos-docs/tracex/chapter1.md
+
 \endcond THREADX

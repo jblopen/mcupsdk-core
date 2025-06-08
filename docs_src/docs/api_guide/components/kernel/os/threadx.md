@@ -16,7 +16,7 @@ ThreadX is scalable based on its underlying architecture. Because ThreadX servic
 
 For the full ThreadX API reference, please refer to the below table.
 
-## FreeRTOS usage guidelines
+## ThreadX usage guidelines
 
 See \subpage KERNEL_THREADX_GUIDE_PAGE for ThreadX usage instructions specific to the MCU+ SDK.
 
@@ -32,4 +32,5 @@ See \subpage KERNEL_THREADX_GUIDE_PAGE for ThreadX usage instructions specific t
     <td>Complete documentation of the ThreadX kernel and API references
 </tr>
 </table>
+
 \endcond THREADX
