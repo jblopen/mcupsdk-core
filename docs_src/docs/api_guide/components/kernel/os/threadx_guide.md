@@ -90,4 +90,30 @@ Finally the raw trace buffer data can be visualized in the TraceX application. M
   
 Additional information on the use of TraceX can be found in the official Eclipse ThreadX documentation : https://github.com/eclipse-threadx/rtos-docs/blob/main/rtos-docs/tracex/chapter1.md
 
+## Running the Thread Metric benchmarks
+
+The thread metric benchmarks are included in the ThreadX source distribution. The thread metric test suite consists on 8 individual tests that can be added to an existing ThreadX project. A good starting point is the hello world examples. To add the source for a test start by copying or including the following file in an existing project:
+
+    ${MCU_PLUS_SDK_PATH}/source/kernel/threadx/threadx_src/utility/benchmarks/thread_metric/tm_api.h
+    ${MCU_PLUS_SDK_PATH}/source/kernel/threadx/threadx_src/utility/benchmarks/thread_metric/tm_porting_layer.h
+    ${MCU_PLUS_SDK_PATH}/source/kernel/threadx/threadx_src/utility/benchmarks/thread_metric/threadx_example/tm_porting_layer_threadx.c
+    
+In addition add one of the following files, only one test can be compiled at any one time.
+
+    ${MCU_PLUS_SDK_PATH}/source/kernel/threadx/threadx_src/utility/benchmarks/thread_metric/threadx_tm_basic_test_example.c
+    ${MCU_PLUS_SDK_PATH}/source/kernel/threadx/threadx_src/utility/benchmarks/thread_metric/threadx_tm_cooperative_scheduling_test_example.c
+    ${MCU_PLUS_SDK_PATH}/source/kernel/threadx/threadx_src/utility/benchmarks/thread_metric/threadx_tm_interrupt_preemption_test_example.c
+    ${MCU_PLUS_SDK_PATH}/source/kernel/threadx/threadx_src/utility/benchmarks/thread_metric/threadx_tm_interrupt_test_example.c
+    ${MCU_PLUS_SDK_PATH}/source/kernel/threadx/threadx_src/utility/benchmarks/thread_metric/threadx_tm_memory_allocation_test_example.c
+    ${MCU_PLUS_SDK_PATH}/source/kernel/threadx/threadx_src/utility/benchmarks/thread_metric/threadx_tm_message_processing_test_example.c
+    ${MCU_PLUS_SDK_PATH}/source/kernel/threadx/threadx_src/utility/benchmarks/thread_metric/threadx_tm_preemptive_scheduling_test_example.c
+    ${MCU_PLUS_SDK_PATH}/source/kernel/threadx/threadx_src/utility/benchmarks/thread_metric/threadx_tm_synchronization_test_example.c
+    
+The test can be run by calling tm_main().
+    
+```
+    void tm_main();
+    tm_main()
+```
+    
 \endcond
