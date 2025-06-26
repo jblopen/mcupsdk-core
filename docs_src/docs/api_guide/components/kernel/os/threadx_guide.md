@@ -9,8 +9,7 @@ This section has additional useful information related to ThreadX and its integr
 
 ## ThreadX configuration
 
-- In ThreadX applications can optionally alter the kernel configuration through the `tx_user.h` header file. This is usually done by adding the preprocessor definition `TX_INCLUDE_USER_DEFINE_FILE` at compile time through the compiler's command line.
-- To allow support of pre-built libraries, MCU+ SDK has a default predefined `tx_user.h` per SOC and per CPU type and the preprocessor symobl `TX_INCLUDE_USER_DEFINE_FILE` is used when bulding the ThreadX library.
+- With ThreadX, applications can optionally alter the kernel configuration through the `tx_user.h` header file. In the SDK, the tx_user.h file is always included to prevent build issues with mismatched include files.
 - Users can modify this file if needed but all pre-built libraries must be recompiled for the change to take effect. (see \ref MAKEFILE_BUILD_PAGE)
 - The `tx_user.h` header files can be found in the following directory:
 
@@ -27,10 +26,6 @@ The following include paths must be added to the project.
     
     ${MCU_PLUS_SDK_PATH}/source/kernel/threadx/threadx_src/common/inc
     ${MCU_PLUS_SDK_PATH}/source/kernel/threadx/ports/ti_arm_gcc_clang_cortex_r5/inc
-        
-The following preprocessor definition must be added.
-
-    TX_INCLUDE_USER_DEFINE_FILE
     
 Finally the proper library must be included, for the example platform named above the following library should be added.
 
